@@ -551,6 +551,137 @@
         padding: 60px 20px;
       }
     }
+
+/* =========================
+   PROFESSIONAL FOUNDER
+========================= */
+
+.founder {
+  background: #ffffff;
+}
+
+.founder-profile {
+  max-width: 1000px;
+  margin: 45px auto 0;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.founder-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.founder-photo img {
+  width: 145px;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #f8fafc;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+}
+
+.founder-heading h3 {
+  font-size: 30px;
+  color: #0f172a;
+  margin-bottom: 5px;
+}
+
+.founder-title {
+  color: #d97706;
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.founder-details > p {
+  color: #64748b;
+  margin-bottom: 13px;
+  font-size: 15px;
+}
+
+.skills {
+  margin-top: 24px;
+}
+
+.skills h4 {
+  color: #0f172a;
+  font-size: 18px;
+  margin-bottom: 13px;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-list span {
+  background: #f1f5f9;
+  color: #334155;
+  padding: 7px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+}
+
+.founder-strengths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 23px;
+}
+
+.founder-strengths div {
+  background: #f8fafc;
+  border-radius: 9px;
+  padding: 13px;
+  border-left: 3px solid #f59e0b;
+}
+
+.founder-strengths strong {
+  display: block;
+  color: #0f172a;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.founder-strengths small {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+@media (max-width: 800px) {
+
+  .founder-profile {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .founder-photo img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .skill-list {
+    justify-content: center;
+  }
+
+  .founder-strengths {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+}
+
+    
   </style>
 </head>
 
@@ -1014,6 +1145,14 @@
 
   <div class="container">
 
+    <div class="section-label">}
+
+      <!-- FOUNDER -->
+
+<section class="founder">
+
+  <div class="container">
+
     <div class="section-label">
       FOUNDER & TECHNOLOGY PROFESSIONAL
     </div>
@@ -1027,37 +1166,26 @@
       for Real-World Problems.
     </p>
 
-
     <div class="founder-profile">
 
-      <!-- FOUNDER PHOTO -->
-
       <div class="founder-photo">
-
         <img
           src="paul-misheal.jpg"
-          alt="Paul Misheal - Founder of Mobility & Hire-Purchase Services"
+          alt="Paul Misheal - Founder"
         >
-
       </div>
-
-
-      <!-- FOUNDER INFORMATION -->
 
       <div class="founder-details">
 
         <div class="founder-heading">
 
-          <h3>
-            Paul Misheal
-          </h3>
+          <h3>Paul Misheal</h3>
 
           <p class="founder-title">
             Founder • Data Scientist • Data Analyst • AWS & Cloud Engineer
           </p>
 
         </div>
-
 
         <p>
           I am a technology professional passionate about using
@@ -1078,57 +1206,47 @@
           digital operations and informed decision-making.
         </p>
 
-
-        <!-- PROFESSIONAL SKILLS -->
-
         <div class="skills">
 
-          <h4>
-            Professional Expertise
-          </h4>
+          <h4>Professional Expertise</h4>
 
           <div class="skill-list">
 
             <span>Data Science</span>
-
             <span>Data Analytics</span>
-
             <span>AWS Cloud</span>
-
             <span>Cloud Computing</span>
-
             <span>Data Engineering</span>
-
             <span>Python</span>
-
             <span>Data Pipelines</span>
-
             <span>Automation</span>
-
             <span>Virtual Assistance</span>
 
           </div>
 
         </div>
 
-
-        <!-- FOUNDER STRENGTHS -->
-
         <div class="founder-strengths">
 
           <div>
             <strong>Data-Driven</strong>
-            <small>Using data to support better decisions.</small>
+            <small>
+              Using data to support better decisions.
+            </small>
           </div>
 
           <div>
             <strong>Technology-Focused</strong>
-            <small>Building efficient digital solutions.</small>
+            <small>
+              Building efficient digital solutions.
+            </small>
           </div>
 
           <div>
             <strong>Growth-Minded</strong>
-            <small>Focused on sustainable business development.</small>
+            <small>
+              Focused on sustainable business development.
+            </small>
           </div>
 
         </div>
@@ -1140,136 +1258,6 @@
   </div>
 
 </section>
-
-/* =========================
-   PROFESSIONAL FOUNDER
-========================== */
-
-.founder {
-  background: #ffffff;
-}
-
-.founder-profile {
-  max-width: 1000px;
-  margin: 50px auto 0;
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 55px;
-  align-items: center;
-}
-
-.founder-photo {
-  text-align: center;
-}
-
-.founder-photo img {
-  width: 290px;
-  height: 340px;
-  object-fit: cover;
-  border-radius: 18px;
-  border: 8px solid #f8fafc;
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.15);
-}
-
-.founder-heading h3 {
-  font-size: 32px;
-  color: #0f172a;
-  margin-bottom: 5px;
-}
-
-.founder-title {
-  color: #d97706;
-  font-weight: 800;
-  font-size: 15px;
-  margin-bottom: 22px;
-}
-
-.founder-details > p {
-  color: #64748b;
-  margin-bottom: 14px;
-  font-size: 15px;
-}
-
-.skills {
-  margin-top: 25px;
-}
-
-.skills h4 {
-  color: #0f172a;
-  font-size: 18px;
-  margin-bottom: 14px;
-}
-
-.skill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
-
-.skill-list span {
-  background: #f1f5f9;
-  color: #334155;
-  padding: 8px 13px;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 700;
-  border: 1px solid #e2e8f0;
-}
-
-.founder-strengths {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 25px;
-}
-
-.founder-strengths div {
-  background: #f8fafc;
-  border-radius: 10px;
-  padding: 15px;
-  border-left: 3px solid #f59e0b;
-}
-
-.founder-strengths strong {
-  display: block;
-  color: #0f172a;
-  font-size: 13px;
-  margin-bottom: 5px;
-}
-
-.founder-strengths small {
-  display: block;
-  color: #64748b;
-  font-size: 11px;
-  line-height: 1.4;
-}
-
-
-/* MOBILE FOUNDER */
-
-@media (max-width: 800px) {
-
-  .founder-profile {
-    grid-template-columns: 1fr;
-    gap: 35px;
-    text-align: center;
-  }
-
-  .founder-photo img {
-    width: 250px;
-    height: 300px;
-  }
-
-  .skill-list {
-    justify-content: center;
-  }
-
-  .founder-strengths {
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-
-}
   
   <!-- CALL TO ACTION -->
 
