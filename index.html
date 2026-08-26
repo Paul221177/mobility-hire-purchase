@@ -1008,52 +1008,269 @@
 
   </section>
 
+<!-- FOUNDER -->
 
-  <!-- FOUNDER -->
+<section class="founder">
 
-  <section class="founder">
+  <div class="container">
 
-    <div class="container">
+    <div class="section-label">
+      FOUNDER & TECHNOLOGY PROFESSIONAL
+    </div>
 
-      <div class="section-label">
-        Founder
+    <h2 class="section-title">
+      Meet Paul Misheal
+    </h2>
+
+    <p class="section-intro">
+      Technology, Data & Cloud Professional Building Solutions
+      for Real-World Problems.
+    </p>
+
+
+    <div class="founder-profile">
+
+      <!-- FOUNDER PHOTO -->
+
+      <div class="founder-photo">
+
+        <img
+          src="paul-misheal.jpg.png"
+          alt="Paul Misheal - Founder of Mobility & Hire-Purchase Services"
+        >
+
       </div>
 
-      <h2 class="section-title">
-        Meet the Founder
-      </h2>
 
+      <!-- FOUNDER INFORMATION -->
 
-      <div class="founder-content">
+      <div class="founder-details">
 
-        <div class="founder-avatar">
-          PM
+        <div class="founder-heading">
+
+          <h3>
+            Paul Misheal
+          </h3>
+
+          <p class="founder-title">
+            Founder • Data Scientist • Data Analyst • AWS & Cloud Engineer
+          </p>
+
         </div>
 
-        <h3>
-          Paul Misheal
-        </h3>
 
         <p>
-          Founder, Mobility & Hire-Purchase Services
+          I am a technology professional passionate about using
+          data, cloud computing and digital technologies to solve
+          practical business and social challenges.
         </p>
-
-        <br>
 
         <p>
-          Paul is developing Mobility & Hire-Purchase Services
-          with the goal of creating a practical and responsible
-          pathway for riders and small business owners to access
-          motorcycles and build sustainable income opportunities.
+          I am developing Mobility & Hire-Purchase Services with
+          the vision of making motorcycle access more achievable
+          for commercial riders and small business owners through
+          structured and responsible hire-purchase solutions.
         </p>
+
+        <p>
+          My technology background gives me the ability to approach
+          this venture with a strong focus on data, automation,
+          digital operations and informed decision-making.
+        </p>
+
+
+        <!-- PROFESSIONAL SKILLS -->
+
+        <div class="skills">
+
+          <h4>
+            Professional Expertise
+          </h4>
+
+          <div class="skill-list">
+
+            <span>Data Science</span>
+
+            <span>Data Analytics</span>
+
+            <span>AWS Cloud</span>
+
+            <span>Cloud Computing</span>
+
+            <span>Data Engineering</span>
+
+            <span>Python</span>
+
+            <span>Data Pipelines</span>
+
+            <span>Automation</span>
+
+            <span>Virtual Assistance</span>
+
+          </div>
+
+        </div>
+
+
+        <!-- FOUNDER STRENGTHS -->
+
+        <div class="founder-strengths">
+
+          <div>
+            <strong>Data-Driven</strong>
+            <small>Using data to support better decisions.</small>
+          </div>
+
+          <div>
+            <strong>Technology-Focused</strong>
+            <small>Building efficient digital solutions.</small>
+          </div>
+
+          <div>
+            <strong>Growth-Minded</strong>
+            <small>Focused on sustainable business development.</small>
+          </div>
+
+        </div>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
+
+/* =========================
+   PROFESSIONAL FOUNDER
+========================== */
+
+.founder {
+  background: #ffffff;
+}
+
+.founder-profile {
+  max-width: 1000px;
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.founder-photo {
+  text-align: center;
+}
+
+.founder-photo img {
+  width: 290px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 8px solid #f8fafc;
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.15);
+}
+
+.founder-heading h3 {
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 5px;
+}
+
+.founder-title {
+  color: #d97706;
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 22px;
+}
+
+.founder-details > p {
+  color: #64748b;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+.skills {
+  margin-top: 25px;
+}
+
+.skills h4 {
+  color: #0f172a;
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.skill-list span {
+  background: #f1f5f9;
+  color: #334155;
+  padding: 8px 13px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+}
+
+.founder-strengths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.founder-strengths div {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 15px;
+  border-left: 3px solid #f59e0b;
+}
+
+.founder-strengths strong {
+  display: block;
+  color: #0f172a;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.founder-strengths small {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+}
 
 
+/* MOBILE FOUNDER */
+
+@media (max-width: 800px) {
+
+  .founder-profile {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    text-align: center;
+  }
+
+  .founder-photo img {
+    width: 250px;
+    height: 300px;
+  }
+
+  .skill-list {
+    justify-content: center;
+  }
+
+  .founder-strengths {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+}
+  
   <!-- CALL TO ACTION -->
 
   <section class="cta">
