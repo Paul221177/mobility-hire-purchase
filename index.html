@@ -3,100 +3,552 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobility & Hire-Purchase Services</title>
+
+  <title>Mobility & Hire-Purchase Services | Affordable Mobility</title>
+
+  <meta
+    name="description"
+    content="Mobility & Hire-Purchase Services is a Nigerian mobility startup focused on making motorcycle ownership more accessible through flexible hire-purchase solutions."
+  >
+
+  <meta name="author" content="Paul Misheal">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: #1f2937;
-      background: #f8fafc;
-      line-height: 1.6;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #172033;
+      background: #f8fafc;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================== */
 
     header {
-      background: #0f172a;
-      color: white;
-      padding: 20px 8%;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    header h2 {
-      margin: 0;
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .logo span {
+      color: #d97706;
+    }
+
+    nav a {
+      margin-left: 25px;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #d97706;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
 
     .hero {
-      background: #1e3a5f;
+      background:
+        linear-gradient(
+          rgba(15, 23, 42, 0.92),
+          rgba(30, 58, 95, 0.92)
+        );
+
       color: white;
+      padding: 105px 25px;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: auto;
       text-align: center;
-      padding: 80px 8%;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: #fbbf24;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
     }
 
     .hero h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
+      font-size: 52px;
+      line-height: 1.1;
+      max-width: 850px;
+      margin: auto;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: #f59e0b;
     }
 
     .hero p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 18px;
+      max-width: 720px;
+      margin: 25px auto;
+      font-size: 19px;
+      color: #dbeafe;
     }
+
+    .hero-buttons {
+      margin-top: 32px;
+    }
+
+    .primary-btn {
+      display: inline-block;
+      background: #f59e0b;
+      color: #111827;
+      padding: 14px 25px;
+      border-radius: 7px;
+      font-weight: 800;
+      margin: 5px;
+    }
+
+    .secondary-btn {
+      display: inline-block;
+      border: 1px solid #cbd5e1;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 7px;
+      font-weight: 700;
+      margin: 5px;
+    }
+
+    .primary-btn:hover {
+      background: #fbbf24;
+    }
+
+    .secondary-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================== */
 
     section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 8%;
+      padding: 80px 25px;
     }
 
-    h2 {
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-label {
+      text-align: center;
+      color: #d97706;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
       text-align: center;
       color: #0f172a;
-      margin-bottom: 20px;
+      font-size: 35px;
+      margin-bottom: 18px;
     }
 
-    .intro {
+    .section-intro {
       max-width: 750px;
       margin: auto;
       text-align: center;
+      color: #64748b;
+      font-size: 17px;
     }
 
-    .cards {
-      display: flex;
-      gap: 20px;
-      margin-top: 30px;
-    }
+    /* =========================
+       ABOUT
+    ========================== */
 
-    .card {
+    .about {
       background: white;
-      padding: 25px;
-      flex: 1;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
-    .card h3 {
+    .about-content {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 25px;
+      margin-bottom: 15px;
       color: #0f172a;
     }
 
-    .contact {
-      background: #e2e8f0;
-      text-align: center;
-      max-width: none;
+    .about-text p {
+      color: #64748b;
+      margin-bottom: 15px;
     }
+
+    .about-box {
+      background: #f1f5f9;
+      padding: 35px;
+      border-radius: 15px;
+      border-left: 5px solid #f59e0b;
+    }
+
+    .about-box h3 {
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    /* =========================
+       PROBLEM
+    ========================== */
+
+    .problem {
+      background: #f8fafc;
+    }
+
+    .problem-grid {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .problem-card {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .problem-number {
+      font-size: 25px;
+      font-weight: 900;
+      color: #d97706;
+      margin-bottom: 10px;
+    }
+
+    .problem-card h3 {
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .problem-card p {
+      color: #64748b;
+    }
+
+    /* =========================
+       SOLUTION
+    ========================== */
+
+    .solution {
+      background: #0f172a;
+      color: white;
+    }
+
+    .solution .section-title {
+      color: white;
+    }
+
+    .solution .section-intro {
+      color: #cbd5e1;
+    }
+
+    .solution-grid {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .solution-card {
+      padding: 30px;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      background: #172033;
+    }
+
+    .solution-card h3 {
+      color: #fbbf24;
+      margin-bottom: 10px;
+    }
+
+    .solution-card p {
+      color: #cbd5e1;
+    }
+
+    /* =========================
+       HOW IT WORKS
+    ========================== */
+
+    .steps {
+      background: white;
+    }
+
+    .steps-grid {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 25px 18px;
+    }
+
+    .step-number {
+      width: 55px;
+      height: 55px;
+      margin: auto auto 18px;
+      border-radius: 50%;
+      background: #f59e0b;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .step p {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    /* =========================
+       IMPACT
+    ========================== */
+
+    .impact {
+      background: #f1f5f9;
+    }
+
+    .impact-grid {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .impact-card {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .impact-card h3 {
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .impact-card p {
+      color: #64748b;
+    }
+
+    /* =========================
+       FOUNDER
+    ========================== */
+
+    .founder {
+      background: white;
+    }
+
+    .founder-content {
+      max-width: 800px;
+      margin: 40px auto 0;
+      text-align: center;
+    }
+
+    .founder-avatar {
+      width: 90px;
+      height: 90px;
+      margin: auto auto 20px;
+      border-radius: 50%;
+      background: #0f172a;
+      color: #f59e0b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    .founder-content h3 {
+      font-size: 25px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .founder-content p {
+      color: #64748b;
+    }
+
+    /* =========================
+       CALL TO ACTION
+    ========================== */
+
+    .cta {
+      background: #d97706;
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: auto auto 25px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #0f172a;
+      color: white;
+      padding: 14px 27px;
+      border-radius: 7px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact {
+      background: #f8fafc;
+      text-align: center;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      color: #475569;
+    }
+
+    .contact-info p {
+      margin: 8px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
 
     footer {
       background: #0f172a;
-      color: white;
+      color: #94a3b8;
+      padding: 35px 25px;
       text-align: center;
-      padding: 20px;
     }
 
-    @media (max-width: 700px) {
-      .cards {
-        flex-direction: column;
+    footer strong {
+      color: white;
+    }
+
+    footer p {
+      margin: 6px;
+      font-size: 14px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 800px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-grid,
+      .solution-grid,
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-title {
+        font-size: 29px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .hero {
+        padding: 75px 20px;
       }
 
       .hero h1 {
         font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 20px;
       }
     }
   </style>
@@ -104,103 +556,593 @@
 
 <body>
 
-<header>
-  <h2>Mobility & Hire-Purchase Services</h2>
-</header>
+  <!-- NAVIGATION -->
 
-<div class="hero">
-  <h1>Affordable Mobility. Sustainable Ownership.</h1>
-  <p>
-    Helping commercial riders and small business owners access
-    reliable motorcycles through flexible hire-purchase solutions.
-  </p>
-</div>
+  <header>
+    <div class="nav-container">
 
-<section>
-  <h2>About Us</h2>
-  <p class="intro">
-    Mobility & Hire-Purchase Services is a Nigerian mobility startup
-    providing affordable motorcycle hire-purchase solutions to
-    commercial riders and small business owners.
-  </p>
-</section>
+      <div class="logo">
+        Mobility<span>.</span>
+      </div>
 
-<section>
-  <h2>The Problem We Solve</h2>
-  <p class="intro">
-    Many Nigerians depend on motorcycles for transportation and
-    income but cannot afford the full purchase price upfront.
-    Our solution makes reliable motorcycles more accessible through
-    structured payment arrangements.
-  </p>
-</section>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#impact">Impact</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<section>
-  <h2>Our Services</h2>
+    </div>
+  </header>
 
-  <div class="cards">
 
-    <div class="card">
-      <h3>Motorcycle Hire-Purchase</h3>
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-container">
+
+      <div class="badge">
+        NIGERIAN MOBILITY STARTUP • IDEA STAGE
+      </div>
+
+      <h1>
+        Making Motorcycle Ownership
+        <span>More Accessible</span>
+      </h1>
+
       <p>
-        Access motorcycles through affordable and structured
-        payment arrangements.
+        A proposed hire-purchase solution designed to help
+        commercial riders and small business owners access
+        motorcycles without the burden of paying the full
+        purchase price upfront.
       </p>
+
+      <div class="hero-buttons">
+
+        <a href="#solution" class="primary-btn">
+          Explore Our Solution
+        </a>
+
+        <a href="#contact" class="secondary-btn">
+          Contact Us
+        </a>
+
+      </div>
+
     </div>
 
-    <div class="card">
-      <h3>Rider Mobility</h3>
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <div class="section-label">
+        About Us
+      </div>
+
+      <h2 class="section-title">
+        Building Access to Better Mobility
+      </h2>
+
+      <p class="section-intro">
+        Mobility & Hire-Purchase Services is an early-stage
+        Nigerian mobility startup focused on improving access
+        to motorcycles for people who depend on them for
+        transportation and income.
+      </p>
+
+
+      <div class="about-content">
+
+        <div class="about-text">
+
+          <h3>
+            Our Vision
+          </h3>
+
+          <p>
+            We envision a system where hardworking Nigerians
+            can access reliable motorcycles and gradually work
+            toward ownership through structured and affordable
+            payment arrangements.
+          </p>
+
+          <p>
+            Our long-term goal is to build a trusted mobility
+            service that connects riders with accessible
+            financing while supporting sustainable livelihoods.
+          </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+          <h3>
+            Our Mission
+          </h3>
+
+          <p>
+            To make motorcycle access and ownership more
+            achievable for commercial riders and small
+            business owners through responsible hire-purchase
+            solutions.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROBLEM -->
+
+  <section class="problem" id="problem">
+
+    <div class="container">
+
+      <div class="section-label">
+        The Challenge
+      </div>
+
+      <h2 class="section-title">
+        A Capital Barrier to Earning
+      </h2>
+
+      <p class="section-intro">
+        For many riders, owning a motorcycle can be an important
+        step toward earning a sustainable income. However,
+        purchasing one outright can be difficult.
+      </p>
+
+
+      <div class="problem-grid">
+
+        <div class="problem-card">
+
+          <div class="problem-number">
+            01
+          </div>
+
+          <h3>
+            High Upfront Cost
+          </h3>
+
+          <p>
+            The full cost of purchasing a motorcycle can be
+            difficult for many riders and aspiring entrepreneurs
+            to raise at once.
+          </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+          <div class="problem-number">
+            02
+          </div>
+
+          <h3>
+            Limited Access to Capital
+          </h3>
+
+          <p>
+            People with the ability to work and generate income
+            may still lack access to suitable financing options.
+          </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+          <div class="problem-number">
+            03
+          </div>
+
+          <h3>
+            Missed Economic Opportunities
+          </h3>
+
+          <p>
+            Without access to mobility assets, potential riders
+            can miss opportunities to earn income and support
+            their families.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SOLUTION -->
+
+  <section class="solution" id="solution">
+
+    <div class="container">
+
+      <div class="section-label">
+        Our Proposed Solution
+      </div>
+
+      <h2 class="section-title">
+        Access Today. Work Toward Ownership.
+      </h2>
+
+      <p class="section-intro">
+        Our proposed model will allow eligible riders to access
+        motorcycles through structured hire-purchase arrangements.
+      </p>
+
+
+      <div class="solution-grid">
+
+        <div class="solution-card">
+
+          <h3>
+            Affordable Access
+          </h3>
+
+          <p>
+            Reduce the need for riders to provide the entire
+            motorcycle purchase price upfront.
+          </p>
+
+        </div>
+
+
+        <div class="solution-card">
+
+          <h3>
+            Structured Payments
+          </h3>
+
+          <p>
+            Riders will make agreed regular payments under
+            transparent hire-purchase arrangements.
+          </p>
+
+        </div>
+
+
+        <div class="solution-card">
+
+          <h3>
+            Path to Ownership
+          </h3>
+
+          <p>
+            The model is designed to provide a clear pathway
+            toward eventual motorcycle ownership.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section class="steps">
+
+    <div class="container">
+
+      <div class="section-label">
+        Our Model
+      </div>
+
+      <h2 class="section-title">
+        How It Is Expected to Work
+      </h2>
+
+      <p class="section-intro">
+        The proposed process is designed to be simple,
+        transparent and manageable.
+      </p>
+
+
+      <div class="steps-grid">
+
+        <div class="step">
+
+          <div class="step-number">
+            1
+          </div>
+
+          <h3>
+            Apply
+          </h3>
+
+          <p>
+            Eligible riders provide their details and
+            mobility requirements.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            2
+          </div>
+
+          <h3>
+            Assessment
+          </h3>
+
+          <p>
+            Applications will be reviewed against established
+            eligibility and affordability criteria.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            3
+          </div>
+
+          <h3>
+            Access
+          </h3>
+
+          <p>
+            Approved riders will receive access to a motorcycle
+            under agreed terms.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            4
+          </div>
+
+          <h3>
+            Pay & Own
+          </h3>
+
+          <p>
+            Riders make regular payments while working toward
+            ownership according to the agreement.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- IMPACT -->
+
+  <section class="impact">
+
+    <div class="container">
+
+      <div class="section-label">
+        Expected Impact
+      </div>
+
+      <h2 class="section-title">
+        More Than Transportation
+      </h2>
+
+      <p class="section-intro">
+        Our proposed business aims to create economic opportunities
+        alongside improved access to mobility.
+      </p>
+
+
+      <div class="impact-grid">
+
+        <div class="impact-card">
+
+          <h3>
+            Income Opportunities
+          </h3>
+
+          <p>
+            Help riders access motorcycles that can support
+            income-generating activities.
+          </p>
+
+        </div>
+
+
+        <div class="impact-card">
+
+          <h3>
+            Youth Empowerment
+          </h3>
+
+          <p>
+            Create opportunities for young Nigerians to build
+            livelihoods through mobility-based work.
+          </p>
+
+        </div>
+
+
+        <div class="impact-card">
+
+          <h3>
+            Asset Ownership
+          </h3>
+
+          <p>
+            Create a pathway for eligible riders to work
+            toward owning productive assets.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOUNDER -->
+
+  <section class="founder">
+
+    <div class="container">
+
+      <div class="section-label">
+        Founder
+      </div>
+
+      <h2 class="section-title">
+        Meet the Founder
+      </h2>
+
+
+      <div class="founder-content">
+
+        <div class="founder-avatar">
+          PM
+        </div>
+
+        <h3>
+          Paul Misheal
+        </h3>
+
+        <p>
+          Founder, Mobility & Hire-Purchase Services
+        </p>
+
+        <br>
+
+        <p>
+          Paul is developing Mobility & Hire-Purchase Services
+          with the goal of creating a practical and responsible
+          pathway for riders and small business owners to access
+          motorcycles and build sustainable income opportunities.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CALL TO ACTION -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <h2>
+        The Future of Accessible Mobility
+      </h2>
+
       <p>
-        Helping commercial riders obtain reliable motorcycles
-        for income-generating activities.
+        We are developing a mobility model focused on
+        accessibility, responsible ownership and economic
+        opportunity.
       </p>
+
+      <a href="#contact" class="cta-btn">
+        Connect With Us
+      </a>
+
     </div>
 
-    <div class="card">
-      <h3>Path to Ownership</h3>
-      <p>
-        Riders make regular payments while working toward
-        eventual ownership of their motorcycle.
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <div class="section-label">
+        Contact
+      </div>
+
+      <h2 class="section-title">
+        Mobility & Hire-Purchase Services
+      </h2>
+
+      <p class="section-intro">
+        Interested in learning more about our proposed
+        mobility solution?
       </p>
+
+
+      <div class="contact-info">
+
+        <p>
+          <strong>Founder:</strong> Paul Misheal
+        </p>
+
+        <p>
+          <strong>Location:</strong> Nigeria
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          YOUR_EMAIL@example.com
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          YOUR_PHONE_NUMBER
+        </p>
+
+      </div>
+
     </div>
 
-  </div>
-</section>
+  </section>
 
-<section>
-  <h2>How It Works</h2>
 
-  <div class="cards">
+  <!-- FOOTER -->
 
-    <div class="card">
-      <h3>1. Apply</h3>
-      <p>Eligible riders provide their information and mobility needs.</p>
-    </div>
+  <footer>
 
-    <div class="card">
-      <h3>2. Get a Motorcycle</h3>
-      <p>Approved riders receive access to a motorcycle under agreed terms.</p>
-    </div>
+    <p>
+      <strong>Mobility & Hire-Purchase Services</strong>
+    </p>
 
-    <div class="card">
-      <h3>3. Pay & Own</h3>
-      <p>Regular payments are made according to the agreed plan.</p>
-    </div>
+    <p>
+      Affordable Mobility. Sustainable Ownership.
+    </p>
 
-  </div>
-</section>
+    <p>
+      © 2026 Mobility & Hire-Purchase Services. All rights reserved.
+    </p>
 
-<section class="contact">
-  <h2>Contact Us</h2>
-  <p><strong>Mobility & Hire-Purchase Services</strong></p>
-  <p>Nigeria</p>
-  <p>Email: YOUR_EMAIL@example.com</p>
-  <p>Phone: YOUR_PHONE_NUMBER</p>
-</section>
-
-<footer>
-  © 2026 Mobility & Hire-Purchase Services
-</footer>
+  </footer>
 
 </body>
 </html>
