@@ -1,16 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Motorcycle Marketplace | Mobility & Hire-Purchase Services</title>
+    <title>Motorcycles | Mobility & Hire-Purchase Services</title>
 
     <meta name="description"
-        content="Browse motorcycles available through Mobility & Hire-Purchase Services. Compare motorcycle categories, prices and weekly payment options.">
+        content="Explore motorcycles available through Mobility & Hire-Purchase Services. Browse commuter, utility, urban and premium motorcycle options.">
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -23,12 +23,12 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f7f8fa;
+            background: #f8fafc;
             color: #172033;
             line-height: 1.6;
         }
 
-        /* ================= NAVIGATION ================= */
+        /* ================= NAVBAR ================= */
 
         nav {
             position: sticky;
@@ -42,17 +42,17 @@
         .nav-container {
             max-width: 1200px;
             margin: auto;
-            padding: 16px 25px;
-
+            padding: 17px 25px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
             font-size: 21px;
             font-weight: 900;
             color: #111827;
+            text-decoration: none;
         }
 
         .logo span {
@@ -61,7 +61,7 @@
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 28px;
             list-style: none;
         }
 
@@ -76,43 +76,19 @@
             color: #d97706;
         }
 
-        .nav-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav-btn {
-            text-decoration: none;
-            padding: 9px 15px;
-            border-radius: 7px;
-            font-size: 13px;
-            font-weight: 800;
-        }
-
-        .login-btn {
-            border: 1px solid #d1d5db;
-            color: #374151;
-            background: white;
-        }
-
-        .signup-btn {
+        .nav-apply {
             background: #d97706;
-            color: white;
+            color: white !important;
+            padding: 10px 17px;
+            border-radius: 7px;
         }
 
         /* ================= HERO ================= */
 
         .hero {
-            background:
-                linear-gradient(
-                    135deg,
-                    #111827 0%,
-                    #1f2937 60%,
-                    #374151 100%
-                );
-
-            color: white;
-            padding: 85px 25px;
+            background: linear-gradient(135deg, #fff7ed, #ffffff);
+            padding: 80px 25px 70px;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .hero-container {
@@ -121,417 +97,317 @@
             text-align: center;
         }
 
-        .hero-label {
+        .badge {
             display: inline-block;
-            background: rgba(245,158,11,0.15);
-            border: 1px solid rgba(245,158,11,0.35);
-            color: #fbbf24;
-
+            background: #ffedd5;
+            color: #c2410c;
             padding: 8px 15px;
             border-radius: 30px;
-
             font-size: 12px;
-            font-weight: 900;
+            font-weight: 800;
             letter-spacing: 1px;
-
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .hero h1 {
             font-size: 52px;
             line-height: 1.1;
-            margin-bottom: 20px;
+            color: #111827;
+            margin-bottom: 18px;
         }
 
         .hero h1 span {
-            color: #f59e0b;
+            color: #d97706;
         }
 
         .hero p {
             max-width: 720px;
             margin: auto;
-
-            color: #cbd5e1;
+            color: #64748b;
             font-size: 17px;
         }
 
-        /* ================= SEARCH ================= */
+        /* ================= CONTROLS ================= */
 
-        .marketplace-tools {
-            max-width: 1150px;
-            margin: -30px auto 0;
-            padding: 0 25px;
+        .marketplace {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 25px 100px;
+        }
 
-            position: relative;
-            z-index: 10;
+        .controls {
+            background: white;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 45px;
+            box-shadow: 0 5px 20px rgba(15,23,42,0.04);
         }
 
         .search-box {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 15px;
-
-            padding: 20px;
-
-            box-shadow:
-                0 15px 40px rgba(15,23,42,0.10);
+            flex: 1;
+            min-width: 230px;
         }
 
-        .search-input {
+        .search-box input {
             width: 100%;
-
+            padding: 13px 15px;
             border: 1px solid #d1d5db;
-            border-radius: 9px;
-
-            padding: 14px 16px;
-
-            font-size: 15px;
+            border-radius: 8px;
+            font-size: 14px;
             outline: none;
         }
 
-        .search-input:focus {
+        .search-box input:focus {
             border-color: #d97706;
         }
 
-        /* ================= CATEGORY FILTER ================= */
-
-        .categories {
-            max-width: 1150px;
-            margin: 30px auto 0;
-            padding: 0 25px;
-        }
-
-        .category-buttons {
+        .filter-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
-        .category-btn {
-            border: 1px solid #dbe0e6;
+        .filter-btn {
+            border: 1px solid #d1d5db;
             background: white;
-
             color: #475569;
-
-            padding: 10px 16px;
-            border-radius: 30px;
-
-            font-size: 13px;
-            font-weight: 800;
-
+            padding: 11px 15px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: 0.2s;
+            font-size: 13px;
+            font-weight: 700;
         }
 
-        .category-btn:hover,
-        .category-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: #d97706;
-            color: white;
             border-color: #d97706;
+            color: white;
         }
 
-        /* ================= MARKETPLACE ================= */
+        /* ================= CATEGORY ================= */
 
-        .marketplace {
-            max-width: 1150px;
-            margin: 50px auto;
-            padding: 0 25px;
+        .category-section {
+            margin-bottom: 65px;
         }
 
-        .market-header {
-            margin-bottom: 30px;
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 22px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 15px;
         }
 
-        .market-header small {
+        .category-label {
             color: #d97706;
+            font-size: 11px;
             font-weight: 900;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .market-header h2 {
-            font-size: 36px;
+        .category-header h2 {
+            font-size: 28px;
             color: #111827;
-            margin-top: 7px;
         }
 
-        .market-header p {
+        .category-description {
             color: #64748b;
-            max-width: 700px;
+            font-size: 13px;
         }
 
         /* ================= BIKE GRID ================= */
 
         .bike-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(4, 1fr);
             gap: 22px;
         }
 
-        /* ================= BIKE CARD ================= */
-
         .bike-card {
             background: white;
-
             border: 1px solid #e5e7eb;
-            border-radius: 17px;
-
+            border-radius: 16px;
             overflow: hidden;
-
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease;
-
-            box-shadow:
-                0 4px 15px rgba(15,23,42,0.04);
+            transition: 0.25s ease;
+            box-shadow: 0 5px 18px rgba(15,23,42,0.04);
         }
 
         .bike-card:hover {
             transform: translateY(-5px);
-
-            box-shadow:
-                0 18px 40px rgba(15,23,42,0.10);
+            box-shadow: 0 15px 35px rgba(15,23,42,0.10);
+            border-color: #f1c27d;
         }
 
         .bike-image {
-            position: relative;
-            height: 220px;
+            height: 190px;
             background: #f8fafc;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            position: relative;
         }
 
         .bike-image img {
             width: 100%;
             height: 100%;
-
-            object-fit: cover;
-
-            transition: transform 0.4s ease;
+            object-fit: contain;
         }
 
-        .bike-card:hover .bike-image img {
-            transform: scale(1.04);
-        }
-
-        .availability {
+        .bike-badge {
             position: absolute;
-            top: 13px;
-            left: 13px;
-
-            background: #dcfce7;
-            color: #166534;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            font-size: 11px;
-            font-weight: 900;
-        }
-
-        .category-label {
-            position: absolute;
-            top: 13px;
-            right: 13px;
-
-            background: rgba(17,24,39,0.88);
+            top: 12px;
+            left: 12px;
+            background: #111827;
             color: white;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
+            padding: 5px 9px;
+            border-radius: 5px;
             font-size: 10px;
             font-weight: 800;
+            text-transform: uppercase;
         }
 
-        .bike-info {
-            padding: 22px;
+        .bike-content {
+            padding: 20px;
         }
 
-        .brand {
+        .bike-brand {
             color: #d97706;
             font-size: 11px;
             font-weight: 900;
-
             text-transform: uppercase;
             letter-spacing: 1px;
-
-            margin-bottom: 5px;
         }
 
         .bike-name {
             font-size: 21px;
             color: #111827;
-
-            margin-bottom: 8px;
+            margin: 4px 0 9px;
         }
 
         .bike-description {
             color: #64748b;
             font-size: 13px;
-
-            min-height: 42px;
-
-            margin-bottom: 16px;
+            line-height: 1.5;
+            min-height: 60px;
+            margin-bottom: 15px;
         }
 
-        .specs {
+        .bike-specs {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            gap: 8px;
-
-            margin-bottom: 18px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 7px;
+            margin-bottom: 16px;
         }
 
         .spec {
             background: #f8fafc;
-            border-radius: 8px;
-            padding: 8px 10px;
+            border-radius: 7px;
+            padding: 8px;
         }
 
         .spec small {
             display: block;
-
             color: #94a3b8;
-            font-size: 10px;
+            font-size: 9px;
+            text-transform: uppercase;
+            font-weight: 800;
         }
 
         .spec strong {
+            display: block;
             color: #334155;
             font-size: 12px;
+            margin-top: 2px;
         }
 
-        .price-area {
-            border-top: 1px solid #edf0f3;
-
-            padding-top: 17px;
-            margin-top: 4px;
+        .price-box {
+            border-top: 1px solid #edf0f4;
+            padding-top: 15px;
+            margin-top: 5px;
         }
 
         .price-label {
             color: #94a3b8;
-            font-size: 11px;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
         }
 
         .price {
             color: #111827;
-            font-size: 23px;
+            font-size: 19px;
             font-weight: 900;
-
-            margin-bottom: 2px;
         }
 
         .weekly {
             color: #d97706;
             font-size: 13px;
             font-weight: 800;
+            margin-top: 2px;
         }
 
-        .weekly span {
-            color: #64748b;
-            font-weight: 600;
-        }
-
-        .bike-actions {
+        .card-actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
-
-            gap: 9px;
-
-            margin-top: 18px;
+            gap: 8px;
+            margin-top: 17px;
         }
 
-        .apply-btn,
-        .details-btn {
-            text-decoration: none;
-
+        .btn {
             text-align: center;
-
-            padding: 11px 8px;
-
-            border-radius: 8px;
-
+            text-decoration: none;
+            padding: 10px 7px;
+            border-radius: 7px;
             font-size: 12px;
-            font-weight: 900;
+            font-weight: 800;
         }
 
-        .apply-btn {
+        .btn-primary {
             background: #d97706;
             color: white;
         }
 
-        .apply-btn:hover {
-            background: #b85f00;
+        .btn-primary:hover {
+            background: #b45309;
         }
 
-        .details-btn {
-            border: 1px solid #dbe0e6;
-            color: #374151;
+        .btn-secondary {
+            border: 1px solid #d1d5db;
+            color: #475569;
             background: white;
         }
 
-        /* ================= NOTE ================= */
+        .btn-secondary:hover {
+            background: #f8fafc;
+        }
 
-        .price-note {
-            max-width: 900px;
-            margin: 45px auto;
+        /* ================= NOTICE ================= */
 
-            background: #fffaf2;
-            border: 1px solid #fde7bd;
-
+        .notice {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            padding: 20px;
             border-radius: 12px;
+            margin-top: 25px;
+        }
 
-            padding: 18px 20px;
+        .notice strong {
+            color: #9a3412;
+            display: block;
+            margin-bottom: 5px;
+        }
 
-            color: #79520a;
-
+        .notice p {
+            color: #7c2d12;
             font-size: 12px;
-            text-align: center;
-        }
-
-        /* ================= CTA ================= */
-
-        .cta {
-            background: #111827;
-            color: white;
-
-            padding: 75px 25px;
-
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 12px;
-        }
-
-        .cta p {
-            max-width: 650px;
-            margin: auto;
-
-            color: #cbd5e1;
-            margin-bottom: 25px;
-        }
-
-        .cta-btn {
-            display: inline-block;
-
-            background: #d97706;
-            color: white;
-
-            text-decoration: none;
-
-            padding: 13px 24px;
-
-            border-radius: 8px;
-
-            font-weight: 900;
-            font-size: 14px;
         }
 
         /* ================= FOOTER ================= */
@@ -539,113 +415,98 @@
         footer {
             background: #0b1120;
             color: #94a3b8;
-
             text-align: center;
+            padding: 30px 20px;
+            font-size: 13px;
+        }
 
-            padding: 25px;
-
-            font-size: 12px;
+        footer strong {
+            color: white;
         }
 
         /* ================= MOBILE ================= */
 
-        @media (max-width: 950px) {
-
+        @media (max-width: 1000px) {
             .bike-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
+        }
+
+        @media (max-width: 750px) {
 
             .nav-links {
                 display: none;
             }
 
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .bike-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-header {
+                display: block;
+            }
+
+            .category-description {
+                margin-top: 5px;
+            }
         }
 
-        @media (max-width: 650px) {
-
-            .hero h1 {
-                font-size: 38px;
-            }
+        @media (max-width: 520px) {
 
             .bike-grid {
                 grid-template-columns: 1fr;
             }
 
-            .nav-actions {
-                display: none;
+            .marketplace {
+                padding-left: 15px;
+                padding-right: 15px;
             }
 
-            .market-header h2 {
-                font-size: 30px;
+            .hero {
+                padding-left: 18px;
+                padding-right: 18px;
             }
 
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .bike-image {
+                height: 220px;
+            }
         }
-
     </style>
 </head>
 
 <body>
 
-
 <!-- ================= NAVIGATION ================= -->
 
 <nav>
-
     <div class="nav-container">
 
-        <div class="logo">
+        <a href="index.html" class="logo">
             Mobility<span>.</span>
-        </div>
+        </a>
 
         <ul class="nav-links">
-
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="bikes.html">Motorcycles</a></li>
+            <li><a href="index.html#founder">Founder</a></li>
             <li>
-                <a href="index.html">
-                    Home
+                <a href="signup.html" class="nav-apply">
+                    Apply Now
                 </a>
             </li>
-
-            <li>
-                <a href="bikes.html">
-                    Motorcycles
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#business">
-                    Business
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#contact">
-                    Contact
-                </a>
-            </li>
-
         </ul>
 
-
-        <div class="nav-actions">
-
-            <a
-                href="login.html"
-                class="nav-btn login-btn">
-                Login
-            </a>
-
-            <a
-                href="signup.html"
-                class="nav-btn signup-btn">
-                Create Account
-            </a>
-
-        </div>
-
     </div>
-
 </nav>
-
 
 
 <!-- ================= HERO ================= -->
@@ -654,7 +515,7 @@
 
     <div class="hero-container">
 
-        <div class="hero-label">
+        <div class="badge">
             MOTORCYCLE MARKETPLACE
         </div>
 
@@ -664,1907 +525,1838 @@
         </h1>
 
         <p>
-            Explore motorcycles selected for commercial riders,
-            delivery businesses, personal transportation and
-            entrepreneurs seeking structured hire-purchase options.
+            Explore our motorcycle selection and choose an option
+            that matches your mobility, commercial and business needs.
+            Applications are subject to eligibility and approval.
         </p>
 
     </div>
 
 </section>
-
-
-
-<!-- ================= SEARCH ================= -->
-
-<div class="marketplace-tools">
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="searchInput"
-            class="search-input"
-            placeholder="Search motorcycle brand or model..."
-        >
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= CATEGORIES ================= -->
-
-<div class="categories">
-
-    <div class="category-buttons">
-
-        <button
-            class="category-btn active"
-            onclick="filterBikes('all', this)">
-            All Motorcycles
-        </button>
-
-        <button
-            class="category-btn"
-            onclick="filterBikes('commercial', this)">
-            Commercial & Delivery
-        </button>
-
-        <button
-            class="category-btn"
-            onclick="filterBikes('commuter', this)">
-            Commuter
-        </button>
-
-        <button
-            class="category-btn"
-            onclick="filterBikes('premium', this)">
-            Premium
-        </button>
-
-        <button
-            class="category-btn"
-            onclick="filterBikes('utility', this)">
-            Utility
-        </button>
-
-    </div>
-
-</div>
-
 
 
 <!-- ================= MARKETPLACE ================= -->
 
 <main class="marketplace">
 
-    <div class="market-header">
 
-        <small>
-            Available Motorcycles
-        </small>
+    <!-- CONTROLS -->
 
-        <h2>
-            Choose Your Motorcycle
-        </h2>
+    <div class="controls">
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search motorcycle, brand or category..."
+            >
+        </div>
+
+        <div class="filter-buttons">
+
+            <button class="filter-btn active" data-category="all">
+                All Bikes
+            </button>
+
+            <button class="filter-btn" data-category="commuter">
+                Commuter
+            </button>
+
+            <button class="filter-btn" data-category="utility">
+                Utility
+            </button>
+
+            <button class="filter-btn" data-category="urban">
+                Urban
+            </button>
+
+            <button class="filter-btn" data-category="premium">
+                Premium
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- COMMUTER -->
+    <!-- ===================================================== -->
+
+    <section class="category-section" data-section-category="commuter">
+
+        <div class="category-header">
+
+            <div>
+                <div class="category-label">
+                    Category 01
+                </div>
+
+                <h2>
+                    Commuter & Commercial
+                </h2>
+            </div>
+
+            <div class="category-description">
+                Practical motorcycles for everyday and commercial transportation.
+            </div>
+
+        </div>
+
+
+        <div class="bike-grid">
+
+
+            <!-- 01 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Popular
+                    </span>
+
+                    <img
+                        src="https://www.tvsmotor.com/tvs-hlx/-/media/Feature/HLX/Colors/HLX-125/BLUE-web.png?h=477&hash=7D50E83FCE6379907B9D5F3B73EF2778F3F957B9&la=en&w=733"
+                        alt="TVS HLX 125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        HLX 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Practical motorcycle designed for daily commuting
+                        and commercial transportation.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commuter</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,400,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike01" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Commercial
+                    </span>
+
+                    <img
+                        src="https://www.tvsmotor.com/tvs-hlx/-/media/Feature/HLX/Colors/HLX-125/BLUE-web.png?h=477&hash=7D50E83FCE6379907B9D5F3B73EF2778F3F957B9&la=en&w=733"
+                        alt="TVS HLX Plus motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        HLX Plus
+                    </h3>
+
+                    <p class="bike-description">
+                        Durable commuter motorcycle suited to riders
+                        who depend on daily commercial mobility.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commuter</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,500,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike02" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Popular
+                    </span>
+
+                    <img
+                        src="https://cdn.globalbajaj.com/-/media/Democratic-Republic-Of-Congo/Images/Boxer/Boxer-100/SpokeImages/Variant-Banner.png?h=997&hash=4860AD7D51B128AC1B9B5E6B987E060F&iar=0&rev=b107e2052d50496aa17ac5bfafd8b746&w=1640"
+                        alt="Bajaj Boxer 100 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Bajaj
+                    </div>
+
+                    <h3 class="bike-name">
+                        Boxer 100
+                    </h3>
+
+                    <p class="bike-description">
+                        Efficient motorcycle designed for practical
+                        transportation and commercial riding.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>100cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commuter</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,250,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike03" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://cdn.globalbajaj.com/-/media/Democratic-Republic-Of-Congo/Images/Boxer/Boxer-100/SpokeImages/Variant-Banner.png?h=997&hash=4860AD7D51B128AC1B9B5E6B987E060F&iar=0&rev=b107e2052d50496aa17ac5bfafd8b746&w=1640"
+                        alt="Bajaj Boxer 100 KS motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Bajaj
+                    </div>
+
+                    <h3 class="bike-name">
+                        Boxer 100 KS
+                    </h3>
+
+                    <p class="bike-description">
+                        Reliable entry-level motorcycle focused on
+                        fuel efficiency and everyday transportation.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>100cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commuter</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,300,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike04" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Honda
+                    </span>
+
+                    <img
+                        src="https://global.honda/en/newsroom/news/2011/c110929eng.html"
+                        alt="Honda Ace CB125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Honda
+                    </div>
+
+                    <h3 class="bike-name">
+                        Ace CB125
+                    </h3>
+
+                    <p class="bike-description">
+                        125cc motorcycle designed for practical
+                        transportation and commercial mobility.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commuter</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,700,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦30,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike05" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://global.honda/en/newsroom/news/2011/c110929eng.html"
+                        alt="Honda CB125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Honda
+                    </div>
+
+                    <h3 class="bike-name">
+                        CB125
+                    </h3>
+
+                    <p class="bike-description">
+                        Practical Honda motorcycle suited to personal
+                        and commercial transportation.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commuter</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,900,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦30,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike06" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 07 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://www.tvsmotor.com/tvs-hlx/-/media/Feature/HLX/Colors/HLX-125/BLUE-web.png?h=477&hash=7D50E83FCE6379907B9D5F3B73EF2778F3F957B9&la=en&w=733"
+                        alt="TVS Star HLX motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        Star HLX 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Popular workhorse motorcycle designed for
+                        dependable daily commercial use.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commercial</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,450,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike07" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 08 -->
+
+            <article class="bike-card" data-category="commuter">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://2.bp.blogspot.com/-NH84kdcYtts/WeO1YreRWRI/AAAAAAAAAGk/XBQD-BUIykAiY8ORD42Bf55thk1q9FkdwCLcBGAs/s1600/Yamaha-YBR-125-2016-Latest-Model-Price-Specs-Features-Shape-Pics-in-Red.png"
+                        alt="Yamaha YBR 125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Yamaha
+                    </div>
+
+                    <h3 class="bike-name">
+                        YBR 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Practical 125cc motorcycle offering comfortable
+                        everyday transportation.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Commuter</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,850,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦30,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike08" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- UTILITY -->
+    <!-- ===================================================== -->
+
+    <section class="category-section" data-section-category="utility">
+
+        <div class="category-header">
+
+            <div>
+                <div class="category-label">
+                    Category 02
+                </div>
+
+                <h2>
+                    Utility Motorcycles
+                </h2>
+            </div>
+
+            <div class="category-description">
+                Simple, practical motorcycles for work and everyday mobility.
+            </div>
+
+        </div>
+
+
+        <div class="bike-grid">
+
+
+            <!-- 09 -->
+
+            <article class="bike-card" data-category="utility">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Utility
+                    </span>
+
+                    <img
+                        src="https://image.made-in-china.com/202f0j00ZIHqPDayJLug/Hot-Sale-in-Cambodia-Bera-Jincheng-Hosuzuki-Ax100-Motorcycle-Motorbike.webp"
+                        alt="Jincheng AX100 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Jincheng
+                    </div>
+
+                    <h3 class="bike-name">
+                        AX100
+                    </h3>
+
+                    <p class="bike-description">
+                        Lightweight utility motorcycle suited for simple
+                        commuting and practical transport.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>100cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Utility</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,050,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike09" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 10 -->
+
+            <article class="bike-card" data-category="utility">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://www.tvsmotor.com/tvs-hlx/-/media/Feature/HLX/Colors/HLX-125/BLUE-web.png?h=477&hash=7D50E83FCE6379907B9D5F3B73EF2778F3F957B9&la=en&w=733"
+                        alt="TVS HLX utility motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        HLX 125 Utility
+                    </h3>
+
+                    <p class="bike-description">
+                        Practical work-focused motorcycle for riders
+                        who need reliable daily mobility.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Utility</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,450,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike10" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 11 -->
+
+            <article class="bike-card" data-category="utility">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://global.honda/en/about/history-digest/75years-history/chapter2/section3/images/page1_08.jpg"
+                        alt="Honda CG125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Honda
+                    </div>
+
+                    <h3 class="bike-name">
+                        CG125
+                    </h3>
+
+                    <p class="bike-description">
+                        Classic practical motorcycle platform known
+                        for straightforward everyday transportation.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Utility</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,650,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦30,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike11" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 12 -->
+
+            <article class="bike-card" data-category="utility">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://cdn.globalbajaj.com/-/media/Democratic-Republic-Of-Congo/Images/Boxer/Boxer-100/SpokeImages/Variant-Banner.png?h=997&hash=4860AD7D51B128AC1B9B5E6B987E060F&iar=0&rev=b107e2052d50496aa17ac5bfafd8b746&w=1640"
+                        alt="Bajaj Boxer utility motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Bajaj
+                    </div>
+
+                    <h3 class="bike-name">
+                        Boxer X
+                    </h3>
+
+                    <p class="bike-description">
+                        Work-oriented motorcycle designed for riders
+                        who need practical and affordable mobility.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>100cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Utility</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,200,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike12" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 13 -->
+
+            <article class="bike-card" data-category="utility">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://www.tvsmotor.com/tvs-hlx/-/media/Feature/HLX/Colors/HLX-125/BLUE-web.png?h=477&hash=7D50E83FCE6379907B9D5F3B73EF2778F3F957B9&la=en&w=733"
+                        alt="TVS HLX Plus KS motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        HLX Plus KS
+                    </h3>
+
+                    <p class="bike-description">
+                        Efficient utility motorcycle for commercial
+                        and everyday transport needs.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Utility</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,550,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦30,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike13" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- URBAN -->
+    <!-- ===================================================== -->
+
+    <section class="category-section" data-section-category="urban">
+
+        <div class="category-header">
+
+            <div>
+                <div class="category-label">
+                    Category 03
+                </div>
+
+                <h2>
+                    Urban & Step-Through
+                </h2>
+            </div>
+
+            <div class="category-description">
+                Compact motorcycles designed for convenient city mobility.
+            </div>
+
+        </div>
+
+
+        <div class="bike-grid">
+
+
+            <!-- 14 -->
+
+            <article class="bike-card" data-category="urban">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Urban
+                    </span>
+
+                    <img
+                        src="https://etimg.etb2bimg.com/photo/71148535.cms"
+                        alt="TVS Neo AMI motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        Neo AMI 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Step-through motorcycle developed for efficient
+                        urban and African-market mobility.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Power</small>
+                            <strong>9.8 BHP</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,450,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike14" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 15 -->
+
+            <article class="bike-card" data-category="urban">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://banglamotor.net/images/tvs/tvs-rockz-125-6.jpg"
+                        alt="TVS Rockz 125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        Rockz 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Stylish 125cc motorcycle for riders seeking
+                        practical urban transportation.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>124.5cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Power</small>
+                            <strong>9.8 BHP</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,500,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦30,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike15" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 16 -->
+
+            <article class="bike-card" data-category="urban">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://etimg.etb2bimg.com/photo/71148535.cms"
+                        alt="TVS Neo NX motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        Neo NX
+                    </h3>
+
+                    <p class="bike-description">
+                        Compact mobility motorcycle designed for
+                        everyday commuting and urban transport.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>109.7cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Urban</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,350,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike16" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 17 -->
+
+            <article class="bike-card" data-category="urban">
+
+                <div class="bike-image">
+
+                    <img
+                        src="https://s.alicdn.com/@sc04/kf/H55677b3e4e794d538ee85004fd9be22bW.jpg_640x640.jpg"
+                        alt="Haojue Lucky Plus motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Haojue
+                    </div>
+
+                    <h3 class="bike-name">
+                        Lucky Plus
+                    </h3>
+
+                    <p class="bike-description">
+                        Compact motorcycle option designed for convenient
+                        everyday city transportation.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>110cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Urban</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,400,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦25,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike17" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- PREMIUM -->
+    <!-- ===================================================== -->
+
+    <section class="category-section" data-section-category="premium">
+
+        <div class="category-header">
+
+            <div>
+                <div class="category-label">
+                    Category 04
+                </div>
+
+                <h2>
+                    Premium & Performance
+                </h2>
+            </div>
+
+            <div class="category-description">
+                Higher-performance motorcycles for riders seeking additional power.
+            </div>
+
+        </div>
+
+
+        <div class="bike-grid">
+
+
+            <!-- 18 -->
+
+            <article class="bike-card" data-category="premium">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Premium
+                    </span>
+
+                    <img
+                        src="https://images.livemint.com/img/2020/11/04/600x338/TVSRTR_1604482586889_1604482614933.jpg"
+                        alt="TVS Apache RTR 200 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        Apache RTR 200 4V
+                    </h3>
+
+                    <p class="bike-description">
+                        Performance-focused motorcycle for riders seeking
+                        stronger power and premium features.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>197.75cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Power</small>
+                            <strong>20.8 PS</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦2,800,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦45,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike18" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 19 -->
+
+            <article class="bike-card" data-category="premium">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Premium
+                    </span>
+
+                    <img
+                        src="https://images.livemint.com/img/2020/11/04/600x338/TVSRTR_1604482586889_1604482614933.jpg"
+                        alt="TVS Apache RTR motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        TVS
+                    </div>
+
+                    <h3 class="bike-name">
+                        Apache RTR 200
+                    </h3>
+
+                    <p class="bike-description">
+                        High-performance motorcycle with advanced
+                        technology and sport-oriented design.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>197.75cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Power</small>
+                            <strong>20.8 PS</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦2,800,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦45,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike19" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 20 -->
+
+            <article class="bike-card" data-category="premium">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Premium
+                    </span>
+
+                    <img
+                        src="https://www.honda.co.uk/content/dam/central/motorcycles/125cc/2025/desktop/gallery-desktop.jpg"
+                        alt="Honda CB125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Honda
+                    </div>
+
+                    <h3 class="bike-name">
+                        CB125 Premium
+                    </h3>
+
+                    <p class="bike-description">
+                        Practical premium 125cc motorcycle offering
+                        a balance of everyday usability and refinement.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Premium</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦2,100,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦35,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike20" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 21 / Additional premium option -->
+
+            <article class="bike-card" data-category="premium">
+
+                <div class="bike-image">
+
+                    <span class="bike-badge">
+                        Premium
+                    </span>
+
+                    <img
+                        src="https://motorgrid.in/assets/images/bikes/bajaj/pulsar-125/hero/1.avif"
+                        alt="Bajaj Pulsar 125 motorcycle"
+                    >
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="bike-brand">
+                        Bajaj
+                    </div>
+
+                    <h3 class="bike-name">
+                        Pulsar 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Sport-styled 125cc motorcycle aimed at riders
+                        seeking performance and everyday usability.
+                    </p>
+
+                    <div class="bike-specs">
+
+                        <div class="spec">
+                            <small>Engine</small>
+                            <strong>125cc</strong>
+                        </div>
+
+                        <div class="spec">
+                            <small>Type</small>
+                            <strong>Sport</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="price-box">
+
+                        <div class="price-label">
+                            Reference Purchase Price
+                        </div>
+
+                        <div class="price">
+                            ₦1,600,000
+                        </div>
+
+                        <div class="weekly">
+                            From ₦30,000 / week
+                        </div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply Now
+                        </a>
+
+                        <a href="#bike21" class="btn btn-secondary">
+                            Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= NOTICE ================= -->
+
+    <div class="notice">
+
+        <strong>
+            Important Pricing Information
+        </strong>
 
         <p>
-            Compare available motorcycle options and select
-            the model that best fits your transportation or
-            income-generating needs.
+            The prices displayed on this marketplace are reference
+            purchase prices for planning purposes and are not guaranteed
+            live dealer prices. Final motorcycle prices, availability,
+            eligibility, repayment terms and approval will be confirmed
+            by Mobility & Hire-Purchase Services before an agreement
+            is entered into.
         </p>
-
-    </div>
-
-
-    <div class="bike-grid" id="bikeGrid">
-
-
-
-        <!-- ================================================= -->
-        <!-- 01 -->
-        <!-- ================================================= -->
-
-        <article
-            class="bike-card"
-            data-category="commercial"
-            data-name="TVS HLX 125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.tvsmotor.com/-/media/Feature/HLX/Colors/HLX-125/BLUE-web.png"
-                    alt="TVS HLX 125 motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Commercial
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    HLX 125
-                </h3>
-
-                <p class="bike-description">
-                    Rugged commercial motorcycle suitable for
-                    delivery, commuting and daily income generation.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>124.53cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Transmission</small>
-                        <strong>4-Speed</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,350,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a
-                        href="signup.html"
-                        class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a
-                        href="#"
-                        class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 02 -->
-
-        <article
-            class="bike-card"
-            data-category="commercial"
-            data-name="TVS HLX Plus ES">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://tvsnigeria.com/wp-content/uploads/2021/05/hlx-125_2.jpg"
-                    alt="TVS HLX Plus motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Commercial
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    HLX Plus ES
-                </h3>
-
-                <p class="bike-description">
-                    Efficient 100cc motorcycle designed for
-                    economical commercial operation.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>99.7cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Start</small>
-                        <strong>Electric</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,350,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 03 -->
-
-        <article
-            class="bike-card"
-            data-category="commercial"
-            data-name="Bajaj Boxer 100 ES">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://cdn.globalbajaj.com/-/media/Democratic-Republic-Of-Congo/Images/Boxer/Boxer-100/SpokeImages/Variant-Banner.png"
-                    alt="Bajaj Boxer 100 motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Commercial
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Bajaj
-                </div>
-
-                <h3 class="bike-name">
-                    Boxer 100 ES
-                </h3>
-
-                <p class="bike-description">
-                    Durable and economical motorcycle built for
-                    demanding daily commercial use.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>102cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Start</small>
-                        <strong>Electric</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,250,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 04 -->
-
-        <article
-            class="bike-card"
-            data-category="commercial"
-            data-name="Bajaj Boxer 100 KS">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://cdn.globalbajaj.com/-/media/Democratic-Republic-Of-Congo/Images/Boxer/Boxer-100/SpokeImages/Variant-Banner.png"
-                    alt="Bajaj Boxer 100 KS motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Commercial
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Bajaj
-                </div>
-
-                <h3 class="bike-name">
-                    Boxer 100 KS
-                </h3>
-
-                <p class="bike-description">
-                    Practical 100cc motorcycle with strong utility
-                    characteristics for everyday riders.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>99.27cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Start</small>
-                        <strong>Kick Start</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,190,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 05 -->
-
-        <article
-            class="bike-card"
-            data-category="commuter"
-            data-name="Honda Ace CB125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://global.honda/en/newsroom/news/2011/c110929eng.html"
-                    alt="Honda Ace CB125 motorcycle"
-                    style="object-fit:cover;"
-                >
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Commuter
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Honda
-                </div>
-
-                <h3 class="bike-name">
-                    Ace CB125
-                </h3>
-
-                <p class="bike-description">
-                    125cc motorcycle designed for practical
-                    transportation and commercial mobility.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Type</small>
-                        <strong>Commuter</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,700,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 06 -->
-
-        <article
-            class="bike-card"
-            data-category="premium"
-            data-name="TVS Apache RTR 200">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.livemint.com/auto-news/tvs-launches-new-apache-rtr-200-4v-with-three-riding-modes-check-details-features-price-11604481787228.html"
-                    alt="TVS Apache RTR 200 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Premium
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    Apache RTR 200 4V
-                </h3>
-
-                <p class="bike-description">
-                    Performance-focused motorcycle for riders
-                    seeking stronger power and premium features.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>197.75cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Power</small>
-                        <strong>20.8 PS</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦2,800,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦45,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 07 -->
-
-        <article
-            class="bike-card"
-            data-category="commuter"
-            data-name="TVS Neo AMI 125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.autocarpro.in/hs-fs/hubfs/TVS%20Neo%20Ami%20125.jpg"
-                    alt="TVS Neo AMI motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Commuter
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    Neo AMI 125
-                </h3>
-
-                <p class="bike-description">
-                    Step-through motorcycle developed for
-                    efficient urban and African-market mobility.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Power</small>
-                        <strong>9.8 BHP</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,600,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 08 -->
-
-        <article
-            class="bike-card"
-            data-category="commuter"
-            data-name="Haojue Lucky Plus">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://res.cloudinary.com/kusnap/image/upload/v1756826643/v6uehehzvomwm8mbjavq.jpg"
-                    alt="Haojue Lucky Plus motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Commuter
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Haojue
-                </div>
-
-                <h3 class="bike-name">
-                    Lucky Plus
-                </h3>
-
-                <p class="bike-description">
-                    Compact motorcycle suited to personal
-                    transportation and light commercial use.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Category</small>
-                        <strong>Commuter</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Use</small>
-                        <strong>Urban</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦900,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 09 -->
-
-        <article
-            class="bike-card"
-            data-category="utility"
-            data-name="Jincheng AX100">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://junhao-motorcycle.en.made-in-china.com/product/MJgpwZRcADrF/China-Hot-Sale-in-Africa-100cc-Bera-Jincheng-Hosuzuki-Ax100-Motorcycle-Motorcycle.html"
-                    alt="Jincheng AX100 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Utility
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Jincheng
-                </div>
-
-                <h3 class="bike-name">
-                    AX100
-                </h3>
-
-                <p class="bike-description">
-                    Lightweight utility motorcycle suited for
-                    simple commuting and practical transport.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>100cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Type</small>
-                        <strong>Utility</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,050,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 10 -->
-
-        <article
-            class="bike-card"
-            data-category="commuter"
-            data-name="Yamaha YBR 125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://moto.zombdrive.com/images/yamaha-ybr-125-7.jpg"
-                    alt="Yamaha YBR 125 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Commuter
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Yamaha
-                </div>
-
-                <h3 class="bike-name">
-                    YBR 125
-                </h3>
-
-                <p class="bike-description">
-                    Reliable 125cc commuter motorcycle suitable
-                    for everyday transportation.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Type</small>
-                        <strong>Commuter</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,800,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 11 -->
-
-        <article
-            class="bike-card"
-            data-category="utility"
-            data-name="Honda CG125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://global.honda/en/about/history-digest/75years-history/chapter2/section3/images/page1_08.jpg"
-                    alt="Honda CG125 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Utility
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Honda
-                </div>
-
-                <h3 class="bike-name">
-                    CG125
-                </h3>
-
-                <p class="bike-description">
-                    Classic utility motorcycle known for simple
-                    construction and practical everyday use.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Type</small>
-                        <strong>Utility</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,750,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 12 -->
-
-        <article
-            class="bike-card"
-            data-category="premium"
-            data-name="Bajaj Pulsar 125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.carsonwheelz.com/2025/12/bajaj-pulsar-125-price-images-features.html"
-                    alt="Bajaj Pulsar 125 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Premium
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Bajaj
-                </div>
-
-                <h3 class="bike-name">
-                    Pulsar 125
-                </h3>
-
-                <p class="bike-description">
-                    Sport-styled 125cc motorcycle aimed at riders
-                    seeking performance and everyday usability.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Type</small>
-                        <strong>Sport</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,600,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 13 -->
-
-        <article
-            class="bike-card"
-            data-category="commercial"
-            data-name="TVS HLX Star 125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.tvsmotor.com/-/media/Feature/HLX/Colors/HLX-125/BLUE-web.png"
-                    alt="TVS HLX Star 125 motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Commercial
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    HLX Star 125
-                </h3>
-
-                <p class="bike-description">
-                    Commercial-focused 125cc motorcycle designed
-                    for high daily usage.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Use</small>
-                        <strong>Commercial</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,350,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 14 -->
-
-        <article
-            class="bike-card"
-            data-category="commercial"
-            data-name="TVS HLX Plus KS">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://tvsnigeria.com/wp-content/uploads/2021/05/hlx-125_2.jpg"
-                    alt="TVS HLX Plus KS motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Commercial
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    HLX Plus KS
-                </h3>
-
-                <p class="bike-description">
-                    Economical kick-start variant for riders
-                    prioritizing affordability and durability.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>99.7cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Start</small>
-                        <strong>Kick</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,300,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 15 -->
-
-        <article
-            class="bike-card"
-            data-category="premium"
-            data-name="TVS Rockz 125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.motormarkett.com/wp-content/uploads/tvs-rockz-125-redwhite.jpg"
-                    alt="TVS Rockz 125 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Premium
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    Rockz 125
-                </h3>
-
-                <p class="bike-description">
-                    Sporty 125cc motorcycle for riders wanting
-                    a more stylish urban motorcycle.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>124.5cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Power</small>
-                        <strong>9.8 BHP</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,500,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 16 -->
-
-        <article
-            class="bike-card"
-            data-category="commuter"
-            data-name="TVS Neo NX">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.tvsmotor.com/en/ng/our-products/tvs-neo-nx"
-                    alt="TVS Neo NX motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Commuter
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    Neo NX
-                </h3>
-
-                <p class="bike-description">
-                    Compact mobility motorcycle designed for
-                    everyday commuting and urban transport.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>109.7cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Power</small>
-                        <strong>8.6 BHP</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,600,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 17 -->
-
-        <article
-            class="bike-card"
-            data-category="utility"
-            data-name="Bajaj Boxer X125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://cdn.globalbajaj.com/-/media/Democratic-Republic-Of-Congo/Images/Boxer/Boxer-100/SpokeImages/Variant-Banner.png"
-                    alt="Bajaj Boxer motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Utility
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Bajaj
-                </div>
-
-                <h3 class="bike-name">
-                    Boxer X125
-                </h3>
-
-                <p class="bike-description">
-                    Heavy-duty utility option suited to riders
-                    who need additional working capability.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Type</small>
-                        <strong>Utility</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,550,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦30,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 18 -->
-
-        <article
-            class="bike-card"
-            data-category="commuter"
-            data-name="Honda CB125">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://global.honda/en/newsroom/news/2011/c110929eng.html"
-                    alt="Honda CB125 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Commuter
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Honda
-                </div>
-
-                <h3 class="bike-name">
-                    CB125
-                </h3>
-
-                <p class="bike-description">
-                    Practical 125cc Honda motorcycle suited to
-                    personal and commercial transportation.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>125cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Type</small>
-                        <strong>Commuter</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦1,900,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦35,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 19 -->
-
-        <article
-            class="bike-card"
-            data-category="premium"
-            data-name="TVS Apache 200">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://www.livemint.com/auto-news/tvs-launches-new-apache-rtr-200-4v-with-three-riding-modes-check-details-features-price-11604481787228.html"
-                    alt="TVS Apache 200 motorcycle">
-
-                <span class="availability">
-                    Enquiry
-                </span>
-
-                <span class="category-label">
-                    Premium
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    TVS
-                </div>
-
-                <h3 class="bike-name">
-                    Apache RTR 200
-                </h3>
-
-                <p class="bike-description">
-                    High-performance motorcycle with advanced
-                    technology and sport-oriented design.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Engine</small>
-                        <strong>197.75cc</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Power</small>
-                        <strong>20.8 PS</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦2,800,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦45,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- 20 -->
-
-        <article
-            class="bike-card"
-            data-category="utility"
-            data-name="Haojue Lucky">
-
-            <div class="bike-image">
-
-                <img
-                    src="https://res.cloudinary.com/kusnap/image/upload/v1756826643/v6uehehzvomwm8mbjavq.jpg"
-                    alt="Haojue Lucky motorcycle">
-
-                <span class="availability">
-                    Available
-                </span>
-
-                <span class="category-label">
-                    Utility
-                </span>
-
-            </div>
-
-            <div class="bike-info">
-
-                <div class="brand">
-                    Haojue
-                </div>
-
-                <h3 class="bike-name">
-                    Lucky
-                </h3>
-
-                <p class="bike-description">
-                    Affordable lightweight option for everyday
-                    mobility and small business transportation.
-                </p>
-
-                <div class="specs">
-
-                    <div class="spec">
-                        <small>Category</small>
-                        <strong>Utility</strong>
-                    </div>
-
-                    <div class="spec">
-                        <small>Use</small>
-                        <strong>Urban</strong>
-                    </div>
-
-                </div>
-
-                <div class="price-area">
-
-                    <div class="price-label">
-                        Reference Purchase Price
-                    </div>
-
-                    <div class="price">
-                        ₦900,000
-                    </div>
-
-                    <div class="weekly">
-                        From ₦25,000
-                        <span>/ week</span>
-                    </div>
-
-                </div>
-
-                <div class="bike-actions">
-
-                    <a href="signup.html" class="apply-btn">
-                        Apply Now
-                    </a>
-
-                    <a href="#" class="details-btn">
-                        Details
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-
-    <!-- ================= PRICE NOTE ================= -->
-
-    <div class="price-note">
-
-        <strong>Important:</strong>
-        Motorcycle prices shown on this marketplace are
-        reference/indicative prices and may change according
-        to dealer, location, model year, registration,
-        transportation and availability. Final pricing and
-        hire-purchase terms will be confirmed before an
-        application is approved.
 
     </div>
 
 </main>
 
 
-
-<!-- ================= CTA ================= -->
-
-<section class="cta">
-
-    <h2>
-        Ready to Get Your Motorcycle?
-    </h2>
-
-    <p>
-        Create an account and submit your application.
-        Our team can then review your information and
-        discuss the appropriate motorcycle and payment
-        arrangement with you.
-    </p>
-
-    <a
-        href="signup.html"
-        class="cta-btn">
-        Create Your Account
-    </a>
-
-</section>
-
-
-
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-    © 2026 Mobility & Hire-Purchase Services.
-    All rights reserved.
+    <strong>
+        Mobility & Hire-Purchase Services
+    </strong>
+
+    <br>
+
+    © 2026. All rights reserved.
 
 </footer>
-
 
 
 <!-- ================= JAVASCRIPT ================= -->
@@ -2574,68 +2366,43 @@
     const searchInput =
         document.getElementById("searchInput");
 
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
     const bikeCards =
         document.querySelectorAll(".bike-card");
+
+    const sections =
+        document.querySelectorAll(".category-section");
 
 
     let selectedCategory = "all";
 
 
-    function filterBikes(category, button) {
+    function filterBikes() {
 
-        selectedCategory = category;
-
-        document
-            .querySelectorAll(".category-btn")
-            .forEach(btn => {
-                btn.classList.remove("active");
-            });
-
-        button.classList.add("active");
-
-        applyFilters();
-
-    }
-
-
-    searchInput.addEventListener(
-        "input",
-        applyFilters
-    );
-
-
-    function applyFilters() {
-
-        const search =
-            searchInput.value
-                .toLowerCase()
-                .trim();
+        const searchTerm =
+            searchInput.value.toLowerCase().trim();
 
 
         bikeCards.forEach(card => {
 
-            const name =
-                card.dataset.name
-                    .toLowerCase();
+            const cardText =
+                card.innerText.toLowerCase();
 
             const category =
-                card.dataset.category
-                    .toLowerCase();
+                card.dataset.category;
 
 
             const matchesSearch =
-                name.includes(search);
-
+                cardText.includes(searchTerm);
 
             const matchesCategory =
                 selectedCategory === "all" ||
                 category === selectedCategory;
 
 
-            if (
-                matchesSearch &&
-                matchesCategory
-            ) {
+            if (matchesSearch && matchesCategory) {
 
                 card.style.display = "";
 
@@ -2647,10 +2414,76 @@
 
         });
 
+
+        sections.forEach(section => {
+
+            const visibleCards =
+                section.querySelectorAll(
+                    ".bike-card:not([style*='display: none'])"
+                );
+
+            if (selectedCategory === "all") {
+
+                section.style.display = "";
+
+            } else {
+
+                if (
+                    section.dataset.sectionCategory ===
+                    selectedCategory
+                ) {
+
+                    section.style.display = "";
+
+                } else {
+
+                    section.style.display = "none";
+
+                }
+
+            }
+
+        });
+
     }
+
+
+    searchInput.addEventListener(
+        "input",
+        filterBikes
+    );
+
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                filterButtons.forEach(btn => {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+                this.classList.add("active");
+
+
+                selectedCategory =
+                    this.dataset.category;
+
+
+                filterBikes();
+
+            }
+        );
+
+    });
+
 
 </script>
 
-
 </body>
 </html>
+```
