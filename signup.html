@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <title>Create Account | Mobility & Hire-Purchase Services</title>
 
     <meta name="description"
-        content="Create an account with Mobility & Hire-Purchase Services to explore motorcycle hire-purchase opportunities.">
+        content="Create an account with Mobility & Hire-Purchase Services.">
 
     <style>
         * {
@@ -18,12 +19,12 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f8fafc;
+            background: #f6f8fb;
             color: #172033;
             min-height: 100vh;
         }
 
-        /* NAVIGATION */
+        /* ================= NAVIGATION ================= */
 
         nav {
             background: #ffffff;
@@ -31,7 +32,7 @@
         }
 
         .nav-container {
-            max-width: 1150px;
+            max-width: 1180px;
             margin: auto;
             padding: 18px 25px;
             display: flex;
@@ -40,10 +41,10 @@
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: 800;
             color: #111827;
             text-decoration: none;
+            font-size: 21px;
+            font-weight: 900;
         }
 
         .logo span {
@@ -51,32 +52,31 @@
         }
 
         .back-link {
-            color: #475569;
+            color: #64748b;
             text-decoration: none;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .back-link:hover {
             color: #d97706;
         }
 
-        /* PAGE */
+        /* ================= PAGE ================= */
 
         .page {
             min-height: calc(100vh - 70px);
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 50px 20px;
+            padding: 55px 20px;
         }
 
         .signup-container {
             width: 100%;
-            max-width: 520px;
+            max-width: 620px;
         }
 
-        /* HEADER */
+        /* ================= HEADER ================= */
 
         .signup-header {
             text-align: center;
@@ -85,63 +85,66 @@
 
         .badge {
             display: inline-block;
-            background: #fff1d6;
+            background: #fff3dc;
             color: #a65f00;
-            padding: 7px 14px;
+            padding: 8px 15px;
             border-radius: 30px;
             font-size: 11px;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 1px;
             margin-bottom: 15px;
         }
 
         .signup-header h1 {
-            font-size: 34px;
+            font-size: 38px;
+            line-height: 1.15;
             color: #111827;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .signup-header p {
+            max-width: 500px;
+            margin: auto;
             color: #64748b;
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 15px;
+            line-height: 1.7;
         }
 
-        /* CARD */
+        /* ================= CARD ================= */
 
         .signup-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 18px;
-            padding: 35px;
-            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+            border-radius: 20px;
+            padding: 38px;
+            box-shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
         }
 
-        /* FORM */
+        /* ================= FORM ================= */
 
         .form-section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .form-section-title {
-            font-size: 15px;
-            font-weight: 800;
+            font-size: 16px;
+            font-weight: 900;
             color: #111827;
-            margin-bottom: 17px;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            margin-bottom: 18px;
             border-bottom: 1px solid #edf0f4;
         }
 
         .form-group {
-            margin-bottom: 17px;
+            margin-bottom: 18px;
         }
 
         label {
             display: block;
-            font-size: 13px;
-            font-weight: 700;
             color: #374151;
-            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 8px;
         }
 
         .required {
@@ -151,20 +154,25 @@
         input,
         select {
             width: 100%;
-            padding: 13px 14px;
+            height: 48px;
+            padding: 0 14px;
             border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #172033;
+            border-radius: 9px;
             background: #ffffff;
+            color: #172033;
+            font-size: 14px;
             outline: none;
-            transition: 0.2s;
+            transition: 0.2s ease;
         }
 
         input:focus,
         select:focus {
             border-color: #d97706;
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.10);
+        }
+
+        input::placeholder {
+            color: #9ca3af;
         }
 
         .form-row {
@@ -175,17 +183,18 @@
 
         .help-text {
             display: block;
-            margin-top: 6px;
-            font-size: 11px;
+            margin-top: 7px;
             color: #64748b;
+            font-size: 11px;
+            line-height: 1.5;
         }
 
-        /* ACCOUNT TYPE */
+        /* ================= ACCOUNT TYPE ================= */
 
         .account-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 14px;
         }
 
         .account-option {
@@ -199,19 +208,35 @@
         }
 
         .account-option label {
-            display: block;
-            padding: 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: center;
             margin: 0;
-            transition: 0.2s;
+            padding: 20px 15px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1.5px solid #d1d5db;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .account-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border-radius: 50%;
+            font-size: 20px;
+            margin-bottom: 9px;
         }
 
         .account-option label strong {
-            display: block;
             color: #111827;
+            font-size: 14px;
             margin-bottom: 4px;
         }
 
@@ -224,14 +249,19 @@
         .account-option input:checked + label {
             border-color: #d97706;
             background: #fffaf2;
+            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.08);
         }
 
-        /* BUSINESS */
+        .account-option input:checked + label .account-icon {
+            background: #fff0d2;
+        }
+
+        /* ================= BUSINESS ================= */
 
         .business-box {
             background: #f8fafc;
             border: 1px solid #e5e7eb;
-            padding: 15px;
+            padding: 16px;
             border-radius: 10px;
             margin-top: 10px;
         }
@@ -240,7 +270,7 @@
             display: block;
             color: #111827;
             font-size: 13px;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
         .business-box span {
@@ -248,95 +278,159 @@
             font-size: 12px;
         }
 
-        /* TERMS */
+        /* ================= PASSWORD ================= */
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 85px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #d97706;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        /* ================= TERMS ================= */
 
         .terms {
             display: flex;
             align-items: flex-start;
-            gap: 9px;
-            margin: 20px 0;
+            gap: 10px;
+            margin: 22px 0;
         }
 
         .terms input {
-            width: auto;
-            margin-top: 3px;
+            width: 17px;
+            height: 17px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: #d97706;
         }
 
         .terms label {
             margin: 0;
-            font-size: 12px;
-            line-height: 1.5;
-            font-weight: normal;
             color: #64748b;
+            font-size: 12px;
+            line-height: 1.6;
+            font-weight: normal;
         }
 
         .terms a {
             color: #d97706;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 800;
         }
 
-        /* BUTTON */
+        /* ================= BUTTON ================= */
 
         .signup-btn {
             width: 100%;
-            padding: 14px;
+            height: 52px;
             border: none;
-            border-radius: 9px;
+            border-radius: 10px;
             background: #d97706;
             color: #ffffff;
             font-size: 15px;
-            font-weight: 800;
+            font-weight: 900;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.2s ease;
         }
 
         .signup-btn:hover {
             background: #b85f00;
+            transform: translateY(-1px);
         }
 
-        /* LOGIN */
+        .signup-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ================= LOGIN ================= */
 
         .login-text {
             text-align: center;
-            margin-top: 22px;
+            margin-top: 24px;
             color: #64748b;
             font-size: 13px;
         }
 
         .login-text a {
             color: #d97706;
-            font-weight: 800;
             text-decoration: none;
+            font-weight: 900;
         }
 
-        /* SECURITY NOTE */
+        .login-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= SECURITY ================= */
 
         .security-note {
-            margin-top: 18px;
-            padding: 13px;
+            margin-top: 20px;
+            padding: 14px;
             background: #f8fafc;
-            border-radius: 8px;
+            border: 1px solid #edf0f4;
+            border-radius: 9px;
             text-align: center;
             color: #64748b;
             font-size: 11px;
+            line-height: 1.5;
         }
 
-        /* MOBILE */
+        /* ================= MESSAGE ================= */
 
-        @media (max-width: 600px) {
+        .form-message {
+            display: none;
+            margin-bottom: 20px;
+            padding: 13px 15px;
+            border-radius: 9px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 650px) {
 
             .page {
                 padding: 35px 15px;
-                align-items: flex-start;
             }
 
             .signup-card {
                 padding: 25px 20px;
+                border-radius: 16px;
             }
 
             .signup-header h1 {
-                font-size: 29px;
+                font-size: 30px;
             }
 
             .form-row {
@@ -351,13 +445,17 @@
             .nav-container {
                 padding: 16px 18px;
             }
+
+            .back-link {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- ================= NAVIGATION ================= -->
 
     <nav>
         <div class="nav-container">
@@ -374,11 +472,13 @@
     </nav>
 
 
-    <!-- SIGN UP -->
+    <!-- ================= PAGE ================= -->
 
     <main class="page">
 
         <div class="signup-container">
+
+            <!-- HEADER -->
 
             <div class="signup-header">
 
@@ -391,24 +491,29 @@
                 </h1>
 
                 <p>
-                    Create an account to explore motorcycle
-                    hire-purchase opportunities and future
-                    investment services.
+                    Join our platform to access motorcycle
+                    hire-purchase opportunities or participate
+                    in our investment program.
                 </p>
 
             </div>
 
 
+            <!-- CARD -->
+
             <div class="signup-card">
 
-                <form action="#" method="POST">
+                <div id="formMessage" class="form-message"></div>
 
-                    <!-- ACCOUNT TYPE -->
+
+                <form id="signupForm">
+
+                    <!-- ================= ACCOUNT TYPE ================= -->
 
                     <div class="form-section">
 
                         <div class="form-section-title">
-                            Account Type
+                            Choose Your Account Type
                         </div>
 
                         <div class="account-options">
@@ -425,12 +530,16 @@
 
                                 <label for="rider">
 
+                                    <div class="account-icon">
+                                        🏍️
+                                    </div>
+
                                     <strong>
                                         Hire-Purchase
                                     </strong>
 
                                     <small>
-                                        I want a motorcycle
+                                        I want to acquire a motorcycle
                                     </small>
 
                                 </label>
@@ -449,12 +558,16 @@
 
                                 <label for="investor">
 
+                                    <div class="account-icon">
+                                        💰
+                                    </div>
+
                                     <strong>
                                         Investor
                                     </strong>
 
                                     <small>
-                                        I want to invest
+                                        I want to invest in the business
                                     </small>
 
                                 </label>
@@ -466,7 +579,7 @@
                     </div>
 
 
-                    <!-- PERSONAL INFORMATION -->
+                    <!-- ================= PERSONAL INFORMATION ================= -->
 
                     <div class="form-section">
 
@@ -480,7 +593,8 @@
                             <div class="form-group">
 
                                 <label for="first_name">
-                                    First Name <span class="required">*</span>
+                                    First Name
+                                    <span class="required">*</span>
                                 </label>
 
                                 <input
@@ -488,6 +602,7 @@
                                     id="first_name"
                                     name="first_name"
                                     placeholder="First name"
+                                    autocomplete="given-name"
                                     required
                                 >
 
@@ -497,7 +612,8 @@
                             <div class="form-group">
 
                                 <label for="last_name">
-                                    Last Name <span class="required">*</span>
+                                    Last Name
+                                    <span class="required">*</span>
                                 </label>
 
                                 <input
@@ -505,6 +621,7 @@
                                     id="last_name"
                                     name="last_name"
                                     placeholder="Last name"
+                                    autocomplete="family-name"
                                     required
                                 >
 
@@ -516,7 +633,8 @@
                         <div class="form-group">
 
                             <label for="email">
-                                Email Address <span class="required">*</span>
+                                Email Address
+                                <span class="required">*</span>
                             </label>
 
                             <input
@@ -524,6 +642,7 @@
                                 id="email"
                                 name="email"
                                 placeholder="example@email.com"
+                                autocomplete="email"
                                 required
                             >
 
@@ -533,7 +652,8 @@
                         <div class="form-group">
 
                             <label for="phone">
-                                Phone Number <span class="required">*</span>
+                                Phone Number
+                                <span class="required">*</span>
                             </label>
 
                             <input
@@ -541,6 +661,7 @@
                                 id="phone"
                                 name="phone"
                                 placeholder="+234 800 000 0000"
+                                autocomplete="tel"
                                 required
                             >
 
@@ -558,6 +679,7 @@
                                 id="address"
                                 name="address"
                                 placeholder="Enter your residential address"
+                                autocomplete="street-address"
                             >
 
                         </div>
@@ -565,37 +687,39 @@
                     </div>
 
 
-                    <!-- BUSINESS INFORMATION -->
+                    <!-- ================= BUSINESS ================= -->
 
                     <div class="form-section">
 
                         <div class="form-section-title">
-                            Business Information
+                            Employer / Business Information
                         </div>
 
                         <div class="form-group">
 
                             <label for="business">
                                 Employer / Business Name
+                                <span class="required">*</span>
                             </label>
 
                             <select
                                 id="business"
                                 name="business"
+                                required
                             >
 
                                 <option value="">
                                     Select business
                                 </option>
 
-                                <option value="mobility">
+                                <option value="mobility_hire_purchase">
                                     Mobility & Hire-Purchase Services
                                 </option>
 
                             </select>
 
                             <span class="help-text">
-                                Select the business you are applying through.
+                                Select the business associated with your application.
                             </span>
 
                         </div>
@@ -608,8 +732,8 @@
                             </strong>
 
                             <span>
-                                Motorcycle mobility and structured
-                                hire-purchase services.
+                                Motorcycle mobility, structured
+                                hire-purchase and investment services.
                             </span>
 
                         </div>
@@ -617,7 +741,7 @@
                     </div>
 
 
-                    <!-- ACCOUNT SECURITY -->
+                    <!-- ================= SECURITY ================= -->
 
                     <div class="form-section">
 
@@ -629,20 +753,34 @@
                         <div class="form-group">
 
                             <label for="password">
-                                Create Password <span class="required">*</span>
+                                Create Password
+                                <span class="required">*</span>
                             </label>
 
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="Create a strong password"
-                                minlength="8"
-                                required
-                            >
+                            <div class="password-wrapper">
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Create a strong password"
+                                    minlength="8"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="show-password"
+                                    onclick="togglePassword('password', this)"
+                                >
+                                    Show
+                                </button>
+
+                            </div>
 
                             <span class="help-text">
-                                Use at least 8 characters.
+                                Password must contain at least 8 characters.
                             </span>
 
                         </div>
@@ -651,24 +789,38 @@
                         <div class="form-group">
 
                             <label for="confirm_password">
-                                Confirm Password <span class="required">*</span>
+                                Confirm Password
+                                <span class="required">*</span>
                             </label>
 
-                            <input
-                                type="password"
-                                id="confirm_password"
-                                name="confirm_password"
-                                placeholder="Confirm your password"
-                                minlength="8"
-                                required
-                            >
+                            <div class="password-wrapper">
+
+                                <input
+                                    type="password"
+                                    id="confirm_password"
+                                    name="confirm_password"
+                                    placeholder="Confirm your password"
+                                    minlength="8"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="show-password"
+                                    onclick="togglePassword('confirm_password', this)"
+                                >
+                                    Show
+                                </button>
+
+                            </div>
 
                         </div>
 
                     </div>
 
 
-                    <!-- TERMS -->
+                    <!-- ================= TERMS ================= -->
 
                     <div class="terms">
 
@@ -681,7 +833,7 @@
                         <label for="terms">
 
                             I agree to the
-                            <a href="#">
+                            <a href="#" onclick="return false;">
                                 Terms & Conditions
                             </a>
                             and confirm that the information
@@ -692,18 +844,20 @@
                     </div>
 
 
-                    <!-- SUBMIT -->
+                    <!-- ================= SUBMIT ================= -->
 
                     <button
                         type="submit"
                         class="signup-btn"
+                        id="signupButton"
                     >
                         Create Account
                     </button>
 
-
                 </form>
 
+
+                <!-- LOGIN -->
 
                 <div class="login-text">
 
@@ -715,6 +869,8 @@
 
                 </div>
 
+
+                <!-- SECURITY -->
 
                 <div class="security-note">
 
@@ -730,5 +886,221 @@
 
     </main>
 
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /*
+         * SHOW / HIDE PASSWORD
+         */
+
+        function togglePassword(inputId, button) {
+
+            const input = document.getElementById(inputId);
+
+            if (input.type === "password") {
+
+                input.type = "text";
+                button.textContent = "Hide";
+
+            } else {
+
+                input.type = "password";
+                button.textContent = "Show";
+
+            }
+
+        }
+
+
+        /*
+         * SIGNUP FORM
+         */
+
+        const signupForm = document.getElementById("signupForm");
+        const formMessage = document.getElementById("formMessage");
+        const signupButton = document.getElementById("signupButton");
+
+        signupForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            /*
+             * Get account type
+             */
+
+            const accountType = document.querySelector(
+                'input[name="account_type"]:checked'
+            );
+
+
+            if (!accountType) {
+
+                showMessage(
+                    "Please select whether you want to apply for hire-purchase or become an investor.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+             * Get passwords
+             */
+
+            const password =
+                document.getElementById("password").value;
+
+            const confirmPassword =
+                document.getElementById("confirm_password").value;
+
+
+            /*
+             * Check passwords
+             */
+
+            if (password.length < 8) {
+
+                showMessage(
+                    "Your password must contain at least 8 characters.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (password !== confirmPassword) {
+
+                showMessage(
+                    "The passwords do not match. Please check them and try again.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+             * Get business
+             */
+
+            const business =
+                document.getElementById("business").value;
+
+
+            if (!business) {
+
+                showMessage(
+                    "Please select the employer or business name.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+             * Save basic signup information.
+             *
+             * IMPORTANT:
+             * This is only a front-end prototype.
+             * Do NOT use localStorage for real passwords
+             * when this becomes a production application.
+             */
+
+            const userData = {
+
+                firstName:
+                    document.getElementById("first_name").value.trim(),
+
+                lastName:
+                    document.getElementById("last_name").value.trim(),
+
+                email:
+                    document.getElementById("email").value.trim(),
+
+                phone:
+                    document.getElementById("phone").value.trim(),
+
+                address:
+                    document.getElementById("address").value.trim(),
+
+                accountType:
+                    accountType.value,
+
+                business:
+                    business
+
+            };
+
+
+            localStorage.setItem(
+                "mobilityUser",
+                JSON.stringify(userData)
+            );
+
+
+            localStorage.setItem(
+                "accountType",
+                accountType.value
+            );
+
+
+            /*
+             * Disable button while redirecting
+             */
+
+            signupButton.disabled = true;
+            signupButton.textContent = "Creating Account...";
+
+
+            /*
+             * Redirect according to account type
+             */
+
+            setTimeout(function() {
+
+                if (accountType.value === "hire_purchase") {
+
+                    window.location.href = "application.html";
+
+                }
+
+                else if (accountType.value === "investor") {
+
+                    window.location.href = "investor-dashboard.html";
+
+                }
+
+            }, 600);
+
+        });
+
+
+        /*
+         * DISPLAY MESSAGE
+         */
+
+        function showMessage(message, type) {
+
+            formMessage.textContent = message;
+
+            formMessage.className =
+                "form-message " + type;
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
 </body>
 </html>
+```
