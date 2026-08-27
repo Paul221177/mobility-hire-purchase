@@ -1,706 +1,915 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Paul Misheal | Mobility & Hire-Purchase Services</title>
+```
+<title>Paul Misheal | Mobility & Hire-Purchase Services</title>
 
-    <meta name="description"
-        content="Mobility & Hire-Purchase Services provides structured motorcycle access solutions while leveraging technology, data and responsible business practices.">
+<meta name="description"
+    content="Mobility & Hire-Purchase Services provides structured motorcycle access solutions while leveraging technology, data and responsible business practices.">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #172033;
-            background: #ffffff;
-            line-height: 1.6;
-        }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #172033;
+        background: #ffffff;
+        line-height: 1.6;
+    }
 
-        /* ================= NAVIGATION ================= */
+    /* ================= NAVIGATION ================= */
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.97);
-            border-bottom: 1px solid #e8ebf0;
-        }
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.97);
+        border-bottom: 1px solid #e8ebf0;
+    }
 
-        .nav-container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .nav-container {
+        max-width: 1150px;
+        margin: auto;
+        padding: 16px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: #111827;
-        }
+    .logo {
+        font-size: 20px;
+        font-weight: 800;
+        color: #111827;
+        text-decoration: none;
+    }
 
-        .logo span {
-            color: #d97706;
+    .logo span {
+        color: #d97706;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #4b5563;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .nav-links a:hover {
+        color: #d97706;
+    }
+
+    .nav-auth {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-login {
+        text-decoration: none;
+        color: #374151;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 9px 13px;
+    }
+
+    .nav-login:hover {
+        color: #d97706;
+    }
+
+    .nav-signup {
+        text-decoration: none;
+        background: #d97706;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+    .nav-signup:hover {
+        background: #b85f00;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+        min-height: 650px;
+        display: flex;
+        align-items: center;
+        background:
+            linear-gradient(135deg, #fffaf2 0%, #ffffff 55%);
+    }
+
+    .hero-container {
+        max-width: 1150px;
+        width: 100%;
+        margin: auto;
+        padding: 90px 25px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 8px 14px;
+        background: #fff1d6;
+        color: #a65f00;
+        border-radius: 30px;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+        line-height: 1.05;
+        color: #111827;
+        margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+        color: #d97706;
+    }
+
+    .hero p {
+        max-width: 650px;
+        font-size: 18px;
+        color: #667085;
+        margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 13px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .btn-primary {
+        background: #d97706;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #b85f00;
+    }
+
+    .btn-secondary {
+        border: 1px solid #d1d5db;
+        color: #374151;
+        background: white;
+    }
+
+    .btn-secondary:hover {
+        border-color: #d97706;
+        color: #d97706;
+    }
+
+    .btn-account {
+        border: 1px solid #d97706;
+        color: #d97706;
+        background: #fffaf2;
+    }
+
+    .btn-account:hover {
+        background: #fff1d6;
+    }
+
+    /* ================= HERO CARD ================= */
+
+    .hero-card {
+        background: white;
+        border: 1px solid #e8ebf0;
+        border-radius: 20px;
+        padding: 35px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+    }
+
+    .hero-card h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .hero-card p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .stat {
+        padding: 15px 0;
+        border-top: 1px solid #edf0f4;
+    }
+
+    .stat strong {
+        display: block;
+        color: #d97706;
+        font-size: 18px;
+    }
+
+    .stat span {
+        color: #6b7280;
+        font-size: 13px;
+    }
+
+    /* ================= GENERAL SECTIONS ================= */
+
+    section {
+        padding: 90px 25px;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .section-label {
+        color: #d97706;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .section-title {
+        font-size: 38px;
+        color: #111827;
+        margin-bottom: 15px;
+    }
+
+    .section-intro {
+        max-width: 700px;
+        color: #667085;
+        margin-bottom: 45px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+        background: #f8fafc;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+        align-items: center;
+    }
+
+    .about-text p {
+        color: #667085;
+        margin-bottom: 18px;
+    }
+
+    .about-card {
+        background: white;
+        padding: 35px;
+        border-radius: 18px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .about-card h3 {
+        margin-bottom: 15px;
+    }
+
+    .about-card li {
+        list-style: none;
+        padding: 9px 0;
+        color: #4b5563;
+    }
+
+    .about-card li::before {
+        content: "✓";
+        color: #d97706;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* ================= BUSINESS ================= */
+
+    .business-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+    }
+
+    .business-card {
+        padding: 30px;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        background: white;
+    }
+
+    .business-card .number {
+        font-size: 13px;
+        font-weight: 800;
+        color: #d97706;
+        margin-bottom: 18px;
+    }
+
+    .business-card h3 {
+        margin-bottom: 12px;
+    }
+
+    .business-card p {
+        color: #667085;
+        font-size: 14px;
+    }
+
+    /* ================= FOUNDER ================= */
+
+    .founder {
+        background: #f8fafc;
+    }
+
+    .founder-box {
+        max-width: 950px;
+        margin: auto;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 22px;
+        padding: 45px;
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .founder-photo {
+        text-align: center;
+    }
+
+    .founder-photo img {
+        width: 145px;
+        height: 145px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #fff;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .founder-info h3 {
+        font-size: 30px;
+        margin-bottom: 4px;
+    }
+
+    .founder-role {
+        color: #d97706;
+        font-weight: 800;
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .founder-info p {
+        color: #667085;
+        margin-bottom: 15px;
+    }
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .skills span {
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        padding: 7px 11px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #475569;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+        background: #111827;
+        color: white;
+    }
+
+    .contact .section-title {
+        color: white;
+    }
+
+    .contact .section-intro {
+        color: #cbd5e1;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .contact-item {
+        background: #1f2937;
+        padding: 22px;
+        border-radius: 12px;
+    }
+
+    .contact-item strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .contact-item a {
+        color: #fbbf24;
+        text-decoration: none;
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+        background: #0b1120;
+        color: #94a3b8;
+        text-align: center;
+        padding: 25px;
+        font-size: 13px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 900px) {
+
+        .nav-right {
+            gap: 12px;
         }
 
         .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #4b5563;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover {
-            color: #d97706;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-            background:
-                linear-gradient(135deg, #fffaf2 0%, #ffffff 55%);
+            display: none;
         }
 
         .hero-container {
-            max-width: 1150px;
-            width: 100%;
-            margin: auto;
-            padding: 90px 25px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 14px;
-            background: #fff1d6;
-            color: #a65f00;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr;
+            padding: 70px 25px;
         }
 
         .hero h1 {
-            font-size: 58px;
-            line-height: 1.05;
-            color: #111827;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 span {
-            color: #d97706;
-        }
-
-        .hero p {
-            max-width: 650px;
-            font-size: 18px;
-            color: #667085;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 22px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .btn-primary {
-            background: #d97706;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #b85f00;
-        }
-
-        .btn-secondary {
-            border: 1px solid #d1d5db;
-            color: #374151;
-            background: white;
-        }
-
-        /* ================= HERO CARD ================= */
-
-        .hero-card {
-            background: white;
-            border: 1px solid #e8ebf0;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
-        }
-
-        .hero-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .hero-card p {
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .stat {
-            padding: 15px 0;
-            border-top: 1px solid #edf0f4;
-        }
-
-        .stat strong {
-            display: block;
-            color: #d97706;
-            font-size: 18px;
-        }
-
-        .stat span {
-            color: #6b7280;
-            font-size: 13px;
-        }
-
-        /* ================= GENERAL SECTIONS ================= */
-
-        section {
-            padding: 90px 25px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .section-label {
-            color: #d97706;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-size: 38px;
-            color: #111827;
-            margin-bottom: 15px;
-        }
-
-        .section-intro {
-            max-width: 700px;
-            color: #667085;
-            margin-bottom: 45px;
-        }
-
-        /* ================= ABOUT ================= */
-
-        .about {
-            background: #f8fafc;
+            font-size: 42px;
         }
 
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 45px;
-            align-items: center;
+            grid-template-columns: 1fr;
         }
-
-        .about-text p {
-            color: #667085;
-            margin-bottom: 18px;
-        }
-
-        .about-card {
-            background: white;
-            padding: 35px;
-            border-radius: 18px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .about-card h3 {
-            margin-bottom: 15px;
-        }
-
-        .about-card li {
-            list-style: none;
-            padding: 9px 0;
-            color: #4b5563;
-        }
-
-        .about-card li::before {
-            content: "✓";
-            color: #d97706;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* ================= BUSINESS ================= */
 
         .business-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .business-card {
-            padding: 30px;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            background: white;
-        }
-
-        .business-card .number {
-            font-size: 13px;
-            font-weight: 800;
-            color: #d97706;
-            margin-bottom: 18px;
-        }
-
-        .business-card h3 {
-            margin-bottom: 12px;
-        }
-
-        .business-card p {
-            color: #667085;
-            font-size: 14px;
-        }
-
-        /* ================= FOUNDER ================= */
-
-        .founder {
-            background: #f8fafc;
+            grid-template-columns: 1fr;
         }
 
         .founder-box {
-            max-width: 950px;
-            margin: auto;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 22px;
-            padding: 45px;
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .founder-photo {
+            grid-template-columns: 1fr;
             text-align: center;
+            padding: 35px 25px;
         }
 
         .founder-photo img {
-            width: 145px;
-            height: 145px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #fff;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .founder-info h3 {
-            font-size: 30px;
-            margin-bottom: 4px;
-        }
-
-        .founder-role {
-            color: #d97706;
-            font-weight: 800;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .founder-info p {
-            color: #667085;
-            margin-bottom: 15px;
+            width: 125px;
+            height: 125px;
         }
 
         .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .skills span {
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            padding: 7px 11px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #475569;
-        }
-
-        /* ================= CONTACT ================= */
-
-        .contact {
-            background: #111827;
-            color: white;
-        }
-
-        .contact .section-title {
-            color: white;
-        }
-
-        .contact .section-intro {
-            color: #cbd5e1;
+            justify-content: center;
         }
 
         .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
+            grid-template-columns: 1fr;
         }
 
-        .contact-item {
-            background: #1f2937;
-            padding: 22px;
-            border-radius: 12px;
+        .section-title {
+            font-size: 32px;
+        }
+    }
+
+    @media (max-width: 600px) {
+
+        .nav-container {
+            padding: 14px 18px;
         }
 
-        .contact-item strong {
-            display: block;
-            margin-bottom: 5px;
+        .nav-auth {
+            gap: 4px;
         }
 
-        .contact-item a {
-            color: #fbbf24;
-            text-decoration: none;
-            font-size: 14px;
-            word-break: break-word;
+        .nav-login {
+            padding: 8px 7px;
+            font-size: 12px;
         }
 
-        /* ================= FOOTER ================= */
+        .nav-signup {
+            padding: 9px 10px;
+            font-size: 12px;
+        }
 
-        footer {
-            background: #0b1120;
-            color: #94a3b8;
+        .hero-buttons {
+            flex-direction: column;
+        }
+
+        .hero-buttons .btn {
             text-align: center;
-            padding: 25px;
-            font-size: 13px;
+            width: 100%;
         }
+    }
+</style>
+```
 
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 800px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                padding: 70px 25px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .business-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .founder-box {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 35px 25px;
-            }
-
-            .founder-photo img {
-                width: 125px;
-                height: 125px;
-            }
-
-            .skills {
-                justify-content: center;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+```
+<!-- ================= NAVIGATION ================= -->
 
-    <nav>
-        <div class="nav-container">
+<nav>
+    <div class="nav-container">
 
-            <div class="logo">
-                Mobility<span>.</span>
-            </div>
+        <a href="index.html" class="logo">
+            Mobility<span>.</span>
+        </a>
+
+        <div class="nav-right">
 
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#business">Business</a></li>
-                <li><a href="#founder">Founder</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#business">Business</a>
+                </li>
+
+                <li>
+                    <a href="#founder">Founder</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
             </ul>
 
+            <!-- ACCOUNT BUTTONS -->
+
+            <div class="nav-auth">
+
+                <a href="login.html" class="nav-login">
+                    Sign In
+                </a>
+
+                <a href="signup.html" class="nav-signup">
+                    Create Account
+                </a>
+
+            </div>
+
         </div>
-    </nav>
+
+    </div>
+</nav>
 
 
-    <!-- HERO -->
+<!-- ================= HERO ================= -->
 
-    <section class="hero">
+<section class="hero">
 
-        <div class="hero-container">
+    <div class="hero-container">
 
-            <div>
+        <div>
 
-                <div class="badge">
-                    MOBILITY & HIRE-PURCHASE SERVICES
-                </div>
+            <div class="badge">
+                MOBILITY & HIRE-PURCHASE SERVICES
+            </div>
 
-                <h1>
-                    Making Mobility
-                    <span>More Accessible.</span>
-                </h1>
+            <h1>
+                Making Mobility
+                <span>More Accessible.</span>
+            </h1>
+
+            <p>
+                A practical mobility venture focused on helping
+                commercial riders and small business owners access
+                motorcycles through structured and responsible
+                hire-purchase solutions.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#business" class="btn btn-primary">
+                    Explore Our Business
+                </a>
+
+                <a href="signup.html" class="btn btn-account">
+                    Create Account
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Contact Founder
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <h3>
+                Our Vision
+            </h3>
+
+            <p>
+                To create a responsible pathway to motorcycle
+                ownership while supporting income generation,
+                entrepreneurship and economic opportunity.
+            </p>
+
+            <div class="stat">
+                <strong>ACCESS</strong>
+                <span>
+                    Making mobility assets easier to obtain.
+                </span>
+            </div>
+
+            <div class="stat">
+                <strong>OWNERSHIP</strong>
+                <span>
+                    Structured pathways toward responsible ownership.
+                </span>
+            </div>
+
+            <div class="stat">
+                <strong>OPPORTUNITY</strong>
+                <span>
+                    Supporting riders and small businesses.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container">
+
+        <div class="section-label">
+            About The Venture
+        </div>
+
+        <h2 class="section-title">
+            Building a Practical Mobility Model
+        </h2>
+
+        <p class="section-intro">
+            Mobility & Hire-Purchase Services is being developed
+            to address the challenges faced by commercial riders
+            and entrepreneurs who need reliable motorcycles to
+            generate income.
+        </p>
+
+
+        <div class="about-grid">
+
+            <div class="about-text">
 
                 <p>
-                    A practical mobility venture focused on helping
-                    commercial riders and small business owners access
-                    motorcycles through structured and responsible
-                    hire-purchase solutions.
+                    Many riders depend on motorcycles as an important
+                    source of income but may face significant barriers
+                    when trying to acquire their own asset.
                 </p>
 
-                <div class="hero-buttons">
+                <p>
+                    Our model focuses on creating a structured
+                    hire-purchase pathway that combines access,
+                    accountability and responsible repayment.
+                </p>
 
-                    <a href="#business" class="btn btn-primary">
-                        Explore Our Business
-                    </a>
-
-                    <a href="#contact" class="btn btn-secondary">
-                        Contact Founder
-                    </a>
-
-                </div>
+                <p>
+                    Technology and data will also play an important
+                    role in improving record keeping, monitoring,
+                    decision-making and operational efficiency.
+                </p>
 
             </div>
 
 
-            <div class="hero-card">
+            <div class="about-card">
 
                 <h3>
-                    Our Vision
+                    What We Focus On
+                </h3>
+
+                <ul>
+                    <li>Motorcycle access</li>
+                    <li>Responsible hire-purchase</li>
+                    <li>Rider income opportunities</li>
+                    <li>Digital record keeping</li>
+                    <li>Data-driven operations</li>
+                    <li>Sustainable business growth</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BUSINESS ================= -->
+
+<section id="business">
+
+    <div class="container">
+
+        <div class="section-label">
+            Our Business
+        </div>
+
+        <h2 class="section-title">
+            How We Create Value
+        </h2>
+
+        <p class="section-intro">
+            Our approach combines mobility access with structured
+            financial arrangements and technology-enabled operations.
+        </p>
+
+
+        <div class="business-grid">
+
+            <div class="business-card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Motorcycle Access
                 </h3>
 
                 <p>
-                    To create a responsible pathway to motorcycle
-                    ownership while supporting income generation,
-                    entrepreneurship and economic opportunity.
+                    Providing riders with access to motorcycles
+                    that can support their commercial activities
+                    and income generation.
                 </p>
 
-                <div class="stat">
-                    <strong>ACCESS</strong>
-                    <span>Making mobility assets easier to obtain.</span>
+            </div>
+
+
+            <div class="business-card">
+
+                <div class="number">
+                    02
                 </div>
 
-                <div class="stat">
-                    <strong>OWNERSHIP</strong>
-                    <span>Structured pathways toward responsible ownership.</span>
+                <h3>
+                    Hire-Purchase
+                </h3>
+
+                <p>
+                    Developing structured payment arrangements
+                    designed to create a clear pathway toward
+                    motorcycle ownership.
+                </p>
+
+            </div>
+
+
+            <div class="business-card">
+
+                <div class="number">
+                    03
                 </div>
 
-                <div class="stat">
-                    <strong>OPPORTUNITY</strong>
-                    <span>Supporting riders and small businesses.</span>
-                </div>
+                <h3>
+                    Technology & Data
+                </h3>
+
+                <p>
+                    Using data, automation and cloud technology
+                    to improve operational monitoring,
+                    reporting and decision-making.
+                </p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ABOUT -->
+<!-- ================= FOUNDER ================= -->
 
-    <section class="about" id="about">
+<section class="founder" id="founder">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-label">
-                About The Venture
-            </div>
-
-            <h2 class="section-title">
-                Building a Practical Mobility Model
-            </h2>
-
-            <p class="section-intro">
-                Mobility & Hire-Purchase Services is being developed
-                to address the challenges faced by commercial riders
-                and entrepreneurs who need reliable motorcycles to
-                generate income.
-            </p>
-
-
-            <div class="about-grid">
-
-                <div class="about-text">
-
-                    <p>
-                        Many riders depend on motorcycles as an important
-                        source of income but may face significant barriers
-                        when trying to acquire their own asset.
-                    </p>
-
-                    <p>
-                        Our model focuses on creating a structured
-                        hire-purchase pathway that combines access,
-                        accountability and responsible repayment.
-                    </p>
-
-                    <p>
-                        Technology and data will also play an important
-                        role in improving record keeping, monitoring,
-                        decision-making and operational efficiency.
-                    </p>
-
-                </div>
-
-
-                <div class="about-card">
-
-                    <h3>
-                        What We Focus On
-                    </h3>
-
-                    <ul>
-                        <li>Motorcycle access</li>
-                        <li>Responsible hire-purchase</li>
-                        <li>Rider income opportunities</li>
-                        <li>Digital record keeping</li>
-                        <li>Data-driven operations</li>
-                        <li>Sustainable business growth</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
+        <div class="section-label">
+            Founder & Technology Professional
         </div>
 
-    </section>
+        <h2 class="section-title">
+            Meet Paul Misheal
+        </h2>
+
+        <p class="section-intro">
+            Technology, Data & Cloud Professional building
+            solutions for real-world problems.
+        </p>
 
 
-    <!-- BUSINESS -->
+        <div class="founder-box">
 
-    <section id="business">
+            <div class="founder-photo">
 
-        <div class="container">
+                <img
+                    src="paul-misheal.jpg.png"
+                    alt="Paul Misheal - Founder"
+                >
 
-            <div class="section-label">
-                Our Business
             </div>
 
-            <h2 class="section-title">
-                How We Create Value
-            </h2>
 
-            <p class="section-intro">
-                Our approach combines mobility access with structured
-                financial arrangements and technology-enabled operations.
-            </p>
+            <div class="founder-info">
 
+                <h3>
+                    Paul Misheal
+                </h3>
 
-            <div class="business-grid">
-
-                <div class="business-card">
-
-                    <div class="number">
-                        01
-                    </div>
-
-                    <h3>
-                        Motorcycle Access
-                    </h3>
-
-                    <p>
-                        Providing riders with access to motorcycles
-                        that can support their commercial activities
-                        and income generation.
-                    </p>
-
+                <div class="founder-role">
+                    Founder • Data • Cloud • Technology
                 </div>
 
+                <p>
+                    I am a technology professional passionate about
+                    using data, cloud computing and digital technology
+                    to solve practical business and social challenges.
+                </p>
 
-                <div class="business-card">
+                <p>
+                    I am developing Mobility & Hire-Purchase Services
+                    with the vision of making motorcycle access more
+                    achievable for commercial riders and small business
+                    owners through structured and responsible
+                    hire-purchase solutions.
+                </p>
 
-                    <div class="number">
-                        02
-                    </div>
+                <div class="skills">
 
-                    <h3>
-                        Hire-Purchase
-                    </h3>
-
-                    <p>
-                        Developing structured payment arrangements
-                        designed to create a clear pathway toward
-                        motorcycle ownership.
-                    </p>
-
-                </div>
-
-
-                <div class="business-card">
-
-                    <div class="number">
-                        03
-                    </div>
-
-                    <h3>
-                        Technology & Data
-                    </h3>
-
-                    <p>
-                        Using data, automation and cloud technology
-                        to improve operational monitoring,
-                        reporting and decision-making.
-                    </p>
+                    <span>Data Science</span>
+                    <span>Data Analytics</span>
+                    <span>AWS Cloud</span>
+                    <span>Cloud Computing</span>
+                    <span>Data Engineering</span>
+                    <span>Python</span>
+                    <span>Data Pipelines</span>
+                    <span>Automation</span>
+                    <span>Virtual Assistance</span>
 
                 </div>
 
@@ -708,218 +917,142 @@
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOUNDER -->
+<!-- ================= CONTACT ================= -->
 
-    <section class="founder" id="founder">
+<section class="contact" id="contact">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-label">
-                Founder & Technology Professional
+        <div class="section-label">
+            Connect
+        </div>
+
+        <h2 class="section-title">
+            Let's Connect
+        </h2>
+
+        <p class="section-intro">
+            Interested in the venture, partnership opportunities,
+            technology or collaboration? Get in touch.
+        </p>
+
+
+        <div class="contact-grid">
+
+            <div class="contact-item">
+
+                <strong>Email</strong>
+
+                <a href="mailto:paulmisheal4@gmail.com">
+                    paulmisheal4@gmail.com
+                </a>
+
             </div>
 
-            <h2 class="section-title">
-                Meet Paul Misheal
-            </h2>
 
-            <p class="section-intro">
-                Technology, Data & Cloud Professional building
-                solutions for real-world problems.
-            </p>
+            <div class="contact-item">
 
+                <strong>Phone</strong>
 
-            <div class="founder-box">
+                <a href="tel:+2349135485815">
+                    +234 913 548 5815
+                </a>
 
-                <div class="founder-photo">
-
-                    <img
-                        src="paul-misheal.jpg.png"
-                        alt="Paul Misheal - Founder"
-                    >
-
-                </div>
+            </div>
 
 
-                <div class="founder-info">
+            <div class="contact-item">
 
-                    <h3>
-                        Paul Misheal
-                    </h3>
+                <strong>Instagram</strong>
 
-                    <div class="founder-role">
-                        Founder • Data • Cloud • Technology
-                    </div>
+                <a href="https://www.instagram.com/ikwobemisheal/"
+                   target="_blank">
+                    @ikwobemisheal
+                </a>
 
-                    <p>
-                        I am a technology professional passionate about
-                        using data, cloud computing and digital technology
-                        to solve practical business and social challenges.
-                    </p>
+            </div>
 
-                    <p>
-                        I am developing Mobility & Hire-Purchase Services
-                        with the vision of making motorcycle access more
-                        achievable for commercial riders and small business
-                        owners through structured and responsible
-                        hire-purchase solutions.
-                    </p>
 
-                    <div class="skills">
+            <div class="contact-item">
 
-                        <span>Data Science</span>
-                        <span>Data Analytics</span>
-                        <span>AWS Cloud</span>
-                        <span>Cloud Computing</span>
-                        <span>Data Engineering</span>
-                        <span>Python</span>
-                        <span>Data Pipelines</span>
-                        <span>Automation</span>
-                        <span>Virtual Assistance</span>
+                <strong>X / Twitter</strong>
 
-                    </div>
+                <a href="https://x.com/misheal2211"
+                   target="_blank">
+                    @misheal2211
+                </a>
 
-                </div>
+            </div>
+
+
+            <div class="contact-item">
+
+                <strong>LinkedIn</strong>
+
+                <a href="https://www.linkedin.com/feed/"
+                   target="_blank">
+                    LinkedIn Profile
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <strong>Facebook</strong>
+
+                <a href="https://web.facebook.com/"
+                   target="_blank">
+                    Facebook
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <strong>Telegram</strong>
+
+                <a href="https://web.telegram.org/a/#-1001242564543"
+                   target="_blank">
+                    Telegram Channel
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <strong>TikTok</strong>
+
+                <a href="https://vm.tiktok.com/ZS9Bh6BGscT4U-JbQB0/"
+                   target="_blank">
+                    TikTok
+                </a>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- CONTACT -->
+<!-- ================= FOOTER ================= -->
 
-    <section class="contact" id="contact">
+<footer>
 
-        <div class="container">
+    © 2026 Mobility & Hire-Purchase Services.
+    All rights reserved.
 
-            <div class="section-label">
-                Connect
-            </div>
-
-            <h2 class="section-title">
-                Let's Connect
-            </h2>
-
-            <p class="section-intro">
-                Interested in the venture, partnership opportunities,
-                technology or collaboration? Get in touch.
-            </p>
-
-
-            <div class="contact-grid">
-
-                <div class="contact-item">
-
-                    <strong>Email</strong>
-
-                    <a href="mailto:paulmisheal4@gmail.com">
-                        paulmisheal4@gmail.com
-                    </a>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <strong>Phone</strong>
-
-                    <a href="tel:+2349135485815">
-                        +234 913 548 5815
-                    </a>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <strong>Instagram</strong>
-
-                    <a href="https://www.instagram.com/ikwobemisheal/"
-                       target="_blank">
-                        @ikwobemisheal
-                    </a>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <strong>X / Twitter</strong>
-
-                    <a href="https://x.com/misheal2211"
-                       target="_blank">
-                        @misheal2211
-                    </a>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <strong>LinkedIn</strong>
-
-                    <a href="https://www.linkedin.com/feed/"
-                       target="_blank">
-                        LinkedIn Profile
-                    </a>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <strong>Facebook</strong>
-
-                    <a href="https://web.facebook.com/"
-                       target="_blank">
-                        Facebook
-                    </a>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <strong>Telegram</strong>
-
-                    <a href="https://web.telegram.org/a/#-1001242564543"
-                       target="_blank">
-                        Telegram Channel
-                    </a>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <strong>TikTok</strong>
-
-                    <a href="https://vm.tiktok.com/ZS9Bh6BGscT4U-JbQB0/"
-                       target="_blank">
-                        TikTok
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        © 2026 Mobility & Hire-Purchase Services.
-        All rights reserved.
-
-    </footer>
+</footer>
+```
 
 </body>
 </html>
