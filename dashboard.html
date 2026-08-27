@@ -1142,23 +1142,353 @@
 
 
 <script>
+/* =========================================================
+   MOBILITY CUSTOMER DASHBOARD
+   Connects:
+   Signup → Application → Dashboard
+   ========================================================= */
 
-    /*
-     * DEMONSTRATION PROGRESS
-     *
-     * This will later be replaced with the user's
-     * real payment information from the database.
-     */
+(function () {
 
-    const totalAmount = 1500000;
+    /* ===============================
+       LOAD USER
+       =============================== */
+
+    const storedUser = localStorage.getItem("mobilityUser");
+
+    if (!storedUser) {
+        alert("Please create an account first.");
+        window.location.href = "signup.html";
+        return;
+    }
+
+    let userData;
+
+    try {
+        userData = JSON.parse(storedUser);
+    } catch (error) {
+        localStorage.removeItem("mobilityUser");
+        alert("Your account information could not be loaded.");
+        window.location.href = "signup.html";
+        return;
+    }
+
+
+    /* ===============================
+       LOAD APPLICATION
+       =============================== */
+
+    const storedApplication =
+        localStorage.getItem("mobilityApplication");
+
+    let application = null;
+
+    if (storedApplication) {
+        try {
+            application = JSON.parse(storedApplication);
+        } catch (error) {
+            console.error(
+                "Could not load application:",
+                error
+            );
+        }
+    }
+
+
+    /* ===============================
+       USER NAME
+       =============================== */
+
+    const fullName =
+        userData.fullName ||
+        (
+            (userData.firstName || "") +
+            " " +
+            (userData.lastName || "")
+        ).trim();
+
+    /* Navigation */
+    const navUser =
+        document.querySelector(".user-name");
+
+    if (navUser) {
+        navUser.textContent =
+            "Welcome, " + (fullName || "Customer");
+    }
+
+
+    /* Main welcome heading */
+    const welcomeHeading =
+        document.querySelector(".welcome h1");
+
+    if (welcomeHeading) {
+        welcomeHeading.textContent =
+            "Welcome back, " +
+            (fullName || "Customer");
+    }
+
+
+    /* ===============================
+       APPLICATION DATA
+       =============================== */
+
+    if (!application) {
+
+        console.warn(
+            "No hire-purchase application found."
+        );
+
+        /*
+         * Keep dashboard usable,
+         * but send the user to application
+         * if they have not submitted one.
+         */
+
+        const statusBadge =
+            document.querySelector(".status-badge");
+
+        if (statusBadge) {
+            statusBadge.textContent =
+                "NO APPLICATION";
+        }
+
+        return;
+    }
+
+
+    /* ===============================
+       APPLICATION ID
+       =============================== */
+
+    const applicationId =
+        application.applicationId ||
+        generateApplicationId(
+            application.applicationDate
+        );
+
+    const applicationIdElement =
+        document.querySelector(
+            ".status-left p"
+        );
+
+    if (applicationIdElement) {
+        applicationIdElement.textContent =
+            "Application ID: " +
+            applicationId;
+    }
+
+
+    /* ===============================
+       APPLICATION STATUS
+       =============================== */
+
+    const statusBadge =
+        document.querySelector(".status-badge");
+
+    if (statusBadge) {
+
+        const status =
+            application.applicationStatus ||
+            "submitted";
+
+        statusBadge.textContent =
+            formatStatus(status);
+
+    }
+
+
+    /* ===============================
+       MOTORCYCLE
+       =============================== */
+
+    const motorcycle =
+        application.motorcycle || {};
+
+    const motorcycleName =
+        motorcycle.name ||
+        "Motorcycle";
+
+    const motorcyclePrice =
+        Number(motorcycle.price || 0);
+
+
+    /* Motorcycle name */
+    const bikeName =
+        document.querySelector(".bike-info h3");
+
+    if (bikeName) {
+        bikeName.textContent =
+            motorcycleName;
+    }
+
+
+    /* Motorcycle image alt */
+    const bikeImage =
+        document.querySelector(".bike-image");
+
+    if (bikeImage) {
+        bikeImage.alt =
+            motorcycleName;
+    }
+
+
+    /* ===============================
+       MOTORCYCLE PRICE
+       =============================== */
+
+    const statCards =
+        document.querySelectorAll(
+            ".stat-card"
+        );
+
+    if (statCards.length >= 4) {
+
+        /*
+         * Card 1 = Motorcycle Price
+         */
+        const priceValue =
+            statCards[0].querySelector(
+                ".stat-value"
+            );
+
+        if (priceValue) {
+            priceValue.textContent =
+                formatCurrency(
+                    motorcyclePrice
+                );
+        }
+
+
+        /*
+         * Card 2 = Weekly Payment
+         */
+        const weeklyValue =
+            statCards[1].querySelector(
+                ".stat-value"
+            );
+
+        if (weeklyValue) {
+
+            const payment =
+                calculatePayment(
+                    motorcyclePrice,
+                    application.repaymentPlan
+                );
+
+            weeklyValue.textContent =
+                formatCurrency(payment);
+
+        }
+
+
+        /*
+         * Card 3 = Amount Paid
+         */
+        const paidValue =
+            statCards[2].querySelector(
+                ".stat-value"
+            );
+
+        if (paidValue) {
+            paidValue.textContent =
+                formatCurrency(0);
+        }
+
+
+        /*
+         * Card 4 = Balance
+         */
+        const balanceValue =
+            statCards[3].querySelector(
+                ".stat-value"
+            );
+
+        if (balanceValue) {
+            balanceValue.textContent =
+                formatCurrency(
+                    motorcyclePrice
+                );
+        }
+
+    }
+
+
+    /* ===============================
+       PAYMENT OVERVIEW
+       =============================== */
+
+    const paymentBoxes =
+        document.querySelectorAll(
+            ".payment-box"
+        );
+
+    const weeklyPayment =
+        calculatePayment(
+            motorcyclePrice,
+            application.repaymentPlan
+        );
+
+
+    if (paymentBoxes.length >= 3) {
+
+        /* Weekly payment */
+        const weekly =
+            paymentBoxes[0].querySelector(
+                "strong"
+            );
+
+        if (weekly) {
+            weekly.textContent =
+                formatCurrency(
+                    weeklyPayment
+                );
+        }
+
+
+        /* Total paid */
+        const totalPaid =
+            paymentBoxes[1].querySelector(
+                "strong"
+            );
+
+        if (totalPaid) {
+            totalPaid.textContent =
+                formatCurrency(0);
+        }
+
+
+        /* Remaining */
+        const remaining =
+            paymentBoxes[2].querySelector(
+                "strong"
+            );
+
+        if (remaining) {
+            remaining.textContent =
+                formatCurrency(
+                    motorcyclePrice
+                );
+        }
+
+    }
+
+
+    /* ===============================
+       PROGRESS
+       =============================== */
 
     const amountPaid = 0;
 
     let progress = 0;
 
-    if (totalAmount > 0) {
+    if (motorcyclePrice > 0) {
+
         progress =
-            (amountPaid / totalAmount) * 100;
+            (
+                amountPaid /
+                motorcyclePrice
+            ) * 100;
+
     }
 
     progress =
@@ -1168,17 +1498,250 @@
         );
 
 
-    document.getElementById(
-        "progressFill"
-    ).style.width =
-        progress + "%";
+    const progressFill =
+        document.getElementById(
+            "progressFill"
+        );
+
+    if (progressFill) {
+        progressFill.style.width =
+            progress + "%";
+    }
 
 
-    document.getElementById(
-        "progressText"
-    ).textContent =
-        progress.toFixed(0) + "%";
+    const progressText =
+        document.getElementById(
+            "progressText"
+        );
 
+    if (progressText) {
+        progressText.textContent =
+            progress.toFixed(0) + "%";
+    }
+
+
+    /* ===============================
+       APPLICATION TIMELINE
+       =============================== */
+
+    updateTimeline(
+        application.applicationStatus ||
+        "submitted"
+    );
+
+
+    /* ===============================
+       REMOVE DEMO NOTICE
+       =============================== */
+
+    const notice =
+        document.querySelector(".notice");
+
+    if (notice) {
+
+        notice.innerHTML = `
+            <strong>Account Information</strong>
+            <br><br>
+            Your dashboard is connected to your
+            current hire-purchase application.
+            Application and payment information
+            will update as records are added.
+        `;
+
+    }
+
+
+    /* ===============================
+       HELPER FUNCTIONS
+       =============================== */
+
+    function formatCurrency(amount) {
+
+        return "₦" +
+            Number(amount || 0)
+                .toLocaleString("en-NG");
+
+    }
+
+
+    function formatStatus(status) {
+
+        const statusMap = {
+
+            submitted:
+                "UNDER REVIEW",
+
+            under_review:
+                "UNDER REVIEW",
+
+            verified:
+                "DOCUMENTS VERIFIED",
+
+            approved:
+                "APPROVED",
+
+            agreement:
+                "AGREEMENT",
+
+            active:
+                "ACTIVE",
+
+            completed:
+                "COMPLETED"
+
+        };
+
+        return (
+            statusMap[status] ||
+            String(status)
+                .replace(/_/g, " ")
+                .toUpperCase()
+        );
+
+    }
+
+
+    function calculatePayment(
+        price,
+        repaymentPlan
+    ) {
+
+        /*
+         * Prototype calculation.
+         *
+         * Weekly:
+         * motorcycle price ÷ 50 weeks
+         *
+         * Monthly:
+         * motorcycle price ÷ 12 months
+         */
+
+        if (!price) {
+            return 0;
+        }
+
+        if (
+            repaymentPlan ===
+            "monthly"
+        ) {
+
+            return Math.ceil(
+                price / 12
+            );
+
+        }
+
+        return Math.ceil(
+            price / 50
+        );
+
+    }
+
+
+    function generateApplicationId(
+        dateString
+    ) {
+
+        const date =
+            dateString
+                ? new Date(dateString)
+                : new Date();
+
+        const year =
+            date.getFullYear();
+
+        const randomNumber =
+            Math.floor(
+                1000 +
+                Math.random() * 9000
+            );
+
+        return (
+            "MHP-" +
+            year +
+            "-" +
+            randomNumber
+        );
+
+    }
+
+
+    function updateTimeline(
+        status
+    ) {
+
+        const timelineItems =
+            document.querySelectorAll(
+                ".timeline-item"
+            );
+
+        if (!timelineItems.length) {
+            return;
+        }
+
+
+        const stages = [
+            "submitted",
+            "under_review",
+            "verified",
+            "approved",
+            "agreement",
+            "active",
+            "completed"
+        ];
+
+
+        let currentIndex =
+            stages.indexOf(status);
+
+
+        if (currentIndex === -1) {
+
+            currentIndex =
+                stages.indexOf(
+                    "submitted"
+                );
+
+        }
+
+
+        timelineItems.forEach(
+            function(item, index) {
+
+                item.classList.remove(
+                    "completed",
+                    "active"
+                );
+
+
+                if (
+                    index <
+                    currentIndex
+                ) {
+
+                    item.classList.add(
+                        "completed"
+                    );
+
+                }
+
+                else if (
+                    index ===
+                    currentIndex
+                ) {
+
+                    item.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+})();
 </script>
 
 
