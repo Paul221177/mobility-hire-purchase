@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hire-Purchase Application | Mobility & Hire-Purchase Services</title>
+    <title>Hire-Purchase Application | Mobility</title>
 
     <meta name="description"
-          content="Apply for motorcycle hire-purchase through Mobility & Hire-Purchase Services.">
+        content="Apply for a motorcycle through Mobility & Hire-Purchase Services.">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +22,7 @@
             font-family: Arial, Helvetica, sans-serif;
             background: #f6f8fb;
             color: #172033;
-            line-height: 1.6;
+            min-height: 100vh;
         }
 
         /* ================= NAVIGATION ================= */
@@ -29,15 +30,12 @@
         nav {
             background: #ffffff;
             border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .nav-container {
             max-width: 1180px;
             margin: auto;
-            padding: 17px 25px;
+            padding: 18px 25px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -57,64 +55,56 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 22px;
+            gap: 20px;
         }
 
-        .nav-link {
-            color: #64748b;
+        .user-name {
+            font-size: 13px;
+            font-weight: 800;
+            color: #374151;
+        }
+
+        .logout {
+            color: #d97706;
             text-decoration: none;
             font-size: 13px;
-            font-weight: 700;
-        }
-
-        .nav-link:hover {
-            color: #d97706;
+            font-weight: 800;
         }
 
         /* ================= PAGE ================= */
 
         .page {
-            max-width: 1180px;
+            max-width: 900px;
             margin: auto;
-            padding: 45px 20px 80px;
+            padding: 45px 20px;
         }
 
         .page-header {
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .badge {
             display: inline-block;
-            padding: 7px 13px;
-            border-radius: 30px;
-            background: #fff1d6;
+            background: #fff3dc;
             color: #a65f00;
-            font-size: 11px;
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 10px;
             font-weight: 900;
             letter-spacing: 1px;
-            margin-bottom: 13px;
+            margin-bottom: 14px;
         }
 
         .page-header h1 {
-            font-size: 38px;
-            line-height: 1.15;
+            font-size: 34px;
             color: #111827;
             margin-bottom: 10px;
         }
 
         .page-header p {
             color: #64748b;
-            font-size: 15px;
-            max-width: 700px;
-        }
-
-        /* ================= LAYOUT ================= */
-
-        .application-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 340px;
-            gap: 25px;
-            align-items: start;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         /* ================= CARD ================= */
@@ -123,17 +113,17 @@
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 18px;
-            padding: 30px;
-            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.06);
-            margin-bottom: 20px;
+            padding: 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
         }
 
-        .section-title {
-            font-size: 17px;
-            color: #111827;
+        .card-title {
+            font-size: 18px;
             font-weight: 900;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
+            color: #111827;
+            padding-bottom: 14px;
+            margin-bottom: 22px;
             border-bottom: 1px solid #edf0f4;
         }
 
@@ -142,7 +132,7 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 16px;
         }
 
         .form-group {
@@ -154,7 +144,7 @@
             color: #374151;
             font-size: 13px;
             font-weight: 800;
-            margin-bottom: 7px;
+            margin-bottom: 8px;
         }
 
         .required {
@@ -162,53 +152,41 @@
         }
 
         input,
-        select,
-        textarea {
+        select {
             width: 100%;
+            height: 48px;
+            padding: 0 14px;
             border: 1px solid #d1d5db;
             border-radius: 9px;
             background: #ffffff;
             color: #172033;
             font-size: 14px;
-            padding: 13px 14px;
             outline: none;
-            transition: 0.2s;
-            font-family: inherit;
-        }
-
-        input,
-        select {
-            height: 48px;
-        }
-
-        textarea {
-            min-height: 100px;
-            resize: vertical;
         }
 
         input:focus,
-        select:focus,
-        textarea:focus {
+        select:focus {
             border-color: #d97706;
             box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.10);
         }
 
-        input[readonly] {
+        input:read-only {
             background: #f8fafc;
+            color: #475569;
         }
 
-        .help {
+        .help-text {
             display: block;
+            margin-top: 6px;
             color: #64748b;
             font-size: 11px;
-            margin-top: 6px;
         }
 
         /* ================= MOTORCYCLE ================= */
 
-        .bike-selector {
+        .bike-options {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
         }
 
@@ -223,225 +201,73 @@
         }
 
         .bike-option label {
-            border: 1px solid #d1d5db;
+            border: 1.5px solid #d1d5db;
             border-radius: 12px;
-            padding: 17px;
+            padding: 22px 15px;
+            text-align: center;
             cursor: pointer;
-            display: block;
+            transition: 0.2s ease;
             margin: 0;
-            transition: 0.2s;
         }
 
-        .bike-option label:hover {
-            border-color: #d97706;
+        .bike-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .bike-option strong {
+            display: block;
+            color: #111827;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .bike-option small {
+            color: #64748b;
+            font-size: 11px;
         }
 
         .bike-option input:checked + label {
             border-color: #d97706;
             background: #fffaf2;
-            box-shadow: 0 0 0 2px rgba(217,119,6,0.08);
-        }
-
-        .bike-brand {
-            color: #d97706;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: .7px;
-        }
-
-        .bike-name {
-            color: #111827;
-            font-size: 16px;
-            font-weight: 900;
-            margin: 3px 0;
-        }
-
-        .bike-engine {
-            color: #64748b;
-            font-size: 12px;
-        }
-
-        .bike-price {
-            margin-top: 10px;
-            color: #111827;
-            font-size: 14px;
-            font-weight: 900;
-        }
-
-        /* ================= PAYMENT ================= */
-
-        .payment-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .payment-option {
-            position: relative;
-        }
-
-        .payment-option input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .payment-option label {
-            display: block;
-            text-align: center;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            padding: 13px 8px;
-            cursor: pointer;
-            margin: 0;
-            transition: .2s;
-        }
-
-        .payment-option input:checked + label {
-            border-color: #d97706;
-            background: #fffaf2;
-            color: #a65f00;
-        }
-
-        .payment-option strong {
-            display: block;
-            font-size: 14px;
-        }
-
-        .payment-option small {
-            display: block;
-            font-size: 10px;
-            color: #64748b;
-            margin-top: 3px;
+            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.08);
         }
 
         /* ================= SUMMARY ================= */
 
-        .summary-card {
-            position: sticky;
-            top: 90px;
+        .summary {
+            background: #111827;
+            color: white;
+            border-radius: 14px;
+            padding: 24px;
         }
 
         .summary-title {
-            font-size: 18px;
-            color: #111827;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .summary-bike {
-            padding: 17px;
-            border-radius: 12px;
-            background: #fffaf2;
-            border: 1px solid #fde5bd;
-            margin-bottom: 20px;
-        }
-
-        .summary-bike .brand {
-            color: #a65f00;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .summary-bike h3 {
-            font-size: 19px;
-            color: #111827;
-            margin: 3px 0;
-        }
-
-        .summary-bike p {
+            color: #cbd5e1;
             font-size: 12px;
-            color: #64748b;
+            font-weight: 800;
+            margin-bottom: 15px;
         }
 
-        .summary-line {
+        .summary-row {
             display: flex;
             justify-content: space-between;
-            gap: 15px;
-            padding: 12px 0;
-            border-bottom: 1px solid #edf0f4;
-            font-size: 13px;
+            padding: 10px 0;
+            border-bottom: 1px solid #374151;
         }
 
-        .summary-line span:first-child {
-            color: #64748b;
+        .summary-row:last-child {
+            border-bottom: none;
         }
 
-        .summary-line strong {
-            color: #111827;
-            text-align: right;
-        }
-
-        .summary-total {
-            margin-top: 18px;
-            padding: 17px;
-            border-radius: 12px;
-            background: #111827;
-            color: white;
-        }
-
-        .summary-total span {
-            display: block;
-            color: #cbd5e1;
-            font-size: 11px;
-            margin-bottom: 3px;
-        }
-
-        .summary-total strong {
-            font-size: 25px;
-            color: #fbbf24;
-        }
-
-        .summary-note {
-            margin-top: 15px;
-            color: #64748b;
-            font-size: 11px;
-            line-height: 1.6;
-        }
-
-        /* ================= BUSINESS ================= */
-
-        .business-box {
-            padding: 15px;
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-        }
-
-        .business-box strong {
-            display: block;
-            color: #111827;
-            font-size: 13px;
-        }
-
-        .business-box span {
-            color: #64748b;
-            font-size: 11px;
-        }
-
-        /* ================= CHECKBOX ================= */
-
-        .checkbox-row {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            margin-top: 10px;
-        }
-
-        .checkbox-row input {
-            width: 17px;
-            height: 17px;
-            margin-top: 2px;
-            accent-color: #d97706;
-        }
-
-        .checkbox-row label {
+        .summary-row span {
+            color: #94a3b8;
             font-size: 12px;
-            font-weight: normal;
-            color: #64748b;
-            margin: 0;
+        }
+
+        .summary-row strong {
+            color: white;
+            font-size: 13px;
         }
 
         /* ================= BUTTON ================= */
@@ -456,7 +282,7 @@
             font-size: 15px;
             font-weight: 900;
             cursor: pointer;
-            transition: .2s;
+            transition: 0.2s ease;
         }
 
         .submit-btn:hover {
@@ -465,31 +291,33 @@
         }
 
         .submit-btn:disabled {
-            opacity: .65;
+            opacity: 0.7;
             cursor: not-allowed;
+            transform: none;
         }
 
         /* ================= MESSAGE ================= */
 
         .message {
             display: none;
-            padding: 14px;
+            padding: 14px 16px;
             border-radius: 9px;
             margin-bottom: 20px;
             font-size: 13px;
+            line-height: 1.5;
         }
 
         .message.error {
             display: block;
-            color: #b91c1c;
             background: #fef2f2;
+            color: #b91c1c;
             border: 1px solid #fecaca;
         }
 
         .message.success {
             display: block;
-            color: #15803d;
             background: #f0fdf4;
+            color: #15803d;
             border: 1px solid #bbf7d0;
         }
 
@@ -498,41 +326,20 @@
         footer {
             text-align: center;
             padding: 25px;
-            background: #0b1120;
             color: #94a3b8;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         /* ================= MOBILE ================= */
 
-        @media (max-width: 900px) {
-
-            .application-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .summary-card {
-                position: static;
-            }
-
-            .bike-selector {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
             .page {
-                padding: 30px 15px 60px;
-            }
-
-            .page-header h1 {
-                font-size: 30px;
+                padding: 30px 15px;
             }
 
             .card {
-                padding: 22px 18px;
-                border-radius: 15px;
+                padding: 24px 20px;
             }
 
             .form-row {
@@ -540,334 +347,154 @@
                 gap: 0;
             }
 
-            .bike-selector {
+            .bike-options {
                 grid-template-columns: 1fr;
             }
 
-            .payment-options {
-                grid-template-columns: 1fr 1fr;
+            .page-header h1 {
+                font-size: 28px;
             }
 
-            .nav-container {
-                padding: 15px 18px;
-            }
-
-            .nav-right {
-                gap: 10px;
+            .user-name {
+                display: none;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
+    <!-- ================= NAVIGATION ================= -->
 
-<nav>
-    <div class="nav-container">
+    <nav>
 
-        <a href="index.html" class="logo">
-            Mobility<span>.</span>
-        </a>
+        <div class="nav-container">
 
-        <div class="nav-right">
-
-            <a href="bikes.html" class="nav-link">
-                View Motorcycles
+            <a href="index.html" class="logo">
+                Mobility<span>.</span>
             </a>
 
-            <a href="login.html" class="nav-link">
-                Sign In
-            </a>
+            <div class="nav-right">
+
+                <span
+                    class="user-name"
+                    id="navUserName">
+                    Customer
+                </span>
+
+                <a
+                    href="login.html"
+                    class="logout"
+                    onclick="logoutUser()">
+                    Logout
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
-</nav>
+    </nav>
 
 
-<!-- ================= MAIN ================= -->
+    <!-- ================= PAGE ================= -->
 
-<main class="page">
+    <main class="page">
 
-    <div class="page-header">
+        <div class="page-header">
 
-        <div class="badge">
-            HIRE-PURCHASE APPLICATION
+            <div class="badge">
+                HIRE-PURCHASE APPLICATION
+            </div>
+
+            <h1>
+                Motorcycle Application
+            </h1>
+
+            <p>
+                Complete your application below to begin
+                the motorcycle hire-purchase process.
+            </p>
+
         </div>
 
-        <h1>
-            Apply for a Motorcycle
-        </h1>
 
-        <p>
-            Complete the application below to begin your motorcycle
-            hire-purchase request. Choose your preferred motorcycle
-            and weekly repayment amount.
-        </p>
-
-    </div>
+        <div
+            id="formMessage"
+            class="message">
+        </div>
 
 
-    <div class="application-layout">
+        <form id="applicationForm">
 
 
-        <!-- ================= FORM ================= -->
+            <!-- ================= CUSTOMER INFORMATION ================= -->
 
-        <div>
+            <div class="card">
 
-            <div id="message" class="message"></div>
-
-
-            <form id="applicationForm">
-
-
-                <!-- ================= MOTORCYCLE ================= -->
-
-                <div class="card">
-
-                    <div class="section-title">
-                        1. Select Your Motorcycle
-                    </div>
-
-                    <div class="bike-selector">
+                <div class="card-title">
+                    Customer Information
+                </div>
 
 
-                        <div class="bike-option">
+                <div class="form-row">
 
-                            <input
-                                type="radio"
-                                id="bike-honda"
-                                name="motorcycle"
-                                value="Honda Ace CB125"
-                                data-price="1700000"
-                                data-engine="125cc"
-                                data-brand="Honda"
-                                required
-                            >
+                    <div class="form-group">
 
-                            <label for="bike-honda">
+                        <label for="firstName">
+                            First Name
+                        </label>
 
-                                <div class="bike-brand">
-                                    Honda
-                                </div>
-
-                                <div class="bike-name">
-                                    Ace CB125
-                                </div>
-
-                                <div class="bike-engine">
-                                    125cc • Commuter
-                                </div>
-
-                                <div class="bike-price">
-                                    ₦1,700,000
-                                </div>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="bike-option">
-
-                            <input
-                                type="radio"
-                                id="bike-tvs"
-                                name="motorcycle"
-                                value="TVS Apache RTR 200 4V"
-                                data-price="2800000"
-                                data-engine="197.75cc"
-                                data-brand="TVS"
-                            >
-
-                            <label for="bike-tvs">
-
-                                <div class="bike-brand">
-                                    TVS
-                                </div>
-
-                                <div class="bike-name">
-                                    Apache RTR 200 4V
-                                </div>
-
-                                <div class="bike-engine">
-                                    197.75cc • Premium
-                                </div>
-
-                                <div class="bike-price">
-                                    ₦2,800,000
-                                </div>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="bike-option">
-
-                            <input
-                                type="radio"
-                                id="bike-jincheng"
-                                name="motorcycle"
-                                value="Jincheng AX100"
-                                data-price="1050000"
-                                data-engine="100cc"
-                                data-brand="Jincheng"
-                            >
-
-                            <label for="bike-jincheng">
-
-                                <div class="bike-brand">
-                                    Jincheng
-                                </div>
-
-                                <div class="bike-name">
-                                    AX100
-                                </div>
-
-                                <div class="bike-engine">
-                                    100cc • Utility
-                                </div>
-
-                                <div class="bike-price">
-                                    ₦1,050,000
-                                </div>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="bike-option">
-
-                            <input
-                                type="radio"
-                                id="bike-pulsar"
-                                name="motorcycle"
-                                value="Bajaj Pulsar 125"
-                                data-price="1600000"
-                                data-engine="125cc"
-                                data-brand="Bajaj"
-                            >
-
-                            <label for="bike-pulsar">
-
-                                <div class="bike-brand">
-                                    Bajaj
-                                </div>
-
-                                <div class="bike-name">
-                                    Pulsar 125
-                                </div>
-
-                                <div class="bike-engine">
-                                    125cc • Sport
-                                </div>
-
-                                <div class="bike-price">
-                                    ₦1,600,000
-                                </div>
-
-                            </label>
-
-                        </div>
-
+                        <input
+                            type="text"
+                            id="firstName"
+                            readonly>
 
                     </div>
 
-                    <span class="help">
-                        More motorcycles will be available as the marketplace expands.
-                    </span>
+
+                    <div class="form-group">
+
+                        <label for="lastName">
+                            Last Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            readonly>
+
+                    </div>
 
                 </div>
 
 
-                <!-- ================= APPLICANT ================= -->
+                <div class="form-group">
 
-                <div class="card">
+                    <label for="email">
+                        Email Address
+                    </label>
 
-                    <div class="section-title">
-                        2. Applicant Information
-                    </div>
+                    <input
+                        type="email"
+                        id="email"
+                        readonly>
 
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="firstName">
-                                First Name
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="firstName"
-                                name="firstName"
-                                placeholder="First name"
-                                required
-                            >
-
-                        </div>
+                </div>
 
 
-                        <div class="form-group">
+                <div class="form-row">
 
-                            <label for="lastName">
-                                Last Name
-                                <span class="required">*</span>
-                            </label>
+                    <div class="form-group">
 
-                            <input
-                                type="text"
-                                id="lastName"
-                                name="lastName"
-                                placeholder="Last name"
-                                required
-                            >
+                        <label for="phone">
+                            Phone Number
+                        </label>
 
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="email">
-                                Email Address
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="example@email.com"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="phone">
-                                Phone Number
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="+234 800 000 0000"
-                                required
-                            >
-
-                        </div>
+                        <input
+                            type="tel"
+                            id="phone"
+                            readonly>
 
                     </div>
 
@@ -876,1182 +503,877 @@
 
                         <label for="address">
                             Residential Address
-                            <span class="required">*</span>
                         </label>
 
-                        <textarea
+                        <input
+                            type="text"
                             id="address"
-                            name="address"
-                            placeholder="Enter your full residential address"
-                            required
-                        ></textarea>
-
-                    </div>
-
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="state">
-                                State
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="state"
-                                name="state"
-                                placeholder="e.g. Kaduna"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="occupation">
-                                Occupation
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="occupation"
-                                name="occupation"
-                                placeholder="e.g. Commercial Rider"
-                                required
-                            >
-
-                        </div>
+                            placeholder="Enter your address"
+                            required>
 
                     </div>
 
                 </div>
 
+                <span class="help-text">
+                    Your name, email and phone number were obtained
+                    from your account registration.
+                </span>
 
-                <!-- ================= BUSINESS ================= -->
-
-                <div class="card">
-
-                    <div class="section-title">
-                        3. Employer / Business Information
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="business">
-                            Employer / Business Name
-                            <span class="required">*</span>
-                        </label>
-
-                        <select
-                            id="business"
-                            name="business"
-                            required
-                        >
-
-                            <option value="">
-                                Select business
-                            </option>
-
-                            <option value="Mobility & Hire-Purchase Services">
-                                Mobility & Hire-Purchase Services
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="business-box">
-
-                        <strong>
-                            Mobility & Hire-Purchase Services
-                        </strong>
-
-                        <span>
-                            Motorcycle mobility and structured
-                            hire-purchase services.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ================= REPAYMENT ================= -->
-
-                <div class="card">
-
-                    <div class="section-title">
-                        4. Choose Weekly Repayment
-                    </div>
-
-                    <p style="font-size:13px;color:#64748b;margin-bottom:18px;">
-                        Select the amount you are comfortable paying each week.
-                        The minimum weekly repayment is ₦25,000.
-                    </p>
-
-
-                    <div class="payment-options">
-
-
-                        <div class="payment-option">
-
-                            <input
-                                type="radio"
-                                id="pay25"
-                                name="weeklyPayment"
-                                value="25000"
-                                required
-                            >
-
-                            <label for="pay25">
-
-                                <strong>
-                                    ₦25,000
-                                </strong>
-
-                                <small>
-                                    / week
-                                </small>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="payment-option">
-
-                            <input
-                                type="radio"
-                                id="pay30"
-                                name="weeklyPayment"
-                                value="30000"
-                            >
-
-                            <label for="pay30">
-
-                                <strong>
-                                    ₦30,000
-                                </strong>
-
-                                <small>
-                                    / week
-                                </small>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="payment-option">
-
-                            <input
-                                type="radio"
-                                id="pay35"
-                                name="weeklyPayment"
-                                value="35000"
-                            >
-
-                            <label for="pay35">
-
-                                <strong>
-                                    ₦35,000
-                                </strong>
-
-                                <small>
-                                    / week
-                                </small>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="payment-option">
-
-                            <input
-                                type="radio"
-                                id="pay40"
-                                name="weeklyPayment"
-                                value="40000"
-                            >
-
-                            <label for="pay40">
-
-                                <strong>
-                                    ₦40,000
-                                </strong>
-
-                                <small>
-                                    / week
-                                </small>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="payment-option">
-
-                            <input
-                                type="radio"
-                                id="pay45"
-                                name="weeklyPayment"
-                                value="45000"
-                            >
-
-                            <label for="pay45">
-
-                                <strong>
-                                    ₦45,000
-                                </strong>
-
-                                <small>
-                                    / week
-                                </small>
-
-                            </label>
-
-                        </div>
-
-
-                        <div class="payment-option">
-
-                            <input
-                                type="radio"
-                                id="pay50"
-                                name="weeklyPayment"
-                                value="50000"
-                            >
-
-                            <label for="pay50">
-
-                                <strong>
-                                    ₦50,000
-                                </strong>
-
-                                <small>
-                                    / week
-                                </small>
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-                    <span class="help">
-                        Higher weekly payments may reduce the estimated repayment period.
-                    </span>
-
-                </div>
-
-
-                <!-- ================= GUARANTOR ================= -->
-
-                <div class="card">
-
-                    <div class="section-title">
-                        5. Guarantor Information
-                    </div>
-
-                    <p style="font-size:13px;color:#64748b;margin-bottom:20px;">
-                        Provide details of a person who can act as your guarantor.
-                    </p>
-
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="guarantorName">
-                                Guarantor Full Name
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="guarantorName"
-                                name="guarantorName"
-                                placeholder="Full name"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="guarantorPhone">
-                                Guarantor Phone
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="guarantorPhone"
-                                name="guarantorPhone"
-                                placeholder="+234 800 000 0000"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="guarantorRelationship">
-                                Relationship
-                                <span class="required">*</span>
-                            </label>
-
-                            <select
-                                id="guarantorRelationship"
-                                name="guarantorRelationship"
-                                required
-                            >
-
-                                <option value="">
-                                    Select relationship
-                                </option>
-
-                                <option value="Parent">
-                                    Parent
-                                </option>
-
-                                <option value="Sibling">
-                                    Sibling
-                                </option>
-
-                                <option value="Spouse">
-                                    Spouse
-                                </option>
-
-                                <option value="Friend">
-                                    Friend
-                                </option>
-
-                                <option value="Employer">
-                                    Employer
-                                </option>
-
-                                <option value="Business Partner">
-                                    Business Partner
-                                </option>
-
-                                <option value="Other">
-                                    Other
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="guarantorOccupation">
-                                Guarantor Occupation
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="guarantorOccupation"
-                                name="guarantorOccupation"
-                                placeholder="Occupation"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ================= CONFIRMATION ================= -->
-
-                <div class="card">
-
-                    <div class="section-title">
-                        6. Application Confirmation
-                    </div>
-
-
-                    <div class="checkbox-row">
-
-                        <input
-                            type="checkbox"
-                            id="accurate"
-                            required
-                        >
-
-                        <label for="accurate">
-                            I confirm that the information provided in
-                            this application is accurate and complete.
-                        </label>
-
-                    </div>
-
-
-                    <div class="checkbox-row">
-
-                        <input
-                            type="checkbox"
-                            id="understand"
-                            required
-                        >
-
-                        <label for="understand">
-                            I understand that submitting this application
-                            does not automatically guarantee approval.
-                        </label>
-
-                    </div>
-
-
-                    <div style="margin-top:25px;">
-
-                        <button
-                            type="submit"
-                            class="submit-btn"
-                            id="submitButton"
-                        >
-                            Submit Hire-Purchase Application
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-            </form>
-
-        </div>
-
-
-        <!-- ================= SUMMARY ================= -->
-
-        <aside class="card summary-card">
-
-            <div class="summary-title">
-                Application Summary
             </div>
 
 
-            <div class="summary-bike">
+            <!-- ================= MOTORCYCLE ================= -->
 
-                <div class="brand" id="summaryBrand">
+            <div class="card">
+
+                <div class="card-title">
                     Select Motorcycle
                 </div>
 
-                <h3 id="summaryBike">
-                    No motorcycle selected
-                </h3>
 
-                <p id="summaryEngine">
-                    Choose a motorcycle from the application form.
-                </p>
+                <div class="bike-options">
+
+
+                    <div class="bike-option">
+
+                        <input
+                            type="radio"
+                            id="tvs"
+                            name="motorcycle"
+                            value="TVS Motorcycle"
+                            data-price="1500000"
+                            required>
+
+                        <label for="tvs">
+
+                            <div class="bike-icon">
+                                🏍️
+                            </div>
+
+                            <strong>
+                                TVS Motorcycle
+                            </strong>
+
+                            <small>
+                                ₦1,500,000
+                            </small>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="bike-option">
+
+                        <input
+                            type="radio"
+                            id="bajaj"
+                            name="motorcycle"
+                            value="Bajaj Motorcycle"
+                            data-price="1450000">
+
+                        <label for="bajaj">
+
+                            <div class="bike-icon">
+                                🏍️
+                            </div>
+
+                            <strong>
+                                Bajaj Motorcycle
+                            </strong>
+
+                            <small>
+                                ₦1,450,000
+                            </small>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="bike-option">
+
+                        <input
+                            type="radio"
+                            id="honda"
+                            name="motorcycle"
+                            value="Honda Motorcycle"
+                            data-price="1500000">
+
+                        <label for="honda">
+
+                            <div class="bike-icon">
+                                🏍️
+                            </div>
+
+                            <strong>
+                                Honda Motorcycle
+                            </strong>
+
+                            <small>
+                                ₦1,500,000
+                            </small>
+
+                        </label>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <div class="summary-line">
+            <!-- ================= PAYMENT PLAN ================= -->
 
-                <span>
-                    Motorcycle Price
-                </span>
+            <div class="card">
 
-                <strong id="summaryPrice">
-                    ₦0
-                </strong>
+                <div class="card-title">
+                    Hire-Purchase Plan
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="paymentPlan">
+                        Preferred Repayment Plan
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="paymentPlan"
+                        required>
+
+                        <option value="">
+                            Select repayment plan
+                        </option>
+
+                        <option value="weekly">
+                            Weekly
+                        </option>
+
+                        <option value="monthly">
+                            Monthly
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="employmentStatus">
+                        Employment / Income Status
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="employmentStatus"
+                        required>
+
+                        <option value="">
+                            Select your status
+                        </option>
+
+                        <option value="employed">
+                            Employed
+                        </option>
+
+                        <option value="self_employed">
+                            Self Employed
+                        </option>
+
+                        <option value="business_owner">
+                            Business Owner
+                        </option>
+
+                        <option value="student">
+                            Student
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="monthlyIncome">
+                        Estimated Monthly Income
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="monthlyIncome"
+                        required>
+
+                        <option value="">
+                            Select income range
+                        </option>
+
+                        <option value="below_100k">
+                            Below ₦100,000
+                        </option>
+
+                        <option value="100k_200k">
+                            ₦100,000 – ₦200,000
+                        </option>
+
+                        <option value="200k_500k">
+                            ₦200,000 – ₦500,000
+                        </option>
+
+                        <option value="500k_1m">
+                            ₦500,000 – ₦1,000,000
+                        </option>
+
+                        <option value="above_1m">
+                            Above ₦1,000,000
+                        </option>
+
+                    </select>
+
+                </div>
 
             </div>
 
 
-            <div class="summary-line">
+            <!-- ================= APPLICATION SUMMARY ================= -->
 
-                <span>
-                    Weekly Payment
-                </span>
+            <div class="card">
 
-                <strong id="summaryWeekly">
-                    ₦0
-                </strong>
+                <div class="card-title">
+                    Application Summary
+                </div>
+
+
+                <div class="summary">
+
+                    <div class="summary-title">
+                        SELECTED APPLICATION DETAILS
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Applicant
+                        </span>
+
+                        <strong id="summaryName">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Motorcycle
+                        </span>
+
+                        <strong id="summaryBike">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Motorcycle Price
+                        </span>
+
+                        <strong id="summaryPrice">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Repayment
+                        </span>
+
+                        <strong id="summaryPlan">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <div class="summary-line">
+            <!-- ================= SUBMIT ================= -->
 
-                <span>
-                    Estimated Weeks
-                </span>
+            <div class="card">
 
-                <strong id="summaryWeeks">
-                    —
-                </strong>
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submitButton">
 
-            </div>
+                    Submit Hire-Purchase Application
 
-
-            <div class="summary-line">
-
-                <span>
-                    Estimated Duration
-                </span>
-
-                <strong id="summaryDuration">
-                    —
-                </strong>
+                </button>
 
             </div>
 
+        </form>
 
-            <div class="summary-total">
-
-                <span>
-                    Estimated Amount to Finance
-                </span>
-
-                <strong id="summaryTotal">
-                    ₦0
-                </strong>
-
-            </div>
+    </main>
 
 
-            <p class="summary-note">
-                This calculation is an illustrative estimate based
-                on the selected motorcycle price and weekly payment.
-                Final pricing, fees, approval and repayment terms
-                must be confirmed by the business.
-            </p>
+    <footer>
 
-        </aside>
+        © 2026 Mobility & Hire-Purchase Services.
+        All rights reserved.
 
-    </div>
-
-</main>
+    </footer>
 
 
-<!-- ================= FOOTER ================= -->
+    <!-- ================= JAVASCRIPT ================= -->
 
-<footer>
+    <script>
 
-    © 2026 Mobility & Hire-Purchase Services.
-    All rights reserved.
+        /*
+         * ==========================================
+         * LOAD SIGNUP INFORMATION
+         * ==========================================
+         */
 
-</footer>
+        const storedUser =
+            localStorage.getItem("mobilityUser");
 
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-    /*
-     * FORMAT NAIRA
-     */
-
-    function formatNaira(amount) {
-
-        return "₦" + Number(amount).toLocaleString("en-NG");
-
-    }
-
-
-    /*
-     * ELEMENTS
-     */
-
-    const motorcycleInputs =
-        document.querySelectorAll(
-            'input[name="motorcycle"]'
-        );
-
-    const paymentInputs =
-        document.querySelectorAll(
-            'input[name="weeklyPayment"]'
-        );
-
-
-    /*
-     * SUMMARY ELEMENTS
-     */
-
-    const summaryBrand =
-        document.getElementById("summaryBrand");
-
-    const summaryBike =
-        document.getElementById("summaryBike");
-
-    const summaryEngine =
-        document.getElementById("summaryEngine");
-
-    const summaryPrice =
-        document.getElementById("summaryPrice");
-
-    const summaryWeekly =
-        document.getElementById("summaryWeekly");
-
-    const summaryWeeks =
-        document.getElementById("summaryWeeks");
-
-    const summaryDuration =
-        document.getElementById("summaryDuration");
-
-    const summaryTotal =
-        document.getElementById("summaryTotal");
-
-
-    /*
-     * UPDATE SUMMARY
-     */
-
-    function updateSummary() {
-
-        const selectedBike =
-            document.querySelector(
-                'input[name="motorcycle"]:checked'
-            );
-
-        const selectedPayment =
-            document.querySelector(
-                'input[name="weeklyPayment"]:checked'
-            );
+        const accountType =
+            localStorage.getItem("accountType");
 
 
         /*
-         * Motorcycle
+         * ==========================================
+         * CHECK ACCOUNT
+         * ==========================================
          */
 
-        if (selectedBike) {
+        if (!storedUser) {
 
-            const price =
-                Number(selectedBike.dataset.price);
+            alert(
+                "Please create an account before starting your application."
+            );
 
-            const brand =
-                selectedBike.dataset.brand;
-
-            const engine =
-                selectedBike.dataset.engine;
-
-            summaryBrand.textContent =
-                brand;
-
-            summaryBike.textContent =
-                selectedBike.value;
-
-            summaryEngine.textContent =
-                engine;
-
-            summaryPrice.textContent =
-                formatNaira(price);
-
-            summaryTotal.textContent =
-                formatNaira(price);
+            window.location.href =
+                "signup.html";
 
         }
 
 
         /*
-         * Weekly payment
+         * ==========================================
+         * LOAD USER DATA
+         * ==========================================
          */
 
-        if (selectedPayment) {
-
-            const weekly =
-                Number(selectedPayment.value);
-
-            summaryWeekly.textContent =
-                formatNaira(weekly);
-
-
-            if (selectedBike) {
-
-                const price =
-                    Number(selectedBike.dataset.price);
-
-                /*
-                 * Estimated number of weeks.
-                 */
-
-                const weeks =
-                    Math.ceil(price / weekly);
-
-                summaryWeeks.textContent =
-                    weeks + " weeks";
-
-
-                /*
-                 * Approximate months.
-                 */
-
-                const months =
-                    Math.ceil(weeks / 4.345);
-
-                if (months >= 12) {
-
-                    const years =
-                        Math.floor(months / 12);
-
-                    const remainingMonths =
-                        months % 12;
-
-                    if (remainingMonths > 0) {
-
-                        summaryDuration.textContent =
-                            years +
-                            " year" +
-                            (years > 1 ? "s" : "") +
-                            " " +
-                            remainingMonths +
-                            " month" +
-                            (remainingMonths > 1 ? "s" : "");
-
-                    } else {
-
-                        summaryDuration.textContent =
-                            years +
-                            " year" +
-                            (years > 1 ? "s" : "");
-
-                    }
-
-                } else {
-
-                    summaryDuration.textContent =
-                        months +
-                        " month" +
-                        (months > 1 ? "s" : "");
-
-                }
-
-            }
-
-        }
-
-    }
-
-
-    /*
-     * LISTEN FOR MOTORCYCLE CHANGES
-     */
-
-    motorcycleInputs.forEach(function(input) {
-
-        input.addEventListener(
-            "change",
-            updateSummary
-        );
-
-    });
-
-
-    /*
-     * LISTEN FOR PAYMENT CHANGES
-     */
-
-    paymentInputs.forEach(function(input) {
-
-        input.addEventListener(
-            "change",
-            updateSummary
-        );
-
-    });
-
-
-    /*
-     * LOAD USER DATA FROM SIGNUP
-     */
-
-    const savedUser =
-        localStorage.getItem("mobilityUser");
-
-
-    if (savedUser) {
+        let userData = null;
 
         try {
 
-            const user =
-                JSON.parse(savedUser);
-
-
-            if (user.firstName) {
-
-                document.getElementById(
-                    "firstName"
-                ).value = user.firstName;
-
-            }
-
-
-            if (user.lastName) {
-
-                document.getElementById(
-                    "lastName"
-                ).value = user.lastName;
-
-            }
-
-
-            if (user.email) {
-
-                document.getElementById(
-                    "email"
-                ).value = user.email;
-
-            }
-
-
-            if (user.phone) {
-
-                document.getElementById(
-                    "phone"
-                ).value = user.phone;
-
-            }
-
-
-            if (user.address) {
-
-                document.getElementById(
-                    "address"
-                ).value = user.address;
-
-            }
-
-
-            if (user.business) {
-
-                document.getElementById(
-                    "business"
-                ).value = user.business;
-
-            }
+            userData =
+                JSON.parse(storedUser);
 
         } catch (error) {
 
-            console.log(
-                "Saved account information could not be loaded."
+            localStorage.removeItem("mobilityUser");
+
+            alert(
+                "Your account information could not be loaded. Please register again."
             );
+
+            window.location.href =
+                "signup.html";
 
         }
 
-    }
+
+        /*
+         * ==========================================
+         * CHECK ACCOUNT TYPE
+         * ==========================================
+         */
+
+        if (
+            accountType &&
+            accountType !== "hire_purchase"
+        ) {
+
+            alert(
+                "This page is only for hire-purchase applicants."
+            );
+
+            window.location.href =
+                "investor-application.html";
+
+        }
 
 
-    /*
-     * CHECK FOR BIKE PASSED FROM MARKETPLACE
-     *
-     * Example:
-     * application.html?bike=Honda%20Ace%20CB125
-     */
+        /*
+         * ==========================================
+         * FILL CUSTOMER INFORMATION
+         * ==========================================
+         */
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+        if (userData) {
 
-    const requestedBike =
-        params.get("bike");
+            document.getElementById("firstName").value =
+                userData.firstName || "";
+
+            document.getElementById("lastName").value =
+                userData.lastName || "";
+
+            document.getElementById("email").value =
+                userData.email || "";
+
+            document.getElementById("phone").value =
+                userData.phone || "";
+
+            document.getElementById("address").value =
+                userData.address || "";
+
+            document.getElementById("navUserName").textContent =
+                userData.fullName ||
+                (
+                    (userData.firstName || "") +
+                    " " +
+                    (userData.lastName || "")
+                );
+
+            document.getElementById("summaryName").textContent =
+                userData.fullName ||
+                (
+                    (userData.firstName || "") +
+                    " " +
+                    (userData.lastName || "")
+                );
+
+        }
 
 
-    if (requestedBike) {
+        /*
+         * ==========================================
+         * MOTORCYCLE SELECTION
+         * ==========================================
+         */
+
+        const motorcycleInputs =
+            document.querySelectorAll(
+                'input[name="motorcycle"]'
+            );
+
 
         motorcycleInputs.forEach(function(input) {
 
-            if (
-                input.value.toLowerCase() ===
-                requestedBike.toLowerCase()
-            ) {
-
-                input.checked = true;
-
-            }
+            input.addEventListener(
+                "change",
+                updateSummary
+            );
 
         });
 
-        updateSummary();
 
-    }
+        /*
+         * ==========================================
+         * PAYMENT PLAN
+         * ==========================================
+         */
 
-
-    /*
-     * FORM SUBMISSION
-     */
-
-    const applicationForm =
-        document.getElementById(
-            "applicationForm"
-        );
-
-    const submitButton =
-        document.getElementById(
-            "submitButton"
-        );
-
-    const message =
-        document.getElementById(
-            "message"
-        );
+        document.getElementById("paymentPlan")
+            .addEventListener(
+                "change",
+                updateSummary
+            );
 
 
-    applicationForm.addEventListener(
-        "submit",
-        function(event) {
+        /*
+         * ==========================================
+         * UPDATE SUMMARY
+         * ==========================================
+         */
 
-            event.preventDefault();
-
-
-            /*
-             * Validate motorcycle
-             */
+        function updateSummary() {
 
             const selectedBike =
                 document.querySelector(
                     'input[name="motorcycle"]:checked'
                 );
 
-
-            if (!selectedBike) {
-
-                showMessage(
-                    "Please select a motorcycle before submitting your application.",
-                    "error"
-                );
-
-                return;
-
-            }
+            const paymentPlan =
+                document.getElementById(
+                    "paymentPlan"
+                ).value;
 
 
-            /*
-             * Validate weekly payment
-             */
+            if (selectedBike) {
 
-            const selectedPayment =
-                document.querySelector(
-                    'input[name="weeklyPayment"]:checked'
-                );
+                const price =
+                    Number(
+                        selectedBike.dataset.price
+                    );
 
 
-            if (!selectedPayment) {
+                document.getElementById(
+                    "summaryBike"
+                ).textContent =
+                    selectedBike.value;
 
-                showMessage(
-                    "Please select your preferred weekly repayment amount.",
-                    "error"
-                );
 
-                return;
+                document.getElementById(
+                    "summaryPrice"
+                ).textContent =
+                    formatCurrency(price);
 
             }
 
 
-            /*
-             * Collect data
-             */
+            if (paymentPlan) {
 
-            const application = {
+                document.getElementById(
+                    "summaryPlan"
+                ).textContent =
+                    paymentPlan === "weekly"
+                        ? "Weekly"
+                        : "Monthly";
 
-                applicationId:
-                    "MHP-" +
-                    Date.now(),
+            }
 
-                status:
-                    "Submitted",
+        }
 
-                submittedAt:
-                    new Date().toISOString(),
 
-                applicant: {
+        /*
+         * ==========================================
+         * CURRENCY FORMAT
+         * ==========================================
+         */
 
-                    firstName:
-                        document.getElementById(
-                            "firstName"
-                        ).value.trim(),
+        function formatCurrency(amount) {
 
-                    lastName:
-                        document.getElementById(
-                            "lastName"
-                        ).value.trim(),
+            return "₦" +
+                Number(amount).toLocaleString(
+                    "en-NG"
+                );
 
-                    email:
-                        document.getElementById(
-                            "email"
-                        ).value.trim(),
+        }
 
-                    phone:
-                        document.getElementById(
-                            "phone"
-                        ).value.trim(),
 
-                    address:
-                        document.getElementById(
-                            "address"
-                        ).value.trim(),
+        /*
+         * ==========================================
+         * SUBMIT APPLICATION
+         * ==========================================
+         */
 
-                    state:
-                        document.getElementById(
-                            "state"
-                        ).value.trim(),
+        const applicationForm =
+            document.getElementById(
+                "applicationForm"
+            );
 
-                    occupation:
-                        document.getElementById(
-                            "occupation"
-                        ).value.trim()
+        const submitButton =
+            document.getElementById(
+                "submitButton"
+            );
 
-                },
 
-                business:
-                    document.getElementById(
-                        "business"
-                    ).value,
+        applicationForm.addEventListener(
+            "submit",
+            function(event) {
 
-                motorcycle: {
+                event.preventDefault();
 
-                    name:
-                        selectedBike.value,
 
-                    brand:
-                        selectedBike.dataset.brand,
+                const selectedBike =
+                    document.querySelector(
+                        'input[name="motorcycle"]:checked'
+                    );
 
-                    engine:
-                        selectedBike.dataset.engine,
 
-                    price:
-                        Number(
-                            selectedBike.dataset.price
-                        )
+                if (!selectedBike) {
 
-                },
+                    showMessage(
+                        "Please select a motorcycle.",
+                        "error"
+                    );
 
-                repayment: {
-
-                    weekly:
-                        Number(
-                            selectedPayment.value
-                        ),
-
-                    estimatedWeeks:
-                        Math.ceil(
-                            Number(
-                                selectedBike.dataset.price
-                            ) /
-                            Number(
-                                selectedPayment.value
-                            )
-                        )
-
-                },
-
-                guarantor: {
-
-                    name:
-                        document.getElementById(
-                            "guarantorName"
-                        ).value.trim(),
-
-                    phone:
-                        document.getElementById(
-                            "guarantorPhone"
-                        ).value.trim(),
-
-                    relationship:
-                        document.getElementById(
-                            "guarantorRelationship"
-                        ).value,
-
-                    occupation:
-                        document.getElementById(
-                            "guarantorOccupation"
-                        ).value.trim()
+                    return;
 
                 }
 
-            };
+
+                const paymentPlan =
+                    document.getElementById(
+                        "paymentPlan"
+                    ).value;
 
 
-            /*
-             * Save application locally for prototype.
-             */
-
-            localStorage.setItem(
-                "mobilityApplication",
-                JSON.stringify(application)
-            );
+                const employmentStatus =
+                    document.getElementById(
+                        "employmentStatus"
+                    ).value;
 
 
-            /*
-             * Update button
-             */
-
-            submitButton.disabled = true;
-
-            submitButton.textContent =
-                "Application Submitted";
+                const monthlyIncome =
+                    document.getElementById(
+                        "monthlyIncome"
+                    ).value;
 
 
-            /*
-             * Show success
-             */
-
-            showMessage(
-                "Your application has been submitted successfully. Application ID: " +
-                application.applicationId,
-                "success"
-            );
+                const address =
+                    document.getElementById(
+                        "address"
+                    ).value.trim();
 
 
-            /*
-             * Scroll to message
-             */
+                if (!address) {
+
+                    showMessage(
+                        "Please enter your residential address.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (!paymentPlan) {
+
+                    showMessage(
+                        "Please select your preferred repayment plan.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (!employmentStatus) {
+
+                    showMessage(
+                        "Please select your employment or income status.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (!monthlyIncome) {
+
+                    showMessage(
+                        "Please select your estimated monthly income.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                 * ==================================
+                 * CREATE APPLICATION
+                 * ==================================
+                 */
+
+                const application = {
+
+                    applicant: {
+
+                        firstName:
+                            userData.firstName || "",
+
+                        lastName:
+                            userData.lastName || "",
+
+                        fullName:
+                            userData.fullName || "",
+
+                        email:
+                            userData.email || "",
+
+                        phone:
+                            userData.phone || "",
+
+                        address:
+                            address
+
+                    },
+
+                    accountType:
+                        "hire_purchase",
+
+                    motorcycle: {
+
+                        name:
+                            selectedBike.value,
+
+                        price:
+                            Number(
+                                selectedBike.dataset.price
+                            )
+
+                    },
+
+                    repaymentPlan:
+                        paymentPlan,
+
+                    employmentStatus:
+                        employmentStatus,
+
+                    monthlyIncome:
+                        monthlyIncome,
+
+                    applicationStatus:
+                        "submitted",
+
+                    applicationDate:
+                        new Date().toISOString()
+
+                };
+
+
+                /*
+                 * ==================================
+                 * SAVE APPLICATION
+                 * ==================================
+                 */
+
+                localStorage.setItem(
+                    "mobilityApplication",
+                    JSON.stringify(application)
+                );
+
+
+                /*
+                 * Update saved address
+                 */
+
+                userData.address =
+                    address;
+
+
+                localStorage.setItem(
+                    "mobilityUser",
+                    JSON.stringify(userData)
+                );
+
+
+                /*
+                 * ==================================
+                 * BUTTON STATE
+                 * ==================================
+                 */
+
+                submitButton.disabled =
+                    true;
+
+                submitButton.textContent =
+                    "Application Submitted";
+
+
+                showMessage(
+                    "Your hire-purchase application has been submitted successfully.",
+                    "success"
+                );
+
+
+                /*
+                 * ==================================
+                 * REDIRECT
+                 * ==================================
+                 *
+                 * Change this later to the real
+                 * customer dashboard when the
+                 * backend is connected.
+                 */
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 1200);
+
+            }
+        );
+
+
+        /*
+         * ==========================================
+         * MESSAGE
+         * ==========================================
+         */
+
+        function showMessage(
+            message,
+            type
+        ) {
+
+            const messageBox =
+                document.getElementById(
+                    "formMessage"
+                );
+
+
+            messageBox.textContent =
+                message;
+
+
+            messageBox.className =
+                "message " + type;
+
 
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
 
         }
-    );
 
 
-    /*
-     * MESSAGE FUNCTION
-     */
+        /*
+         * ==========================================
+         * LOGOUT
+         * ==========================================
+         */
 
-    function showMessage(
-        text,
-        type
-    ) {
+        function logoutUser() {
 
-        message.textContent =
-            text;
+            localStorage.removeItem(
+                "mobilityLoggedIn"
+            );
 
-        message.className =
-            "message " + type;
+            /*
+             * We keep mobilityUser so that
+             * the user's application data
+             * is not accidentally deleted.
+             */
 
-    }
+        }
 
-
-    /*
-     * INITIAL SUMMARY
-     */
-
-    updateSummary();
-
-</script>
+    </script>
 
 </body>
 </html>
