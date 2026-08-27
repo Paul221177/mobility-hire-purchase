@@ -1,0 +1,930 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Investor Dashboard | Mobility & Hire-Purchase Services</title>
+
+    <meta name="description"
+        content="Investor dashboard for Mobility & Hire-Purchase Services.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #111827;
+            color: white;
+            padding: 25px 18px;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            padding: 10px 12px 30px;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        .profile-mini {
+            background: #1f2937;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .profile-mini strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .profile-mini small {
+            color: #9ca3af;
+        }
+
+        .menu-title {
+            color: #6b7280;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 12px 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 6px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: #cbd5e1;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu .active {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .logout {
+            position: absolute;
+            bottom: 25px;
+            left: 18px;
+            right: 18px;
+        }
+
+        .logout a {
+            display: block;
+            padding: 12px;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            text-align: center;
+            color: #d1d5db;
+            font-size: 13px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topbar h1 {
+            font-size: 24px;
+        }
+
+        .topbar p {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .notification {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e7eb;
+        }
+
+        .content {
+            padding: 35px;
+        }
+
+        /* ================= WELCOME ================= */
+
+        .welcome {
+            background: linear-gradient(135deg, #111827, #1f2937);
+            color: white;
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        /* ================= STAT CARDS ================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 23px;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+        }
+
+        .stat-card small {
+            display: block;
+            color: #6b7280;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .positive {
+            color: #15803d;
+        }
+
+        .orange {
+            color: #d97706;
+        }
+
+        .stat-card span {
+            color: #9ca3af;
+            font-size: 11px;
+        }
+
+        /* ================= GRID ================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .card-header h3 {
+            font-size: 17px;
+        }
+
+        .card-header span {
+            color: #d97706;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ================= PROGRESS ================= */
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 38%;
+            height: 100%;
+            background: #f59e0b;
+            border-radius: 20px;
+        }
+
+        .progress-note {
+            margin-top: 14px;
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        /* ================= RETURN BOX ================= */
+
+        .return-box {
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .return-circle {
+            width: 145px;
+            height: 145px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            border: 10px solid #f59e0b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .return-circle strong {
+            font-size: 27px;
+        }
+
+        .return-circle small {
+            color: #6b7280;
+            font-size: 11px;
+        }
+
+        .return-box p {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        /* ================= PORTFOLIO ================= */
+
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .bike-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 17px;
+            background: #fafafa;
+        }
+
+        .bike-item strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .bike-item span {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .bike-status {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 9px;
+            border-radius: 20px;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 15px 10px;
+            border-bottom: 1px solid #edf0f4;
+            font-size: 13px;
+        }
+
+        th {
+            color: #6b7280;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        td {
+            color: #374151;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .completed {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .pending {
+            background: #fef3c7;
+            color: #a16207;
+        }
+
+        /* ================= NOTICE ================= */
+
+        .notice {
+            margin-top: 25px;
+            padding: 18px;
+            border-left: 4px solid #f59e0b;
+            background: #fffbeb;
+            border-radius: 8px;
+        }
+
+        .notice strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .notice p {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 1000px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .logout {
+                position: relative;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin-top: 15px;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .topbar {
+                padding: 18px;
+            }
+
+            .content {
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            Mobility<span>.</span>
+        </div>
+
+        <div class="profile-mini">
+            <strong>Investor Account</strong>
+            <small>Investor ID: INV-00124</small>
+        </div>
+
+        <div class="menu-title">
+            Main Menu
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="#" class="active">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    My Investment
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Returns
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Portfolio
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Transactions
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="menu-title">
+            Account
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="#">
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Settings
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="logout">
+            <a href="login.html">
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Investor Dashboard</h1>
+                <p>Monitor your investment and projected returns.</p>
+            </div>
+
+            <div class="notification">
+                🔔
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+            <!-- WELCOME -->
+
+            <section class="welcome">
+
+                <h2>
+                    Welcome, Investor 👋
+                </h2>
+
+                <p>
+                    Here's an overview of your Mobility & Hire-Purchase investment.
+                </p>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="stats">
+
+                <div class="stat-card">
+
+                    <small>Total Investment</small>
+
+                    <strong>
+                        ₦500,000
+                    </strong>
+
+                    <span>
+                        Initial investment
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <small>Projected Return</small>
+
+                    <strong class="positive">
+                        ₦575,000
+                    </strong>
+
+                    <span>
+                        Estimated total return
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <small>Expected Profit</small>
+
+                    <strong class="orange">
+                        ₦75,000
+                    </strong>
+
+                    <span>
+                        Estimated profit
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <small>Investment Status</small>
+
+                    <strong class="positive">
+                        Active
+                    </strong>
+
+                    <span>
+                        Currently running
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROGRESS + RETURN -->
+
+            <section class="dashboard-grid">
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h3>
+                            Investment Progress
+                        </h3>
+
+                        <span>
+                            38% Complete
+                        </span>
+
+                    </div>
+
+                    <div class="progress-info">
+
+                        <span>
+                            Investment Period
+                        </span>
+
+                        <strong>
+                            5 / 12 Months
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div class="progress-fill"></div>
+
+                    </div>
+
+                    <p class="progress-note">
+                        Your investment is currently in its active period.
+                        Returns will be calculated according to the agreed investment terms.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h3>
+                            Return Progress
+                        </h3>
+
+                        <span>
+                            Estimated
+                        </span>
+
+                    </div>
+
+                    <div class="return-box">
+
+                        <div class="return-circle">
+
+                            <strong>
+                                15%
+                            </strong>
+
+                            <small>
+                                Projected
+                            </small>
+
+                        </div>
+
+                        <p>
+                            Estimated return based on the current investment plan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PORTFOLIO -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <h3>
+                        Motorcycle Portfolio
+                    </h3>
+
+                    <span>
+                        2 Assets
+                    </span>
+
+                </div>
+
+
+                <div class="portfolio">
+
+                    <div class="bike-item">
+
+                        <strong>
+                            Honda Ace CB125
+                        </strong>
+
+                        <span>
+                            Portfolio allocation: ₦250,000
+                        </span>
+
+                        <span class="bike-status">
+                            Active
+                        </span>
+
+                    </div>
+
+
+                    <div class="bike-item">
+
+                        <strong>
+                            TVS Neo 125
+                        </strong>
+
+                        <span>
+                            Portfolio allocation: ₦250,000
+                        </span>
+
+                        <span class="bike-status">
+                            Active
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TRANSACTIONS -->
+
+            <section class="card" style="margin-top: 25px;">
+
+                <div class="card-header">
+
+                    <h3>
+                        Recent Transactions
+                    </h3>
+
+                    <span>
+                        View All
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    15 Aug 2026
+                                </td>
+
+                                <td>
+                                    Investment Deposit
+                                </td>
+
+                                <td>
+                                    ₦500,000
+                                </td>
+
+                                <td>
+                                    <span class="status completed">
+                                        Completed
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    15 Sep 2026
+                                </td>
+
+                                <td>
+                                    Expected Return
+                                </td>
+
+                                <td>
+                                    ₦—
+                                </td>
+
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    15 Oct 2026
+                                </td>
+
+                                <td>
+                                    Expected Return
+                                </td>
+
+                                <td>
+                                    ₦—
+                                </td>
+
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- NOTICE -->
+
+            <div class="notice">
+
+                <strong>
+                    Investment Information
+                </strong>
+
+                <p>
+                    All figures displayed on this dashboard are demonstration
+                    figures for the website prototype. Actual investment amounts,
+                    returns, payment schedules and account balances should be
+                    calculated and verified by the company's secure backend system.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
+```
