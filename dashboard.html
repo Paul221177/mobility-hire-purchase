@@ -1,15 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard | Mobility & Hire-Purchase Services</title>
+    <title>My Dashboard | Mobility & Hire-Purchase Services</title>
 
     <meta name="description"
         content="Customer dashboard for Mobility & Hire-Purchase Services.">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -26,19 +28,28 @@
             text-decoration: none;
         }
 
-        /* ================= HEADER ================= */
+        /* ================= NAVBAR ================= */
 
-        .topbar {
+        nav {
             height: 70px;
             background: #ffffff;
             border-bottom: 1px solid #e5e7eb;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 35px;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
@@ -51,93 +62,62 @@
             color: #d97706;
         }
 
-        .user-area {
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
         }
 
         .user-name {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: #374151;
         }
 
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #d97706;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
+        .logout {
+            border: 1px solid #d1d5db;
+            padding: 8px 13px;
+            border-radius: 7px;
+            color: #475569;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .logout:hover {
+            border-color: #d97706;
+            color: #d97706;
         }
 
         /* ================= LAYOUT ================= */
 
-        .dashboard-layout {
-            display: flex;
-            min-height: calc(100vh - 70px);
+        .dashboard {
+            max-width: 1250px;
+            margin: auto;
+            padding: 35px 25px 70px;
         }
 
-        /* ================= SIDEBAR ================= */
-
-        .sidebar {
-            width: 245px;
-            background: #111827;
-            padding: 30px 18px;
-            flex-shrink: 0;
-        }
-
-        .sidebar-title {
-            color: #94a3b8;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin: 5px 12px 15px;
-        }
-
-        .sidebar a {
-            display: block;
-            padding: 13px 15px;
-            color: #cbd5e1;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .sidebar a:hover,
-        .sidebar a.active {
-            background: #d97706;
-            color: white;
-        }
-
-        .logout {
-            margin-top: 30px;
-            border-top: 1px solid #374151;
-            padding-top: 20px;
-        }
-
-        /* ================= MAIN ================= */
-
-        .main {
-            flex: 1;
-            padding: 40px;
-            max-width: 1400px;
-        }
+        /* ================= HEADER ================= */
 
         .welcome {
             margin-bottom: 30px;
         }
 
+        .welcome-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #fff1d6;
+            color: #a65f00;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
         .welcome h1 {
-            font-size: 30px;
+            font-size: 31px;
             color: #111827;
-            margin-bottom: 7px;
+            margin-bottom: 5px;
         }
 
         .welcome p {
@@ -147,29 +127,42 @@
 
         /* ================= STATUS ================= */
 
-        .status {
-            display: inline-flex;
+        .application-status {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 25px;
+
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 7px;
-            background: #ecfdf3;
-            color: #15803d;
-            padding: 7px 12px;
-            border-radius: 20px;
+            gap: 20px;
+        }
+
+        .status-left h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .status-left p {
+            color: #64748b;
             font-size: 12px;
-            font-weight: 700;
-            margin-top: 12px;
         }
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #22c55e;
+        .status-badge {
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #fed7aa;
+            padding: 8px 13px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
         }
 
-        /* ================= STAT CARDS ================= */
+        /* ================= STATS ================= */
 
-        .stats {
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 18px;
@@ -180,810 +173,1015 @@
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 14px;
-            padding: 23px;
+            padding: 22px;
         }
 
         .stat-label {
             color: #64748b;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             margin-bottom: 9px;
         }
 
         .stat-value {
-            font-size: 25px;
-            font-weight: 800;
             color: #111827;
+            font-size: 23px;
+            font-weight: 800;
         }
 
-        .stat-small {
-            margin-top: 8px;
-            font-size: 11px;
+        .stat-sub {
             color: #94a3b8;
+            font-size: 10px;
+            margin-top: 5px;
         }
 
-        /* ================= GRID ================= */
+        /* ================= MAIN GRID ================= */
 
-        .dashboard-grid {
+        .main-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 20px;
+            grid-template-columns: 1.45fr 0.75fr;
+            gap: 22px;
+            align-items: start;
         }
+
+        /* ================= CARD ================= */
 
         .card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 20px;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 22px;
         }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .card-header h2 {
-            font-size: 18px;
+        .card-title {
             color: #111827;
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 5px;
         }
 
-        .card-header a {
-            color: #d97706;
+        .card-description {
+            color: #64748b;
             font-size: 12px;
-            font-weight: 700;
+            margin-bottom: 22px;
         }
 
         /* ================= MOTORCYCLE ================= */
 
-        .bike {
+        .bike-card {
             display: grid;
-            grid-template-columns: 170px 1fr;
-            gap: 25px;
+            grid-template-columns: 180px 1fr;
+            gap: 22px;
             align-items: center;
         }
 
         .bike-image {
-            height: 130px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #fef3c7, #fff7ed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 55px;
+            width: 180px;
+            height: 125px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: #f1f5f9;
         }
 
         .bike-info h3 {
-            font-size: 21px;
-            margin-bottom: 7px;
+            color: #111827;
+            font-size: 19px;
+            margin-bottom: 4px;
         }
 
-        .bike-info p {
+        .bike-brand {
+            color: #d97706;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .bike-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .bike-details span {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 6px 9px;
+            border-radius: 6px;
             color: #64748b;
-            font-size: 13px;
-            margin-bottom: 14px;
-        }
-
-        .bike-tag {
-            display: inline-block;
-            padding: 5px 9px;
-            background: #f1f5f9;
-            color: #475569;
-            border-radius: 5px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
         }
 
         /* ================= PROGRESS ================= */
 
-        .progress-info {
+        .progress-area {
+            margin-top: 25px;
+        }
+
+        .progress-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 13px;
+            margin-bottom: 8px;
         }
 
-        .progress-info strong {
-            color: #111827;
-        }
-
-        .progress-info span {
+        .progress-header span {
+            font-size: 12px;
             color: #64748b;
+        }
+
+        .progress-header strong {
+            color: #d97706;
+            font-size: 12px;
         }
 
         .progress-bar {
             width: 100%;
-            height: 12px;
+            height: 9px;
             background: #e5e7eb;
             border-radius: 20px;
             overflow: hidden;
         }
 
         .progress-fill {
+            width: 0%;
             height: 100%;
-            width: 35%;
             background: #d97706;
             border-radius: 20px;
-        }
-
-        .progress-note {
-            margin-top: 12px;
-            color: #64748b;
-            font-size: 12px;
+            transition: width 0.5s ease;
         }
 
         /* ================= PAYMENT ================= */
 
-        .payment-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #edf0f4;
-        }
-
-        .payment-row:last-child {
-            border-bottom: none;
-        }
-
-        .payment-row span {
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        .payment-row strong {
-            color: #111827;
-            font-size: 14px;
-        }
-
-        /* ================= INVESTMENT ================= */
-
-        .investment-box {
-            background: #111827;
-            color: white;
-            border-radius: 14px;
-            padding: 25px;
-        }
-
-        .investment-label {
-            color: #94a3b8;
-            font-size: 12px;
-            margin-bottom: 7px;
-        }
-
-        .investment-value {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .investment-grid {
+        .payment-summary {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .investment-item {
-            background: #1f2937;
-            padding: 14px;
-            border-radius: 8px;
-        }
-
-        .investment-item span {
-            display: block;
-            color: #94a3b8;
-            font-size: 11px;
-            margin-bottom: 5px;
-        }
-
-        .investment-item strong {
-            font-size: 14px;
-        }
-
-        /* ================= ACTIONS ================= */
-
-        .actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
 
-        .action-btn {
-            padding: 13px;
+        .payment-box {
+            background: #f8fafc;
             border: 1px solid #e5e7eb;
-            border-radius: 8px;
+            border-radius: 9px;
+            padding: 15px;
+        }
+
+        .payment-box span {
+            display: block;
+            color: #64748b;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .payment-box strong {
+            color: #111827;
+            font-size: 16px;
+        }
+
+        /* ================= PAYMENT HISTORY ================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        th {
+            text-align: left;
+            color: #64748b;
+            background: #f8fafc;
+            padding: 11px;
+            font-size: 10px;
+        }
+
+        td {
+            padding: 13px 11px;
+            border-bottom: 1px solid #edf0f4;
             color: #374151;
-            background: white;
+        }
+
+        .paid {
+            color: #15803d;
+            font-weight: 800;
+        }
+
+        .pending {
+            color: #b45309;
+            font-weight: 800;
+        }
+
+        /* ================= TIMELINE ================= */
+
+        .timeline {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: #e5e7eb;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 22px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -25px;
+            top: 3px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 1px #d1d5db;
+        }
+
+        .timeline-item.completed .timeline-dot {
+            background: #d97706;
+            box-shadow: 0 0 0 1px #d97706;
+        }
+
+        .timeline-item.active .timeline-dot {
+            background: #f59e0b;
+            box-shadow: 0 0 0 4px #fff1d6;
+        }
+
+        .timeline-item h4 {
+            font-size: 12px;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .timeline-item p {
+            color: #64748b;
+            font-size: 10px;
+        }
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .actions {
+            display: grid;
+            gap: 10px;
+        }
+
+        .action {
+            display: block;
+            border: 1px solid #e5e7eb;
+            border-radius: 9px;
+            padding: 13px;
+            color: #374151;
             font-size: 12px;
             font-weight: 700;
-            text-align: center;
+            background: #ffffff;
+            transition: 0.2s;
         }
 
-        .action-btn:hover {
+        .action:hover {
             border-color: #d97706;
             color: #d97706;
+            background: #fffaf2;
         }
 
-        .action-btn.primary {
+        .action-primary {
             background: #d97706;
-            color: white;
+            color: #ffffff;
             border-color: #d97706;
+        }
+
+        .action-primary:hover {
+            background: #b85f00;
+            color: #ffffff;
         }
 
         /* ================= NOTICE ================= */
 
         .notice {
-            background: #fff7ed;
-            border: 1px solid #fed7aa;
-            border-radius: 12px;
-            padding: 18px;
-            color: #9a3412;
-            font-size: 12px;
+            background: #fffaf2;
+            border: 1px solid #f3d9a7;
+            border-radius: 10px;
+            padding: 15px;
+            color: #92400e;
+            font-size: 11px;
             line-height: 1.6;
         }
 
         /* ================= FOOTER ================= */
 
-        .footer {
-            margin-top: 20px;
+        footer {
+            background: #0b1120;
             color: #94a3b8;
-            font-size: 11px;
             text-align: center;
-            padding: 20px;
+            padding: 24px;
+            font-size: 11px;
         }
 
         /* ================= MOBILE ================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 950px) {
 
-            .stats {
+            .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .dashboard-grid {
+            .main-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 750px) {
+        @media (max-width: 600px) {
 
-            .sidebar {
+            .dashboard {
+                padding: 25px 15px 55px;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .user-name {
                 display: none;
-            }
-
-            .topbar {
-                padding: 0 18px;
-            }
-
-            .main {
-                padding: 25px 18px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .bike {
-                grid-template-columns: 1fr;
-            }
-
-            .bike-image {
-                height: 180px;
             }
 
             .welcome h1 {
                 font-size: 25px;
             }
 
-            .user-name {
-                display: none;
+            .application-status {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 16px;
+            }
+
+            .stat-value {
+                font-size: 19px;
+            }
+
+            .bike-card {
+                grid-template-columns: 1fr;
+            }
+
+            .bike-image {
+                width: 100%;
+                height: 190px;
+            }
+
+            .payment-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 19px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- TOP BAR -->
 
-    <header class="topbar">
+<!-- ================= NAVIGATION ================= -->
 
-        <div class="logo">
+<nav>
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
             Mobility<span>.</span>
+        </a>
+
+        <div class="nav-right">
+
+            <span class="user-name">
+                Welcome, Customer
+            </span>
+
+            <a href="login.html" class="logout">
+                Sign Out
+            </a>
+
         </div>
 
-        <div class="user-area">
+    </div>
 
-            <div class="user-name">
-                Paul Misheal
+</nav>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<main class="dashboard">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+        <div class="welcome-badge">
+            CUSTOMER DASHBOARD
+        </div>
+
+        <h1>
+            Welcome back, Customer
+        </h1>
+
+        <p>
+            Manage your motorcycle application, payments and
+            hire-purchase progress from one place.
+        </p>
+
+    </section>
+
+
+    <!-- APPLICATION STATUS -->
+
+    <div class="application-status">
+
+        <div class="status-left">
+
+            <h3>
+                Hire-Purchase Application
+            </h3>
+
+            <p>
+                Application ID: MHP-2026-0001
+            </p>
+
+        </div>
+
+        <div class="status-badge">
+            UNDER REVIEW
+        </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                MOTORCYCLE PRICE
             </div>
 
-            <div class="avatar">
-                PM
+            <div class="stat-value">
+                ₦1,500,000
+            </div>
+
+            <div class="stat-sub">
+                Reference purchase price
             </div>
 
         </div>
 
-    </header>
 
+        <div class="stat-card">
 
-    <div class="dashboard-layout">
-
-        <!-- SIDEBAR -->
-
-        <aside class="sidebar">
-
-            <div class="sidebar-title">
-                Dashboard
+            <div class="stat-label">
+                WEEKLY PAYMENT
             </div>
 
-            <a href="dashboard.html" class="active">
-                Overview
-            </a>
-
-            <a href="#">
-                My Motorcycle
-            </a>
-
-            <a href="#">
-                Payments
-            </a>
-
-            <a href="#">
-                Repayment Progress
-            </a>
-
-            <br>
-
-            <div class="sidebar-title">
-                Investment
+            <div class="stat-value">
+                ₦30,000
             </div>
 
-            <a href="#">
-                My Investment
-            </a>
-
-            <a href="#">
-                Investment Returns
-            </a>
-
-            <a href="#">
-                Transactions
-            </a>
-
-            <br>
-
-            <div class="sidebar-title">
-                Account
+            <div class="stat-sub">
+                Selected repayment amount
             </div>
 
-            <a href="#">
-                My Profile
-            </a>
+        </div>
 
-            <a href="#">
-                Notifications
-            </a>
 
-            <div class="logout">
+        <div class="stat-card">
 
-                <a href="login.html">
-                    Logout
-                </a>
-
+            <div class="stat-label">
+                AMOUNT PAID
             </div>
 
-        </aside>
+            <div class="stat-value">
+                ₦0
+            </div>
+
+            <div class="stat-sub">
+                Total recorded payments
+            </div>
+
+        </div>
 
 
-        <!-- MAIN CONTENT -->
+        <div class="stat-card">
 
-        <main class="main">
+            <div class="stat-label">
+                BALANCE
+            </div>
 
-            <div class="welcome">
+            <div class="stat-value">
+                ₦1,500,000
+            </div>
 
-                <h1>
-                    Welcome back, Paul 👋
-                </h1>
+            <div class="stat-sub">
+                Current outstanding balance
+            </div>
 
-                <p>
-                    Here's an overview of your Mobility & Hire-Purchase account.
-                </p>
+        </div>
 
-                <div class="status">
+    </div>
 
-                    <span class="status-dot"></span>
 
-                    Account Active
+    <!-- MAIN GRID -->
 
+    <div class="main-grid">
+
+
+        <!-- LEFT COLUMN -->
+
+        <div>
+
+
+            <!-- MOTORCYCLE -->
+
+            <div class="card">
+
+                <div class="card-title">
+                    My Motorcycle
                 </div>
 
-            </div>
-
-
-            <!-- STATISTICS -->
-
-            <div class="stats">
-
-                <div class="stat-card">
-
-                    <div class="stat-label">
-                        MOTORCYCLE PRICE
-                    </div>
-
-                    <div class="stat-value">
-                        ₦1,500,000
-                    </div>
-
-                    <div class="stat-small">
-                        Selected motorcycle
-                    </div>
-
+                <div class="card-description">
+                    Motorcycle selected for your application.
                 </div>
 
 
-                <div class="stat-card">
+                <div class="bike-card">
 
-                    <div class="stat-label">
-                        TOTAL PAID
-                    </div>
-
-                    <div class="stat-value">
-                        ₦525,000
-                    </div>
-
-                    <div class="stat-small">
-                        35% completed
-                    </div>
-
-                </div>
+                    <img
+                        class="bike-image"
+                        src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=700&q=80"
+                        alt="Motorcycle"
+                    >
 
 
-                <div class="stat-card">
+                    <div class="bike-info">
 
-                    <div class="stat-label">
-                        REMAINING BALANCE
-                    </div>
+                        <h3>
+                            TVS Rockz 125
+                        </h3>
 
-                    <div class="stat-value">
-                        ₦975,000
-                    </div>
-
-                    <div class="stat-small">
-                        Outstanding amount
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-label">
-                        WEEKLY PAYMENT
-                    </div>
-
-                    <div class="stat-value">
-                        ₦25,000
-                    </div>
-
-                    <div class="stat-small">
-                        Next payment schedule
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="dashboard-grid">
-
-                <!-- LEFT COLUMN -->
-
-                <div>
-
-                    <!-- MOTORCYCLE -->
-
-                    <div class="card">
-
-                        <div class="card-header">
-
-                            <h2>
-                                My Motorcycle
-                            </h2>
-
-                            <a href="#">
-                                View Details
-                            </a>
-
+                        <div class="bike-brand">
+                            TVS • 124.5cc
                         </div>
 
-
-                        <div class="bike">
-
-                            <div class="bike-image">
-                                🏍️
-                            </div>
-
-                            <div class="bike-info">
-
-                                <h3>
-                                    TVS Motorcycle
-                                </h3>
-
-                                <p>
-                                    Commercial motorcycle selected
-                                    under your hire-purchase plan.
-                                </p>
-
-                                <span class="bike-tag">
-                                    HIRE-PURCHASE
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- REPAYMENT -->
-
-                    <div class="card">
-
-                        <div class="card-header">
-
-                            <h2>
-                                Repayment Progress
-                            </h2>
-
-                            <a href="#">
-                                Payment History
-                            </a>
-
-                        </div>
-
-
-                        <div class="progress-info">
-
-                            <strong>
-                                ₦525,000 paid
-                            </strong>
+                        <div class="bike-details">
 
                             <span>
-                                ₦1,500,000 total
+                                124.5cc Engine
+                            </span>
+
+                            <span>
+                                Commercial
+                            </span>
+
+                            <span>
+                                Hire-Purchase
                             </span>
 
                         </div>
 
+                    </div>
 
-                        <div class="progress-bar">
+                </div>
 
-                            <div class="progress-fill"></div>
 
+                <div class="progress-area">
+
+                    <div class="progress-header">
+
+                        <span>
+                            Hire-Purchase Progress
+                        </span>
+
+                        <strong id="progressText">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            id="progressFill">
                         </div>
 
+                    </div>
 
-                        <p class="progress-note">
+                </div>
 
-                            You have completed 35% of your motorcycle
-                            payment plan.
+            </div>
 
+
+            <!-- PAYMENT SUMMARY -->
+
+            <div class="card">
+
+                <div class="card-title">
+                    Payment Overview
+                </div>
+
+                <div class="card-description">
+                    Your current hire-purchase payment position.
+                </div>
+
+
+                <div class="payment-summary">
+
+
+                    <div class="payment-box">
+
+                        <span>
+                            WEEKLY PAYMENT
+                        </span>
+
+                        <strong>
+                            ₦30,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-box">
+
+                        <span>
+                            TOTAL PAID
+                        </span>
+
+                        <strong>
+                            ₦0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-box">
+
+                        <span>
+                            REMAINING
+                        </span>
+
+                        <strong>
+                            ₦1,500,000
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT HISTORY -->
+
+            <div class="card">
+
+                <div class="card-title">
+                    Payment History
+                </div>
+
+                <div class="card-description">
+                    Your recorded hire-purchase payments.
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Date</th>
+                                <th>Reference</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    —
+                                </td>
+
+                                <td>
+                                    No payment yet
+                                </td>
+
+                                <td>
+                                    ₦0
+                                </td>
+
+                                <td class="pending">
+                                    Pending
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- RIGHT COLUMN -->
+
+        <div>
+
+
+            <!-- APPLICATION PROGRESS -->
+
+            <div class="card">
+
+                <div class="card-title">
+                    Application Progress
+                </div>
+
+                <div class="card-description">
+                    Track your application stage.
+                </div>
+
+
+                <div class="timeline">
+
+
+                    <div class="timeline-item completed">
+
+                        <div class="timeline-dot"></div>
+
+                        <h4>
+                            Application Submitted
+                        </h4>
+
+                        <p>
+                            Application received
                         </p>
 
                     </div>
 
 
-                    <!-- PAYMENT DETAILS -->
+                    <div class="timeline-item active">
 
-                    <div class="card">
+                        <div class="timeline-dot"></div>
 
-                        <div class="card-header">
+                        <h4>
+                            Under Review
+                        </h4>
 
-                            <h2>
-                                Payment Summary
-                            </h2>
-
-                        </div>
-
-
-                        <div class="payment-row">
-
-                            <span>
-                                Weekly repayment
-                            </span>
-
-                            <strong>
-                                ₦25,000
-                            </strong>
-
-                        </div>
-
-
-                        <div class="payment-row">
-
-                            <span>
-                                Total amount paid
-                            </span>
-
-                            <strong>
-                                ₦525,000
-                            </strong>
-
-                        </div>
-
-
-                        <div class="payment-row">
-
-                            <span>
-                                Remaining balance
-                            </span>
-
-                            <strong>
-                                ₦975,000
-                            </strong>
-
-                        </div>
-
-
-                        <div class="payment-row">
-
-                            <span>
-                                Estimated remaining weeks
-                            </span>
-
-                            <strong>
-                                39 weeks
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- RIGHT COLUMN -->
-
-                <div>
-
-                    <!-- INVESTMENT -->
-
-                    <div class="card">
-
-                        <div class="card-header">
-
-                            <h2>
-                                Investment Overview
-                            </h2>
-
-                            <a href="#">
-                                Details
-                            </a>
-
-                        </div>
-
-
-                        <div class="investment-box">
-
-                            <div class="investment-label">
-                                TOTAL INVESTMENT
-                            </div>
-
-                            <div class="investment-value">
-                                ₦0
-                            </div>
-
-                            <div class="investment-grid">
-
-                                <div class="investment-item">
-
-                                    <span>
-                                        Expected Returns
-                                    </span>
-
-                                    <strong>
-                                        ₦0
-                                    </strong>
-
-                                </div>
-
-
-                                <div class="investment-item">
-
-                                    <span>
-                                        Status
-                                    </span>
-
-                                    <strong>
-                                        No Active Investment
-                                    </strong>
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        <p>
+                            Application being reviewed
+                        </p>
 
                     </div>
 
 
-                    <!-- QUICK ACTIONS -->
+                    <div class="timeline-item">
 
-                    <div class="card">
+                        <div class="timeline-dot"></div>
 
-                        <div class="card-header">
+                        <h4>
+                            Documents Verified
+                        </h4>
 
-                            <h2>
-                                Quick Actions
-                            </h2>
-
-                        </div>
-
-
-                        <div class="actions">
-
-                            <a href="#" class="action-btn primary">
-                                Make Payment
-                            </a>
-
-                            <a href="#" class="action-btn">
-                                View Motorcycle
-                            </a>
-
-                            <a href="#" class="action-btn">
-                                Investment
-                            </a>
-
-                            <a href="#" class="action-btn">
-                                My Profile
-                            </a>
-
-                        </div>
+                        <p>
+                            Verification pending
+                        </p>
 
                     </div>
 
 
-                    <!-- NOTICE -->
+                    <div class="timeline-item">
 
-                    <div class="card">
+                        <div class="timeline-dot"></div>
 
-                        <div class="card-header">
+                        <h4>
+                            Approved
+                        </h4>
 
-                            <h2>
-                                Important Notice
-                            </h2>
-
-                        </div>
-
-                        <div class="notice">
-
-                            Your dashboard currently displays sample
-                            information for demonstration purposes.
-                            Payment balances, investment returns and
-                            account information should be connected to
-                            a secure database before the platform is
-                            used by real customers.
-
-                        </div>
+                        <p>
+                            Awaiting approval
+                        </p>
 
                     </div>
+
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-dot"></div>
+
+                        <h4>
+                            Agreement
+                        </h4>
+
+                        <p>
+                            Hire-purchase agreement
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-dot"></div>
+
+                        <h4>
+                            Active
+                        </h4>
+
+                        <p>
+                            Repayment begins
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-dot"></div>
+
+                        <h4>
+                            Completed
+                        </h4>
+
+                        <p>
+                            Motorcycle ownership completed
+                        </p>
+
+                    </div>
+
 
                 </div>
 
             </div>
 
 
-            <div class="footer">
+            <!-- QUICK ACTIONS -->
 
-                © 2026 Mobility & Hire-Purchase Services.
-                All rights reserved.
+            <div class="card">
+
+                <div class="card-title">
+                    Quick Actions
+                </div>
+
+                <div class="card-description">
+                    Useful account actions.
+                </div>
+
+
+                <div class="actions">
+
+                    <a
+                        href="bikes.html"
+                        class="action action-primary"
+                    >
+                        Browse Motorcycles
+                    </a>
+
+                    <a
+                        href="application.html"
+                        class="action"
+                    >
+                        New Hire-Purchase Application
+                    </a>
+
+                    <a
+                        href="investor-application.html"
+                        class="action"
+                    >
+                        Explore Investment
+                    </a>
+
+                    <a
+                        href="index.html#contact"
+                        class="action"
+                    >
+                        Contact Support
+                    </a>
+
+                </div>
 
             </div>
 
-        </main>
+
+            <!-- NOTICE -->
+
+            <div class="notice">
+
+                <strong>
+                    Account Notice
+                </strong>
+
+                <br><br>
+
+                Your dashboard information is currently
+                demonstration data. Once the platform backend
+                is connected, your actual application,
+                payment records and account information will
+                be displayed here.
+
+            </div>
+
+
+        </div>
 
     </div>
 
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 Mobility & Hire-Purchase Services.
+    All rights reserved.
+
+</footer>
+
+
+<script>
+
+    /*
+     * DEMONSTRATION PROGRESS
+     *
+     * This will later be replaced with the user's
+     * real payment information from the database.
+     */
+
+    const totalAmount = 1500000;
+
+    const amountPaid = 0;
+
+    let progress = 0;
+
+    if (totalAmount > 0) {
+        progress =
+            (amountPaid / totalAmount) * 100;
+    }
+
+    progress =
+        Math.min(
+            Math.max(progress, 0),
+            100
+        );
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        progress + "%";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        progress.toFixed(0) + "%";
+
+</script>
+
+
 </body>
 </html>
+```
