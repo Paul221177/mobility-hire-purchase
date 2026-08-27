@@ -24,8 +24,6 @@
             min-height: 100vh;
         }
 
-        /* ================= NAVIGATION ================= */
-
         nav {
             background: #ffffff;
             border-bottom: 1px solid #e5e7eb;
@@ -62,8 +60,6 @@
             color: #d97706;
         }
 
-        /* ================= PAGE ================= */
-
         .page {
             min-height: calc(100vh - 70px);
             display: flex;
@@ -75,8 +71,6 @@
             width: 100%;
             max-width: 620px;
         }
-
-        /* ================= HEADER ================= */
 
         .signup-header {
             text-align: center;
@@ -110,8 +104,6 @@
             line-height: 1.7;
         }
 
-        /* ================= CARD ================= */
-
         .signup-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
@@ -119,8 +111,6 @@
             padding: 38px;
             box-shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
         }
-
-        /* ================= FORM ================= */
 
         .form-section {
             margin-bottom: 30px;
@@ -189,7 +179,7 @@
             line-height: 1.5;
         }
 
-        /* ================= ACCOUNT TYPE ================= */
+        /* ACCOUNT TYPE */
 
         .account-options {
             display: grid;
@@ -256,7 +246,7 @@
             background: #fff0d2;
         }
 
-        /* ================= BUSINESS ================= */
+        /* BUSINESS */
 
         .business-box {
             background: #f8fafc;
@@ -278,7 +268,7 @@
             font-size: 12px;
         }
 
-        /* ================= PASSWORD ================= */
+        /* PASSWORD */
 
         .password-wrapper {
             position: relative;
@@ -301,7 +291,7 @@
             cursor: pointer;
         }
 
-        /* ================= TERMS ================= */
+        /* TERMS */
 
         .terms {
             display: flex;
@@ -332,7 +322,7 @@
             font-weight: 800;
         }
 
-        /* ================= BUTTON ================= */
+        /* BUTTON */
 
         .signup-btn {
             width: 100%;
@@ -358,7 +348,7 @@
             transform: none;
         }
 
-        /* ================= LOGIN ================= */
+        /* LOGIN */
 
         .login-text {
             text-align: center;
@@ -377,7 +367,7 @@
             text-decoration: underline;
         }
 
-        /* ================= SECURITY ================= */
+        /* SECURITY */
 
         .security-note {
             margin-top: 20px;
@@ -391,7 +381,7 @@
             line-height: 1.5;
         }
 
-        /* ================= MESSAGE ================= */
+        /* MESSAGE */
 
         .form-message {
             display: none;
@@ -416,7 +406,7 @@
             border: 1px solid #bbf7d0;
         }
 
-        /* ================= MOBILE ================= */
+        /* MOBILE */
 
         @media (max-width: 650px) {
 
@@ -455,7 +445,7 @@
 
 <body>
 
-    <!-- ================= NAVIGATION ================= -->
+    <!-- NAVIGATION -->
 
     <nav>
         <div class="nav-container">
@@ -472,7 +462,7 @@
     </nav>
 
 
-    <!-- ================= PAGE ================= -->
+    <!-- PAGE -->
 
     <main class="page">
 
@@ -499,16 +489,15 @@
             </div>
 
 
-            <!-- CARD -->
+            <!-- SIGNUP CARD -->
 
             <div class="signup-card">
 
                 <div id="formMessage" class="form-message"></div>
 
-
                 <form id="signupForm">
 
-                    <!-- ================= ACCOUNT TYPE ================= -->
+                    <!-- ACCOUNT TYPE -->
 
                     <div class="form-section">
 
@@ -579,14 +568,13 @@
                     </div>
 
 
-                    <!-- ================= PERSONAL INFORMATION ================= -->
+                    <!-- PERSONAL INFORMATION -->
 
                     <div class="form-section">
 
                         <div class="form-section-title">
                             Personal Information
                         </div>
-
 
                         <div class="form-row">
 
@@ -687,7 +675,7 @@
                     </div>
 
 
-                    <!-- ================= BUSINESS ================= -->
+                    <!-- BUSINESS -->
 
                     <div class="form-section">
 
@@ -741,7 +729,7 @@
                     </div>
 
 
-                    <!-- ================= SECURITY ================= -->
+                    <!-- SECURITY -->
 
                     <div class="form-section">
 
@@ -820,7 +808,7 @@
                     </div>
 
 
-                    <!-- ================= TERMS ================= -->
+                    <!-- TERMS -->
 
                     <div class="terms">
 
@@ -844,7 +832,7 @@
                     </div>
 
 
-                    <!-- ================= SUBMIT ================= -->
+                    <!-- SUBMIT -->
 
                     <button
                         type="submit"
@@ -887,12 +875,14 @@
     </main>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- JAVASCRIPT -->
 
     <script>
 
         /*
+         * ================================
          * SHOW / HIDE PASSWORD
+         * ================================
          */
 
         function togglePassword(inputId, button) {
@@ -915,12 +905,26 @@
 
 
         /*
-         * SIGNUP FORM
+         * ================================
+         * ELEMENTS
+         * ================================
          */
 
-        const signupForm = document.getElementById("signupForm");
-        const formMessage = document.getElementById("formMessage");
-        const signupButton = document.getElementById("signupButton");
+        const signupForm =
+            document.getElementById("signupForm");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+        const signupButton =
+            document.getElementById("signupButton");
+
+
+        /*
+         * ================================
+         * FORM SUBMISSION
+         * ================================
+         */
 
         signupForm.addEventListener("submit", function(event) {
 
@@ -931,9 +935,10 @@
              * Get account type
              */
 
-            const accountType = document.querySelector(
-                'input[name="account_type"]:checked'
-            );
+            const accountType =
+                document.querySelector(
+                    'input[name="account_type"]:checked'
+                );
 
 
             if (!accountType) {
@@ -948,18 +953,101 @@
 
 
             /*
+             * Get personal information
+             */
+
+            const firstName =
+                document.getElementById("first_name")
+                    .value
+                    .trim();
+
+            const lastName =
+                document.getElementById("last_name")
+                    .value
+                    .trim();
+
+            const email =
+                document.getElementById("email")
+                    .value
+                    .trim();
+
+            const phone =
+                document.getElementById("phone")
+                    .value
+                    .trim();
+
+            const address =
+                document.getElementById("address")
+                    .value
+                    .trim();
+
+
+            /*
+             * Validate names
+             */
+
+            if (!firstName || !lastName) {
+
+                showMessage(
+                    "Please enter your first name and last name.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+             * Validate email
+             */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+
+                showMessage(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+             * Validate phone
+             */
+
+            const phoneDigits =
+                phone.replace(/\D/g, "");
+
+            if (phoneDigits.length < 10) {
+
+                showMessage(
+                    "Please enter a valid phone number.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
              * Get passwords
              */
 
             const password =
-                document.getElementById("password").value;
+                document.getElementById("password")
+                    .value;
 
             const confirmPassword =
-                document.getElementById("confirm_password").value;
+                document.getElementById("confirm_password")
+                    .value;
 
 
             /*
-             * Check passwords
+             * Validate password
              */
 
             if (password.length < 8) {
@@ -972,6 +1060,10 @@
                 return;
             }
 
+
+            /*
+             * Confirm password
+             */
 
             if (password !== confirmPassword) {
 
@@ -989,7 +1081,8 @@
              */
 
             const business =
-                document.getElementById("business").value;
+                document.getElementById("business")
+                    .value;
 
 
             if (!business) {
@@ -1004,45 +1097,77 @@
 
 
             /*
-             * Save basic signup information.
+             * Terms
+             */
+
+            const terms =
+                document.getElementById("terms");
+
+            if (!terms.checked) {
+
+                showMessage(
+                    "Please agree to the Terms & Conditions before creating your account.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+             * ==========================================
+             * SAVE USER INFORMATION
+             * ==========================================
              *
              * IMPORTANT:
-             * This is only a front-end prototype.
-             * Do NOT use localStorage for real passwords
-             * when this becomes a production application.
+             *
+             * We intentionally DO NOT save the password.
+             *
+             * This is still a front-end prototype.
+             * A production website should use a secure
+             * backend/database and hashed passwords.
              */
 
             const userData = {
 
-                firstName:
-                    document.getElementById("first_name").value.trim(),
+                firstName: firstName,
 
-                lastName:
-                    document.getElementById("last_name").value.trim(),
+                lastName: lastName,
 
-                email:
-                    document.getElementById("email").value.trim(),
+                fullName:
+                    firstName + " " + lastName,
 
-                phone:
-                    document.getElementById("phone").value.trim(),
+                email: email,
 
-                address:
-                    document.getElementById("address").value.trim(),
+                phone: phone,
+
+                address: address,
 
                 accountType:
                     accountType.value,
 
                 business:
-                    business
+                    business,
+
+                signupDate:
+                    new Date().toISOString()
 
             };
 
+
+            /*
+             * Save user profile
+             */
 
             localStorage.setItem(
                 "mobilityUser",
                 JSON.stringify(userData)
             );
 
+
+            /*
+             * Save account type separately
+             */
 
             localStorage.setItem(
                 "accountType",
@@ -1051,50 +1176,112 @@
 
 
             /*
-             * Disable button while redirecting
+             * Save logged-in state
+             *
+             * This allows the next pages to know
+             * that the user just completed signup.
              */
 
-            signupButton.disabled = true;
-            signupButton.textContent = "Creating Account...";
+            localStorage.setItem(
+                "mobilityLoggedIn",
+                "true"
+            );
 
 
             /*
-             * Redirect according to account type
+             * Save display name
+             */
+
+            localStorage.setItem(
+                "mobilityUserName",
+                firstName + " " + lastName
+            );
+
+
+            /*
+             * Disable button
+             */
+
+            signupButton.disabled = true;
+
+            signupButton.textContent =
+                "Creating Account...";
+
+
+            /*
+             * Show success message
+             */
+
+            showMessage(
+                "Account information saved successfully. Redirecting...",
+                "success"
+            );
+
+
+            /*
+             * ==========================================
+             * REDIRECT
+             * ==========================================
              */
 
             setTimeout(function() {
 
-                if (accountType.value === "hire_purchase") {
+                /*
+                 * HIRE-PURCHASE
+                 */
 
-                    window.location.href = "application.html";
+                if (
+                    accountType.value ===
+                    "hire_purchase"
+                ) {
 
+                    window.location.href =
+                        "application.html";
+
+                    return;
                 }
 
-                else if (accountType.value === "investor") {
 
-                    window.location.href = "investor-dashboard.html";
+                /*
+                 * INVESTOR
+                 */
 
+                if (
+                    accountType.value ===
+                    "investor"
+                ) {
+
+                    window.location.href =
+                        "investor-application.html";
+
+                    return;
                 }
 
-            }, 600);
+            }, 800);
 
         });
 
 
         /*
+         * ================================
          * DISPLAY MESSAGE
+         * ================================
          */
 
         function showMessage(message, type) {
 
-            formMessage.textContent = message;
+            formMessage.textContent =
+                message;
 
             formMessage.className =
                 "form-message " + type;
 
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
 
         }
