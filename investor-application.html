@@ -1,0 +1,1370 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Investor Application | Mobility & Hire-Purchase Services</title>
+
+    <meta name="description"
+        content="Apply to participate in Mobility & Hire-Purchase Services investment opportunities.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 17px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #111827;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #d97706;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            color: #d97706;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page {
+            padding: 55px 20px 80px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        /* ================= HEADER ================= */
+
+        .page-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 35px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 30px;
+            background: #fff1d6;
+            color: #a65f00;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            line-height: 1.15;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* ================= LAYOUT ================= */
+
+        .application-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 0.8fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* ================= CARD ================= */
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.06);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        .card-description {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #111827;
+            border-bottom: 1px solid #edf0f4;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            color: #374151;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: #dc2626;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 13px 14px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #172033;
+            background: #ffffff;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #d97706;
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .help {
+            display: block;
+            color: #64748b;
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        /* ================= INVESTMENT AMOUNT ================= */
+
+        .amount-box {
+            background: #fffaf2;
+            border: 1px solid #f3d9a7;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .amount-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .amount-input {
+            position: relative;
+        }
+
+        .currency {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 15px;
+            font-weight: 800;
+            color: #a65f00;
+        }
+
+        .amount-input input {
+            padding-left: 38px;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        /* ================= PLAN OPTIONS ================= */
+
+        .plan-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .plan-option {
+            position: relative;
+        }
+
+        .plan-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .plan-option label {
+            display: block;
+            padding: 15px 10px;
+            text-align: center;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0;
+            transition: 0.2s;
+        }
+
+        .plan-option label strong {
+            display: block;
+            font-size: 13px;
+            color: #111827;
+        }
+
+        .plan-option label small {
+            color: #64748b;
+            font-size: 10px;
+        }
+
+        .plan-option input:checked + label {
+            border-color: #d97706;
+            background: #fffaf2;
+            box-shadow: 0 0 0 1px #d97706;
+        }
+
+        /* ================= SUMMARY ================= */
+
+        .summary-card {
+            position: sticky;
+            top: 95px;
+        }
+
+        .summary-header {
+            margin-bottom: 20px;
+        }
+
+        .summary-header h2 {
+            font-size: 19px;
+            color: #111827;
+        }
+
+        .summary-header p {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 13px 0;
+            border-bottom: 1px solid #edf0f4;
+            font-size: 13px;
+        }
+
+        .summary-item span:first-child {
+            color: #64748b;
+        }
+
+        .summary-item strong {
+            color: #111827;
+            text-align: right;
+        }
+
+        .summary-total {
+            background: #fffaf2;
+            border: 1px solid #f3d9a7;
+            border-radius: 10px;
+            padding: 17px;
+            margin-top: 20px;
+        }
+
+        .summary-total span {
+            display: block;
+            color: #64748b;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .summary-total strong {
+            display: block;
+            color: #d97706;
+            font-size: 25px;
+        }
+
+        /* ================= NOTICE ================= */
+
+        .notice {
+            margin-top: 18px;
+            padding: 14px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 9px;
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        /* ================= CHECKBOX ================= */
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin: 20px 0;
+        }
+
+        .checkbox-row input {
+            width: auto;
+            margin-top: 4px;
+        }
+
+        .checkbox-row label {
+            margin: 0;
+            font-size: 12px;
+            font-weight: normal;
+            color: #64748b;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            border-radius: 9px;
+            padding: 15px;
+            background: #d97706;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #b85f00;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        /* ================= LOGIN ================= */
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .login-link a {
+            color: #d97706;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0b1120;
+            color: #94a3b8;
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+        }
+
+        /* ================= SUCCESS ================= */
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .success-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #dcfce7;
+            color: #15803d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .success-message h2 {
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .success-message p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-btn {
+            display: inline-block;
+            background: #d97706;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .application-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 35px 15px 60px;
+            }
+
+            .card {
+                padding: 23px 18px;
+            }
+
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .plan-options {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 15px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Mobility<span>.</span>
+            </a>
+
+            <a href="index.html" class="back-link">
+                ← Back to Website
+            </a>
+
+        </div>
+    </nav>
+
+
+    <!-- PAGE -->
+
+    <main class="page">
+
+        <div class="container">
+
+            <!-- HEADER -->
+
+            <div class="page-header">
+
+                <div class="badge">
+                    INVESTOR SERVICES
+                </div>
+
+                <h1>
+                    Investor Application
+                </h1>
+
+                <p>
+                    Submit your investment interest and provide the
+                    information required for our team to review your
+                    application.
+                </p>
+
+            </div>
+
+
+            <!-- APPLICATION -->
+
+            <div class="application-grid">
+
+
+                <!-- FORM CARD -->
+
+                <div class="card">
+
+                    <div class="card-title">
+                        Investment Application
+                    </div>
+
+                    <div class="card-description">
+                        Complete the form below. Your application will
+                        be reviewed before any investment is accepted.
+                    </div>
+
+
+                    <form id="investorForm">
+
+
+                        <!-- PERSONAL INFORMATION -->
+
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                Personal Information
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="firstName">
+                                        First Name
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        name="firstName"
+                                        placeholder="First name"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="lastName">
+                                        Last Name
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        name="lastName"
+                                        placeholder="Last name"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                    <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="example@email.com"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone Number
+                                    <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="+234 800 000 0000"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="country">
+                                    Country
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select
+                                    id="country"
+                                    name="country"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select country
+                                    </option>
+
+                                    <option value="Nigeria">
+                                        Nigeria
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- INVESTMENT DETAILS -->
+
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                Investment Details
+                            </div>
+
+
+                            <div class="amount-box">
+
+                                <div class="amount-label">
+                                    Amount You Would Like To Invest
+                                </div>
+
+                                <div class="amount-input">
+
+                                    <span class="currency">
+                                        ₦
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        id="investmentAmount"
+                                        name="investmentAmount"
+                                        min="100000"
+                                        step="10000"
+                                        value="100000"
+                                        required
+                                    >
+
+                                </div>
+
+                                <span class="help">
+                                    Minimum application amount: ₦100,000.
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Investment Duration
+                                    <span class="required">*</span>
+                                </label>
+
+
+                                <div class="plan-options">
+
+
+                                    <div class="plan-option">
+
+                                        <input
+                                            type="radio"
+                                            id="plan6"
+                                            name="duration"
+                                            value="6"
+                                            data-rate="8"
+                                            required
+                                        >
+
+                                        <label for="plan6">
+
+                                            <strong>
+                                                6 Months
+                                            </strong>
+
+                                            <small>
+                                                Projected 8%
+                                            </small>
+
+                                        </label>
+
+                                    </div>
+
+
+                                    <div class="plan-option">
+
+                                        <input
+                                            type="radio"
+                                            id="plan12"
+                                            name="duration"
+                                            value="12"
+                                            data-rate="18"
+                                        >
+
+                                        <label for="plan12">
+
+                                            <strong>
+                                                12 Months
+                                            </strong>
+
+                                            <small>
+                                                Projected 18%
+                                            </small>
+
+                                        </label>
+
+                                    </div>
+
+
+                                    <div class="plan-option">
+
+                                        <input
+                                            type="radio"
+                                            id="plan24"
+                                            name="duration"
+                                            value="24"
+                                            data-rate="40"
+                                        >
+
+                                        <label for="plan24">
+
+                                            <strong>
+                                                24 Months
+                                            </strong>
+
+                                            <small>
+                                                Projected 40%
+                                            </small>
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="help">
+                                    Figures shown are illustrative projections
+                                    and are not guaranteed returns.
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="source">
+                                    Source of Investment Funds
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select
+                                    id="source"
+                                    name="source"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select source
+                                    </option>
+
+                                    <option value="salary">
+                                        Salary / Employment Income
+                                    </option>
+
+                                    <option value="business">
+                                        Business Income
+                                    </option>
+
+                                    <option value="savings">
+                                        Personal Savings
+                                    </option>
+
+                                    <option value="other">
+                                        Other Legitimate Source
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMPLOYER / BUSINESS -->
+
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                Employer / Business Information
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="business">
+                                    Employer / Business Name
+                                </label>
+
+                                <select
+                                    id="business"
+                                    name="business"
+                                >
+
+                                    <option value="">
+                                        Select business
+                                    </option>
+
+                                    <option value="mobility">
+                                        Mobility & Hire-Purchase Services
+                                    </option>
+
+                                </select>
+
+                                <span class="help">
+                                    Select the business associated with
+                                    your application.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BANK DETAILS -->
+
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                Payment Information
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="bank">
+                                    Preferred Bank
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="bank"
+                                    name="bank"
+                                    placeholder="Enter bank name"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="accountName">
+                                    Account Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="accountName"
+                                    name="accountName"
+                                    placeholder="Name on bank account"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="accountNumber">
+                                    Account Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="accountNumber"
+                                    name="accountNumber"
+                                    inputmode="numeric"
+                                    maxlength="10"
+                                    placeholder="10-digit account number"
+                                >
+
+                                <span class="help">
+                                    Only provide payment details through
+                                    an officially secured process.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MESSAGE -->
+
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                Additional Information
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="message">
+                                    Message / Investment Notes
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    placeholder="Tell us anything important about your investment interest..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TERMS -->
+
+                        <div class="checkbox-row">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                required
+                            >
+
+                            <label for="terms">
+
+                                I confirm that the information I have
+                                provided is accurate and I understand
+                                that submitting this form does not
+                                automatically create an investment
+                                agreement or guarantee any return.
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- SUBMIT -->
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                            id="submitBtn"
+                        >
+                            Submit Investor Application
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- SUCCESS -->
+
+                    <div
+                        class="success-message"
+                        id="successMessage"
+                    >
+
+                        <div class="success-icon">
+                            ✓
+                        </div>
+
+                        <h2>
+                            Application Submitted
+                        </h2>
+
+                        <p>
+                            Your investor application has been recorded
+                            for review. Your investment status can be
+                            tracked from your investor dashboard once
+                            your account has been approved.
+                        </p>
+
+                        <a
+                            href="investor-dashboard.html"
+                            class="dashboard-btn"
+                        >
+                            Open Investor Dashboard
+                        </a>
+
+                    </div>
+
+
+                    <div class="login-link">
+
+                        Already have an account?
+
+                        <a href="login.html">
+                            Sign In
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <aside class="card summary-card">
+
+                    <div class="summary-header">
+
+                        <h2>
+                            Investment Summary
+                        </h2>
+
+                        <p>
+                            Your estimated application details
+                        </p>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            Investment
+                        </span>
+
+                        <strong id="summaryAmount">
+                            ₦100,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            Duration
+                        </span>
+
+                        <strong id="summaryDuration">
+                            Not selected
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            Projected Rate
+                        </span>
+
+                        <strong id="summaryRate">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-total">
+
+                        <span>
+                            Illustrative projected value
+                        </span>
+
+                        <strong id="summaryReturn">
+                            ₦100,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="notice">
+
+                        <strong>Important:</strong><br><br>
+
+                        All return figures displayed on this page are
+                        illustrative projections only. They are not
+                        promises, guarantees, or offers of a fixed return.
+                        Any actual investment arrangement should be
+                        governed by a formal agreement and applicable
+                        Nigerian laws and regulations.
+
+                    </div>
+
+
+                    <div class="notice">
+
+                        🔒 <strong>Security</strong><br><br>
+
+                        Do not send passwords, PINs, OTPs, card PINs or
+                        other confidential banking credentials through
+                        this form.
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Mobility & Hire-Purchase Services.
+        All rights reserved.
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const amountInput =
+            document.getElementById("investmentAmount");
+
+        const planInputs =
+            document.querySelectorAll(
+                'input[name="duration"]'
+            );
+
+        const summaryAmount =
+            document.getElementById("summaryAmount");
+
+        const summaryDuration =
+            document.getElementById("summaryDuration");
+
+        const summaryRate =
+            document.getElementById("summaryRate");
+
+        const summaryReturn =
+            document.getElementById("summaryReturn");
+
+        const form =
+            document.getElementById("investorForm");
+
+        const submitBtn =
+            document.getElementById("submitBtn");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        function formatNaira(amount) {
+
+            return "₦" + Number(amount || 0)
+                .toLocaleString("en-NG");
+
+        }
+
+
+        function updateSummary() {
+
+            let amount =
+                Number(amountInput.value) || 0;
+
+            summaryAmount.textContent =
+                formatNaira(amount);
+
+
+            let selectedPlan =
+                document.querySelector(
+                    'input[name="duration"]:checked'
+                );
+
+
+            if (!selectedPlan) {
+
+                summaryDuration.textContent =
+                    "Not selected";
+
+                summaryRate.textContent =
+                    "—";
+
+                summaryReturn.textContent =
+                    formatNaira(amount);
+
+                return;
+            }
+
+
+            let duration =
+                selectedPlan.value;
+
+            let rate =
+                Number(selectedPlan.dataset.rate);
+
+
+            summaryDuration.textContent =
+                duration + " Months";
+
+
+            summaryRate.textContent =
+                rate + "%";
+
+
+            let projectedValue =
+                amount + (amount * rate / 100);
+
+
+            summaryReturn.textContent =
+                formatNaira(projectedValue);
+
+        }
+
+
+        amountInput.addEventListener(
+            "input",
+            updateSummary
+        );
+
+
+        planInputs.forEach(function(input) {
+
+            input.addEventListener(
+                "change",
+                updateSummary
+            );
+
+        });
+
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                if (!form.checkValidity()) {
+
+                    form.reportValidity();
+
+                    return;
+
+                }
+
+
+                submitBtn.disabled = true;
+
+                submitBtn.textContent =
+                    "Submitting Application...";
+
+
+                setTimeout(function() {
+
+                    form.style.display =
+                        "none";
+
+                    successMessage.style.display =
+                        "block";
+
+                }, 900);
+
+            }
+        );
+
+
+        updateSummary();
+
+    </script>
+
+</body>
+</html>
+```
