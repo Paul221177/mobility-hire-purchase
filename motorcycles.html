@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Motorcycles | Mobility & Hire-Purchase Services</title>
+
+    <meta name="description"
+        content="Browse available motorcycles and explore hire-purchase options from Mobility & Hire-Purchase Services.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f8fb;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ================= HEADER ================= */
+
+        .topbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 45px;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo span {
+            color: #d97706;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .navigation a {
+            color: #475569;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .navigation a:hover {
+            color: #d97706;
+        }
+
+        .dashboard-btn {
+            background: #111827;
+            color: white !important;
+            padding: 10px 16px;
+            border-radius: 7px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background:
+                linear-gradient(135deg, #fff7ed, #ffffff);
+
+            padding: 75px 25px;
+            text-align: center;
+        }
+
+        .hero-label {
+            color: #d97706;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #d97706;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: auto;
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        /* ================= FILTER ================= */
+
+        .filter-area {
+            max-width: 1150px;
+            margin: -25px auto 45px;
+            padding: 0 25px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .filter-box {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 20px;
+
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 15px;
+
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .filter-box input,
+        .filter-box select {
+            width: 100%;
+            padding: 12px 14px;
+
+            border: 1px solid #dbe1e8;
+            border-radius: 7px;
+
+            font-size: 13px;
+            outline: none;
+            background: white;
+        }
+
+        .filter-box input:focus,
+        .filter-box select:focus {
+            border-color: #d97706;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 0 25px 80px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 27px;
+            color: #111827;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .inventory-note {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+
+            padding: 12px 15px;
+            border-radius: 8px;
+
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        /* ================= MOTORCYCLE GRID ================= */
+
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .bike-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            overflow: hidden;
+
+            transition: 0.25s ease;
+        }
+
+        .bike-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.10);
+        }
+
+        /* ================= BIKE IMAGE ================= */
+
+        .bike-image {
+            height: 180px;
+            background: linear-gradient(135deg, #fef3c7, #fff7ed);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+        }
+
+        .bike-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .placeholder {
+            font-size: 65px;
+        }
+
+        .available {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+
+            background: #ecfdf3;
+            color: #15803d;
+
+            padding: 5px 9px;
+            border-radius: 20px;
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        /* ================= BIKE INFO ================= */
+
+        .bike-content {
+            padding: 20px;
+        }
+
+        .brand {
+            color: #d97706;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .bike-content h3 {
+            font-size: 18px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .bike-description {
+            color: #64748b;
+            font-size: 12px;
+            min-height: 38px;
+            margin-bottom: 15px;
+        }
+
+        .price-label {
+            color: #94a3b8;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .price {
+            color: #111827;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .weekly {
+            background: #f8fafc;
+            border-radius: 7px;
+            padding: 9px;
+            margin-bottom: 15px;
+
+            font-size: 11px;
+            color: #475569;
+        }
+
+        .weekly strong {
+            color: #d97706;
+        }
+
+        .bike-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .btn {
+            text-align: center;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .btn-primary {
+            background: #d97706;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b85f00;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border: 1px solid #dbe1e8;
+        }
+
+        .btn-secondary:hover {
+            border-color: #d97706;
+            color: #d97706;
+        }
+
+        /* ================= HOW IT WORKS ================= */
+
+        .how-section {
+            background: white;
+            padding: 75px 25px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .how-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .how-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .how-title h2 {
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .how-title p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .step-number {
+            width: 42px;
+            height: 42px;
+
+            background: #fff7ed;
+            color: #d97706;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 auto 15px;
+
+            font-weight: 800;
+        }
+
+        .step h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px;
+            font-size: 12px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 1050px) {
+
+            .bike-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .topbar {
+                padding: 0 20px;
+            }
+
+            .navigation {
+                gap: 12px;
+            }
+
+            .navigation a:not(.dashboard-btn) {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .filter-box {
+                grid-template-columns: 1fr;
+            }
+
+            .bike-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .bike-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                display: block;
+            }
+
+            .section-header p {
+                margin-top: 5px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header class="topbar">
+
+        <a href="index.html" class="logo">
+            Mobility<span>.</span>
+        </a>
+
+        <nav class="navigation">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="login.html" class="dashboard-btn">
+                My Account
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-label">
+            Motorcycle Marketplace
+        </div>
+
+        <h1>
+            Find Your <span>Motorcycle</span>
+        </h1>
+
+        <p>
+            Explore available motorcycles and choose a model that
+            fits your mobility and business needs. Eligible applicants
+            can proceed to our hire-purchase application process.
+        </p>
+
+    </section>
+
+
+    <!-- ================= FILTER ================= -->
+
+    <div class="filter-area">
+
+        <div class="filter-box">
+
+            <input
+                type="text"
+                placeholder="Search motorcycle or brand..."
+            >
+
+            <select>
+
+                <option>
+                    All Brands
+                </option>
+
+                <option>
+                    TVS
+                </option>
+
+                <option>
+                    Bajaj
+                </option>
+
+                <option>
+                    Haojue
+                </option>
+
+                <option>
+                    Honda
+                </option>
+
+            </select>
+
+            <select>
+
+                <option>
+                    Price Range
+                </option>
+
+                <option>
+                    Under ₦1,500,000
+                </option>
+
+                <option>
+                    ₦1,500,000 - ₦2,000,000
+                </option>
+
+                <option>
+                    Above ₦2,000,000
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MOTORCYCLES ================= -->
+
+    <main class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Available Motorcycles
+                </h2>
+
+                <p>
+                    Select a motorcycle to view its details.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="inventory-note">
+
+            <strong>Price information:</strong>
+            The prices shown below are sample figures for website
+            development. Final motorcycle prices should be confirmed
+            from your actual supplier/inventory before publication.
+
+        </div>
+
+
+        <div class="bike-grid">
+
+
+            <!-- BIKE 01 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        TVS
+                    </div>
+
+                    <h3>
+                        TVS HLX 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Practical commercial motorcycle suitable
+                        for daily transportation.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦1,500,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦25,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIKE 02 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        TVS
+                    </div>
+
+                    <h3>
+                        TVS HLX 150
+                    </h3>
+
+                    <p class="bike-description">
+                        Higher-capacity option for demanding
+                        commercial operations.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦1,700,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦28,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIKE 03 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        Bajaj
+                    </div>
+
+                    <h3>
+                        Bajaj Boxer 100
+                    </h3>
+
+                    <p class="bike-description">
+                        Fuel-efficient motorcycle designed for
+                        everyday mobility.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦1,450,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦25,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIKE 04 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        Bajaj
+                    </div>
+
+                    <h3>
+                        Bajaj Boxer 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Reliable option for commercial riders
+                        and small businesses.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦1,600,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦27,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIKE 05 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        Haojue
+                    </div>
+
+                    <h3>
+                        Haojue HJ125
+                    </h3>
+
+                    <p class="bike-description">
+                        Comfortable motorcycle suitable for
+                        regular commercial use.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦1,550,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦26,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIKE 06 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        Honda
+                    </div>
+
+                    <h3>
+                        Honda ACE 125
+                    </h3>
+
+                    <p class="bike-description">
+                        Practical motorcycle designed for
+                        dependable everyday transportation.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦1,800,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦30,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIKE 07 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        TVS
+                    </div>
+
+                    <h3>
+                        TVS Raider
+                    </h3>
+
+                    <p class="bike-description">
+                        Modern motorcycle option with a sporty
+                        design and practical performance.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦2,000,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦33,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BIKE 08 -->
+
+            <article class="bike-card">
+
+                <div class="bike-image">
+
+                    <span class="available">
+                        AVAILABLE
+                    </span>
+
+                    <div class="placeholder">
+                        🏍️
+                    </div>
+
+                </div>
+
+                <div class="bike-content">
+
+                    <div class="brand">
+                        Bajaj
+                    </div>
+
+                    <h3>
+                        Bajaj Pulsar 125
+                    </h3>
+
+                    <p class="bike-description">
+                        A versatile motorcycle for personal
+                        and business mobility.
+                    </p>
+
+                    <div class="price-label">
+                        Sample Price
+                    </div>
+
+                    <div class="price">
+                        ₦1,950,000
+                    </div>
+
+                    <div class="weekly">
+                        Weekly from:
+                        <strong>₦32,000</strong>
+                    </div>
+
+                    <div class="bike-actions">
+
+                        <a href="#" class="btn btn-secondary">
+                            View Details
+                        </a>
+
+                        <a href="signup.html" class="btn btn-primary">
+                            Apply for Hire-Purchase
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <section class="how-section">
+
+        <div class="how-container">
+
+            <div class="how-title">
+
+                <h2>
+                    How Hire-Purchase Works
+                </h2>
+
+                <p>
+                    A simple pathway from motorcycle selection
+                    to structured repayment.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Choose a Motorcycle
+                    </h3>
+
+                    <p>
+                        Browse the available motorcycles and
+                        select the option that suits your needs.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Create an Account
+                    </h3>
+
+                    <p>
+                        Register your account and provide the
+                        required application information.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Application Review
+                    </h3>
+
+                    <p>
+                        Your application can be reviewed before
+                        any hire-purchase agreement is approved.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Structured Repayment
+                    </h3>
+
+                    <p>
+                        Approved customers follow their agreed
+                        repayment schedule toward ownership.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Mobility & Hire-Purchase Services.
+        All rights reserved.
+
+    </footer>
+
+</body>
+</html>
