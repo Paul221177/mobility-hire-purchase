@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Mobility & Hire-Purchase Services</title>
+
+    <meta name="description"
+        content="Login to your Mobility & Hire-Purchase Services account.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background:
+                linear-gradient(135deg, #fffaf2 0%, #ffffff 50%, #f8fafc 100%);
+            color: #172033;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            width: 100%;
+            padding: 22px 30px;
+        }
+
+        .header-container {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 21px;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo span {
+            color: #d97706;
+        }
+
+        .back-home {
+            text-decoration: none;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back-home:hover {
+            color: #d97706;
+        }
+
+        /* ================= MAIN ================= */
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px 70px;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        /* ================= LOGIN CARD ================= */
+
+        .login-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+            padding: 42px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.09);
+        }
+
+        .brand-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 22px;
+            border-radius: 16px;
+            background: #fff1d6;
+            color: #d97706;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .login-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-heading h1 {
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .login-heading p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 800;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #dbe1e8;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            color: #172033;
+            background: #ffffff;
+            transition: 0.2s;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #d97706;
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.10);
+        }
+
+        .password-input {
+            padding-right: 75px !important;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .show-password:hover {
+            color: #d97706;
+        }
+
+        /* ================= OPTIONS ================= */
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0 25px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .remember input {
+            accent-color: #d97706;
+        }
+
+        .forgot-password {
+            color: #d97706;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .login-btn {
+            width: 100%;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            background: #d97706;
+            color: white;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #b85f00;
+            transform: translateY(-1px);
+        }
+
+        /* ================= DIVIDER ================= */
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 28px 0;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        /* ================= SIGNUP ================= */
+
+        .signup-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .signup-text a {
+            color: #d97706;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ================= SECURITY ================= */
+
+        .security-note {
+            margin-top: 20px;
+            padding: 13px 15px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            color: #64748b;
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 550px) {
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .back-home {
+                font-size: 12px;
+            }
+
+            main {
+                padding: 25px 15px 50px;
+            }
+
+            .login-card {
+                padding: 32px 24px;
+                border-radius: 18px;
+            }
+
+            .login-heading h1 {
+                font-size: 26px;
+            }
+
+            .form-options {
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="header-container">
+
+            <a href="index.html" class="logo">
+                Mobility<span>.</span>
+            </a>
+
+            <a href="index.html" class="back-home">
+                ← Back to Website
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- LOGIN -->
+
+    <main>
+
+        <div class="login-wrapper">
+
+            <div class="login-card">
+
+                <div class="brand-icon">
+                    M
+                </div>
+
+                <div class="login-heading">
+
+                    <h1>
+                        Welcome Back
+                    </h1>
+
+                    <p>
+                        Sign in to access your Mobility & Hire-Purchase
+                        Services account.
+                    </p>
+
+                </div>
+
+
+                <!-- LOGIN FORM -->
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email address"
+                                required
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="password-input"
+                                placeholder="Enter your password"
+                                required
+                                autocomplete="current-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                onclick="togglePassword()"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                name="remember"
+                            >
+
+                            Remember me
+
+                        </label>
+
+
+                        <a
+                            href="#"
+                            class="forgot-password"
+                            onclick="forgotPassword(event)"
+                        >
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-btn"
+                    >
+                        Sign In
+                    </button>
+
+                </form>
+
+
+                <div class="divider">
+                    OR
+                </div>
+
+
+                <div class="signup-text">
+
+                    Don't have an account?
+
+                    <a href="signup.html">
+                        Create an Account
+                    </a>
+
+                </div>
+
+
+                <div class="security-note">
+
+                    🔒 Your account information should be kept secure.
+                    Never share your password with anyone.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Mobility & Hire-Purchase Services.
+        All rights reserved.
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            const button =
+                document.querySelector(".show-password");
+
+            if (password.type === "password") {
+
+                password.type = "text";
+                button.textContent = "Hide";
+
+            } else {
+
+                password.type = "password";
+                button.textContent = "Show";
+
+            }
+
+        }
+
+
+        function forgotPassword(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Password recovery will be available when the secure account system is connected."
+            );
+
+        }
+
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "The login system is currently being prepared. Your secure account system will be connected when the backend is added."
+                );
+
+            });
+
+    </script>
+
+</body>
+</html>
