@@ -2,1291 +2,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Create Account | Mobility & Hire-Purchase Services</title>
-
-    <meta name="description"
-        content="Create an account with Mobility & Hire-Purchase Services.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f6f8fb;
-            color: #172033;
-            min-height: 100vh;
-        }
-
-        nav {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .nav-container {
-            max-width: 1180px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: #111827;
-            text-decoration: none;
-            font-size: 21px;
-            font-weight: 900;
-        }
-
-        .logo span {
-            color: #d97706;
-        }
-
-        .back-link {
-            color: #64748b;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .back-link:hover {
-            color: #d97706;
-        }
-
-        .page {
-            min-height: calc(100vh - 70px);
-            display: flex;
-            justify-content: center;
-            padding: 55px 20px;
-        }
-
-        .signup-container {
-            width: 100%;
-            max-width: 620px;
-        }
-
-        .signup-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #fff3dc;
-            color: #a65f00;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .signup-header h1 {
-            font-size: 38px;
-            line-height: 1.15;
-            color: #111827;
-            margin-bottom: 12px;
-        }
-
-        .signup-header p {
-            max-width: 500px;
-            margin: auto;
-            color: #64748b;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        .signup-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 20px;
-            padding: 38px;
-            box-shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
-        }
-
-        .form-section {
-            margin-bottom: 30px;
-        }
-
-        .form-section-title {
-            font-size: 16px;
-            font-weight: 900;
-            color: #111827;
-            padding-bottom: 12px;
-            margin-bottom: 18px;
-            border-bottom: 1px solid #edf0f4;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            color: #374151;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .required {
-            color: #dc2626;
-        }
-
-        input,
-        select {
-            width: 100%;
-            height: 48px;
-            padding: 0 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 9px;
-            background: #ffffff;
-            color: #172033;
-            font-size: 14px;
-            outline: none;
-            transition: 0.2s ease;
-        }
-
-        input:focus,
-        select:focus {
-            border-color: #d97706;
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.10);
-        }
-
-        input::placeholder {
-            color: #9ca3af;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .help-text {
-            display: block;
-            margin-top: 7px;
-            color: #64748b;
-            font-size: 11px;
-            line-height: 1.5;
-        }
-
-        /* ACCOUNT TYPE */
-
-        .account-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        .account-option {
-            position: relative;
-        }
-
-        .account-option input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .account-option label {
-            margin: 0;
-            padding: 20px 15px;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border: 1.5px solid #d1d5db;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .account-icon {
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f8fafc;
-            border-radius: 50%;
-            font-size: 20px;
-            margin-bottom: 9px;
-        }
-
-        .account-option label strong {
-            color: #111827;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .account-option label small {
-            color: #64748b;
-            font-size: 11px;
-            font-weight: normal;
-        }
-
-        .account-option input:checked + label {
-            border-color: #d97706;
-            background: #fffaf2;
-            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.08);
-        }
-
-        .account-option input:checked + label .account-icon {
-            background: #fff0d2;
-        }
-
-        /* BUSINESS */
-
-        .business-box {
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            padding: 16px;
-            border-radius: 10px;
-            margin-top: 10px;
-        }
-
-        .business-box strong {
-            display: block;
-            color: #111827;
-            font-size: 13px;
-            margin-bottom: 5px;
-        }
-
-        .business-box span {
-            color: #64748b;
-            font-size: 12px;
-        }
-
-        /* PASSWORD */
-
-        .password-wrapper {
-            position: relative;
-        }
-
-        .password-wrapper input {
-            padding-right: 85px;
-        }
-
-        .show-password {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            background: transparent;
-            color: #d97706;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        /* TERMS */
-
-        .terms {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin: 22px 0;
-        }
-
-        .terms input {
-            width: 17px;
-            height: 17px;
-            margin-top: 2px;
-            flex-shrink: 0;
-            accent-color: #d97706;
-        }
-
-        .terms label {
-            margin: 0;
-            color: #64748b;
-            font-size: 12px;
-            line-height: 1.6;
-            font-weight: normal;
-        }
-
-        .terms a {
-            color: #d97706;
-            text-decoration: none;
-            font-weight: 800;
-        }
-
-        /* BUTTON */
-
-        .signup-btn {
-            width: 100%;
-            height: 52px;
-            border: none;
-            border-radius: 10px;
-            background: #d97706;
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 900;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .signup-btn:hover {
-            background: #b85f00;
-            transform: translateY(-1px);
-        }
-
-        .signup-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* LOGIN */
-
-        .login-text {
-            text-align: center;
-            margin-top: 24px;
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        .login-text a {
-            color: #d97706;
-            text-decoration: none;
-            font-weight: 900;
-        }
-
-        .login-text a:hover {
-            text-decoration: underline;
-        }
-
-        /* SECURITY */
-
-        .security-note {
-            margin-top: 20px;
-            padding: 14px;
-            background: #f8fafc;
-            border: 1px solid #edf0f4;
-            border-radius: 9px;
-            text-align: center;
-            color: #64748b;
-            font-size: 11px;
-            line-height: 1.5;
-        }
-
-        /* MESSAGE */
-
-        .form-message {
-            display: none;
-            margin-bottom: 20px;
-            padding: 13px 15px;
-            border-radius: 9px;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .form-message.error {
-            display: block;
-            background: #fef2f2;
-            color: #b91c1c;
-            border: 1px solid #fecaca;
-        }
-
-        .form-message.success {
-            display: block;
-            background: #f0fdf4;
-            color: #15803d;
-            border: 1px solid #bbf7d0;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 650px) {
-
-            .page {
-                padding: 35px 15px;
-            }
-
-            .signup-card {
-                padding: 25px 20px;
-                border-radius: 16px;
-            }
-
-            .signup-header h1 {
-                font-size: 30px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .account-options {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-container {
-                padding: 16px 18px;
-            }
-
-            .back-link {
-                font-size: 12px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account | Mobility</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f8fafc;
+    color:#172033;
+    min-height:100vh;
+}
+
+.header{
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+    padding:18px 25px;
+}
+
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+    color:#111827;
+    text-decoration:none;
+}
+
+.logo span{color:#d97706}
+
+.back{
+    color:#64748b;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.container{
+    max-width:650px;
+    margin:45px auto;
+    padding:0 20px;
+}
+
+.card{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#64748b;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+input,select{
+    width:100%;
+    padding:13px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    margin-bottom:18px;
+    font-size:15px;
+}
+
+.account-types{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:30px;
+}
+
+.account-type{
+    border:2px solid #e5e7eb;
+    border-radius:12px;
+    padding:20px;
+    cursor:pointer;
+}
+
+.account-type.active{
+    border-color:#d97706;
+    background:#fffaf2;
+}
+
+.account-type input{
+    display:none;
+}
+
+.account-type strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.account-type small{
+    color:#64748b;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#d97706;
+    color:white;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#b85f00;
+}
+
+.message{
+    display:none;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:18px;
+    font-size:14px;
+}
+
+.error{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.login{
+    text-align:center;
+    margin-top:20px;
+    color:#64748b;
+    font-size:14px;
+}
+
+.login a{
+    color:#d97706;
+    font-weight:700;
+    text-decoration:none;
+}
+
+@media(max-width:600px){
+    .account-types{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:25px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<header class="header">
+<div class="header-inner">
 
-    <nav>
-        <div class="nav-container">
+<a href="index.html" class="logo">
+Mobility<span>.</span>
+</a>
 
-            <a href="index.html" class="logo">
-                Mobility<span>.</span>
-            </a>
+<a href="index.html" class="back">
+← Back to Website
+</a>
 
-            <a href="index.html" class="back-link">
-                ← Back to Website
-            </a>
+</div>
+</header>
 
-        </div>
-    </nav>
+<div class="container">
 
+<div class="card">
 
-    <!-- PAGE -->
+<h1>Create Your Account</h1>
 
-    <main class="page">
+<p class="subtitle">
+Create an account to apply for motorcycle hire-purchase opportunities.
+</p>
 
-        <div class="signup-container">
+<div id="message" class="message error"></div>
 
-            <!-- HEADER -->
+<form id="signupForm">
 
-            <div class="signup-header">
+<label>Account Type</label>
 
-                <div class="badge">
-                    MOBILITY & HIRE-PURCHASE SERVICES
-                </div>
+<div class="account-types">
 
-                <h1>
-                    Create Your Account
-                </h1>
+<label class="account-type active" id="hireType">
+<input type="radio" name="accountType" value="hire-purchase" checked>
+<span style="font-size:28px">🏍️</span>
+<strong>Hire-Purchase</strong>
+<small>I want to acquire a motorcycle</small>
+</label>
 
-                <p>
-                    Join our platform to access motorcycle
-                    hire-purchase opportunities or participate
-                    in our investment program.
-                </p>
+<label class="account-type" id="investorType">
+<input type="radio" name="accountType" value="investor">
+<span style="font-size:28px">💰</span>
+<strong>Investor</strong>
+<small>I want to invest in the business</small>
+</label>
 
-            </div>
+</div>
 
+<label>First Name *</label>
+<input type="text" id="firstName" required>
 
-            <!-- SIGNUP CARD -->
+<label>Last Name *</label>
+<input type="text" id="lastName" required>
 
-            <div class="signup-card">
+<label>Email Address *</label>
+<input type="email" id="email" required>
 
-                <div id="formMessage" class="form-message"></div>
+<label>Phone Number *</label>
+<input type="tel" id="phone" required>
 
-                <form id="signupForm">
+<label>Residential Address</label>
+<input type="text" id="address">
 
-                    <!-- ACCOUNT TYPE -->
+<label>Employer / Business Name *</label>
+<input type="text" id="business" value="Mobility & Hire-Purchase Services" required>
 
-                    <div class="form-section">
+<label>Create Password *</label>
+<input type="password" id="password" minlength="8" required>
 
-                        <div class="form-section-title">
-                            Choose Your Account Type
-                        </div>
+<label>Confirm Password *</label>
+<input type="password" id="confirmPassword" minlength="8" required>
 
-                        <div class="account-options">
+<label style="font-weight:400;margin-bottom:20px">
+<input type="checkbox" id="terms" required style="width:auto;margin-right:8px">
+I agree to the Terms & Conditions and confirm that my information is accurate.
+</label>
 
-                            <div class="account-option">
+<button type="submit">
+Create Account
+</button>
 
-                                <input
-                                    type="radio"
-                                    id="rider"
-                                    name="account_type"
-                                    value="hire_purchase"
-                                    required
-                                >
+</form>
 
-                                <label for="rider">
+<div class="login">
+Already have an account?
+<a href="login.html">Sign In</a>
+</div>
 
-                                    <div class="account-icon">
-                                        🏍️
-                                    </div>
+</div>
 
-                                    <strong>
-                                        Hire-Purchase
-                                    </strong>
+</div>
 
-                                    <small>
-                                        I want to acquire a motorcycle
-                                    </small>
+<script>
 
-                                </label>
+const hireType = document.getElementById("hireType");
+const investorType = document.getElementById("investorType");
 
-                            </div>
+hireType.addEventListener("click",()=>{
+    hireType.classList.add("active");
+    investorType.classList.remove("active");
+});
 
+investorType.addEventListener("click",()=>{
+    investorType.classList.add("active");
+    hireType.classList.remove("active");
+});
 
-                            <div class="account-option">
+document.getElementById("signupForm").addEventListener("submit",function(e){
 
-                                <input
-                                    type="radio"
-                                    id="investor"
-                                    name="account_type"
-                                    value="investor"
-                                >
+    e.preventDefault();
 
-                                <label for="investor">
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const business = document.getElementById("business").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-                                    <div class="account-icon">
-                                        💰
-                                    </div>
+    const message = document.getElementById("message");
 
-                                    <strong>
-                                        Investor
-                                    </strong>
+    if(password !== confirmPassword){
 
-                                    <small>
-                                        I want to invest in the business
-                                    </small>
+        message.textContent = "Passwords do not match.";
+        message.style.display = "block";
+        return;
 
-                                </label>
+    }
 
-                            </div>
+    if(password.length < 8){
 
-                        </div>
+        message.textContent = "Password must contain at least 8 characters.";
+        message.style.display = "block";
+        return;
 
-                    </div>
+    }
 
+    const users = JSON.parse(localStorage.getItem("mhp_users") || "[]");
 
-                    <!-- PERSONAL INFORMATION -->
+    const existingUser = users.find(user => user.email === email);
 
-                    <div class="form-section">
+    if(existingUser){
 
-                        <div class="form-section-title">
-                            Personal Information
-                        </div>
+        message.textContent = "An account with this email already exists.";
+        message.style.display = "block";
+        return;
 
-                        <div class="form-row">
+    }
 
-                            <div class="form-group">
+    const accountType = document.querySelector(
+        'input[name="accountType"]:checked'
+    ).value;
 
-                                <label for="first_name">
-                                    First Name
-                                    <span class="required">*</span>
-                                </label>
+    const user = {
 
-                                <input
-                                    type="text"
-                                    id="first_name"
-                                    name="first_name"
-                                    placeholder="First name"
-                                    autocomplete="given-name"
-                                    required
-                                >
+        id: "USR-" + Date.now(),
 
-                            </div>
+        firstName,
+        lastName,
+        fullName: firstName + " " + lastName,
 
+        email,
+        phone,
+        address,
+        business,
 
-                            <div class="form-group">
+        accountType,
 
-                                <label for="last_name">
-                                    Last Name
-                                    <span class="required">*</span>
-                                </label>
+        password,
 
-                                <input
-                                    type="text"
-                                    id="last_name"
-                                    name="last_name"
-                                    placeholder="Last name"
-                                    autocomplete="family-name"
-                                    required
-                                >
+        createdAt: new Date().toISOString()
 
-                            </div>
+    };
 
-                        </div>
+    users.push(user);
 
+    localStorage.setItem("mhp_users",JSON.stringify(users));
 
-                        <div class="form-group">
+    localStorage.setItem("mhp_current_user",JSON.stringify(user));
 
-                            <label for="email">
-                                Email Address
-                                <span class="required">*</span>
-                            </label>
+    if(accountType === "investor"){
 
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="example@email.com"
-                                autocomplete="email"
-                                required
-                            >
+        window.location.href = "investor-application.html";
 
-                        </div>
+    }else{
 
+        window.location.href = "application.html";
 
-                        <div class="form-group">
+    }
 
-                            <label for="phone">
-                                Phone Number
-                                <span class="required">*</span>
-                            </label>
+});
 
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="+234 800 000 0000"
-                                autocomplete="tel"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="address">
-                                Residential Address
-                            </label>
-
-                            <input
-                                type="text"
-                                id="address"
-                                name="address"
-                                placeholder="Enter your residential address"
-                                autocomplete="street-address"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- BUSINESS -->
-
-                    <div class="form-section">
-
-                        <div class="form-section-title">
-                            Employer / Business Information
-                        </div>
-
-                        <div class="form-group">
-
-                            <label for="business">
-                                Employer / Business Name
-                                <span class="required">*</span>
-                            </label>
-
-                            <select
-                                id="business"
-                                name="business"
-                                required
-                            >
-
-                                <option value="">
-                                    Select business
-                                </option>
-
-                                <option value="mobility_hire_purchase">
-                                    Mobility & Hire-Purchase Services
-                                </option>
-
-                            </select>
-
-                            <span class="help-text">
-                                Select the business associated with your application.
-                            </span>
-
-                        </div>
-
-
-                        <div class="business-box">
-
-                            <strong>
-                                Mobility & Hire-Purchase Services
-                            </strong>
-
-                            <span>
-                                Motorcycle mobility, structured
-                                hire-purchase and investment services.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SECURITY -->
-
-                    <div class="form-section">
-
-                        <div class="form-section-title">
-                            Account Security
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="password">
-                                Create Password
-                                <span class="required">*</span>
-                            </label>
-
-                            <div class="password-wrapper">
-
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    placeholder="Create a strong password"
-                                    minlength="8"
-                                    autocomplete="new-password"
-                                    required
-                                >
-
-                                <button
-                                    type="button"
-                                    class="show-password"
-                                    onclick="togglePassword('password', this)"
-                                >
-                                    Show
-                                </button>
-
-                            </div>
-
-                            <span class="help-text">
-                                Password must contain at least 8 characters.
-                            </span>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="confirm_password">
-                                Confirm Password
-                                <span class="required">*</span>
-                            </label>
-
-                            <div class="password-wrapper">
-
-                                <input
-                                    type="password"
-                                    id="confirm_password"
-                                    name="confirm_password"
-                                    placeholder="Confirm your password"
-                                    minlength="8"
-                                    autocomplete="new-password"
-                                    required
-                                >
-
-                                <button
-                                    type="button"
-                                    class="show-password"
-                                    onclick="togglePassword('confirm_password', this)"
-                                >
-                                    Show
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- TERMS -->
-
-                    <div class="terms">
-
-                        <input
-                            type="checkbox"
-                            id="terms"
-                            required
-                        >
-
-                        <label for="terms">
-
-                            I agree to the
-                            <a href="#" onclick="return false;">
-                                Terms & Conditions
-                            </a>
-                            and confirm that the information
-                            provided is accurate.
-
-                        </label>
-
-                    </div>
-
-
-                    <!-- SUBMIT -->
-
-                    <button
-                        type="submit"
-                        class="signup-btn"
-                        id="signupButton"
-                    >
-                        Create Account
-                    </button>
-
-                </form>
-
-
-                <!-- LOGIN -->
-
-                <div class="login-text">
-
-                    Already have an account?
-
-                    <a href="login.html">
-                        Sign In
-                    </a>
-
-                </div>
-
-
-                <!-- SECURITY -->
-
-                <div class="security-note">
-
-                    🔒 Your information should be handled securely
-                    and used only for legitimate account and service
-                    purposes.
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-
-        /*
-         * ================================
-         * SHOW / HIDE PASSWORD
-         * ================================
-         */
-
-        function togglePassword(inputId, button) {
-
-            const input = document.getElementById(inputId);
-
-            if (input.type === "password") {
-
-                input.type = "text";
-                button.textContent = "Hide";
-
-            } else {
-
-                input.type = "password";
-                button.textContent = "Show";
-
-            }
-
-        }
-
-
-        /*
-         * ================================
-         * ELEMENTS
-         * ================================
-         */
-
-        const signupForm =
-            document.getElementById("signupForm");
-
-        const formMessage =
-            document.getElementById("formMessage");
-
-        const signupButton =
-            document.getElementById("signupButton");
-
-
-        /*
-         * ================================
-         * FORM SUBMISSION
-         * ================================
-         */
-
-        signupForm.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-
-            /*
-             * Get account type
-             */
-
-            const accountType =
-                document.querySelector(
-                    'input[name="account_type"]:checked'
-                );
-
-
-            if (!accountType) {
-
-                showMessage(
-                    "Please select whether you want to apply for hire-purchase or become an investor.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Get personal information
-             */
-
-            const firstName =
-                document.getElementById("first_name")
-                    .value
-                    .trim();
-
-            const lastName =
-                document.getElementById("last_name")
-                    .value
-                    .trim();
-
-            const email =
-                document.getElementById("email")
-                    .value
-                    .trim();
-
-            const phone =
-                document.getElementById("phone")
-                    .value
-                    .trim();
-
-            const address =
-                document.getElementById("address")
-                    .value
-                    .trim();
-
-
-            /*
-             * Validate names
-             */
-
-            if (!firstName || !lastName) {
-
-                showMessage(
-                    "Please enter your first name and last name.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Validate email
-             */
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(email)) {
-
-                showMessage(
-                    "Please enter a valid email address.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Validate phone
-             */
-
-            const phoneDigits =
-                phone.replace(/\D/g, "");
-
-            if (phoneDigits.length < 10) {
-
-                showMessage(
-                    "Please enter a valid phone number.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Get passwords
-             */
-
-            const password =
-                document.getElementById("password")
-                    .value;
-
-            const confirmPassword =
-                document.getElementById("confirm_password")
-                    .value;
-
-
-            /*
-             * Validate password
-             */
-
-            if (password.length < 8) {
-
-                showMessage(
-                    "Your password must contain at least 8 characters.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Confirm password
-             */
-
-            if (password !== confirmPassword) {
-
-                showMessage(
-                    "The passwords do not match. Please check them and try again.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Get business
-             */
-
-            const business =
-                document.getElementById("business")
-                    .value;
-
-
-            if (!business) {
-
-                showMessage(
-                    "Please select the employer or business name.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Terms
-             */
-
-            const terms =
-                document.getElementById("terms");
-
-            if (!terms.checked) {
-
-                showMessage(
-                    "Please agree to the Terms & Conditions before creating your account.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /*
-             * ==========================================
-             * SAVE USER INFORMATION
-             * ==========================================
-             *
-             * IMPORTANT:
-             *
-             * We intentionally DO NOT save the password.
-             *
-             * This is still a front-end prototype.
-             * A production website should use a secure
-             * backend/database and hashed passwords.
-             */
-
-            const userData = {
-
-                firstName: firstName,
-
-                lastName: lastName,
-
-                fullName:
-                    firstName + " " + lastName,
-
-                email: email,
-
-                phone: phone,
-
-                address: address,
-
-                accountType:
-                    accountType.value,
-
-                business:
-                    business,
-
-                signupDate:
-                    new Date().toISOString()
-
-            };
-
-
-            /*
-             * Save user profile
-             */
-
-            localStorage.setItem(
-                "mobilityUser",
-                JSON.stringify(userData)
-            );
-
-
-            /*
-             * Save account type separately
-             */
-
-            localStorage.setItem(
-                "accountType",
-                accountType.value
-            );
-
-
-            /*
-             * Save logged-in state
-             *
-             * This allows the next pages to know
-             * that the user just completed signup.
-             */
-
-            localStorage.setItem(
-                "mobilityLoggedIn",
-                "true"
-            );
-
-
-            /*
-             * Save display name
-             */
-
-            localStorage.setItem(
-                "mobilityUserName",
-                firstName + " " + lastName
-            );
-
-
-            /*
-             * Disable button
-             */
-
-            signupButton.disabled = true;
-
-            signupButton.textContent =
-                "Creating Account...";
-
-
-            /*
-             * Show success message
-             */
-
-            showMessage(
-                "Account information saved successfully. Redirecting...",
-                "success"
-            );
-
-
-            /*
-             * ==========================================
-             * REDIRECT
-             * ==========================================
-             */
-
-            setTimeout(function() {
-
-                /*
-                 * HIRE-PURCHASE
-                 */
-
-                if (
-                    accountType.value ===
-                    "hire_purchase"
-                ) {
-
-                    window.location.href =
-                        "application.html";
-
-                    return;
-                }
-
-
-                /*
-                 * INVESTOR
-                 */
-
-                if (
-                    accountType.value ===
-                    "investor"
-                ) {
-
-                    window.location.href =
-                        "investor-application.html";
-
-                    return;
-                }
-
-            }, 800);
-
-        });
-
-
-        /*
-         * ================================
-         * DISPLAY MESSAGE
-         * ================================
-         */
-
-        function showMessage(message, type) {
-
-            formMessage.textContent =
-                message;
-
-            formMessage.className =
-                "form-message " + type;
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        }
-
-    </script>
+</script>
 
 </body>
 </html>

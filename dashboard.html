@@ -1,1750 +1,1018 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Dashboard | Mobility & Hire-Purchase Services</title>
-
-    <meta name="description"
-        content="Customer dashboard for Mobility & Hire-Purchase Services.">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
-            color: #172033;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* ================= NAVBAR ================= */
-
-        nav {
-            height: 70px;
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            width: 100%;
-            max-width: 1250px;
-            margin: auto;
-            padding: 0 25px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 21px;
-            font-weight: 800;
-            color: #111827;
-        }
-
-        .logo span {
-            color: #d97706;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .user-name {
-            font-size: 13px;
-            font-weight: 700;
-            color: #374151;
-        }
-
-        .logout {
-            border: 1px solid #d1d5db;
-            padding: 8px 13px;
-            border-radius: 7px;
-            color: #475569;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .logout:hover {
-            border-color: #d97706;
-            color: #d97706;
-        }
-
-        /* ================= LAYOUT ================= */
-
-        .dashboard {
-            max-width: 1250px;
-            margin: auto;
-            padding: 35px 25px 70px;
-        }
-
-        /* ================= HEADER ================= */
-
-        .welcome {
-            margin-bottom: 30px;
-        }
-
-        .welcome-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
-            background: #fff1d6;
-            color: #a65f00;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .welcome h1 {
-            font-size: 31px;
-            color: #111827;
-            margin-bottom: 5px;
-        }
-
-        .welcome p {
-            color: #64748b;
-            font-size: 14px;
-        }
-
-        /* ================= STATUS ================= */
-
-        .application-status {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 22px;
-            margin-bottom: 25px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .status-left h3 {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .status-left p {
-            color: #64748b;
-            font-size: 12px;
-        }
-
-        .status-badge {
-            background: #fff7ed;
-            color: #c2410c;
-            border: 1px solid #fed7aa;
-            padding: 8px 13px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 800;
-        }
-
-        /* ================= STATS ================= */
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-bottom: 25px;
-        }
-
-        .stat-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 22px;
-        }
-
-        .stat-label {
-            color: #64748b;
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 9px;
-        }
-
-        .stat-value {
-            color: #111827;
-            font-size: 23px;
-            font-weight: 800;
-        }
-
-        .stat-sub {
-            color: #94a3b8;
-            font-size: 10px;
-            margin-top: 5px;
-        }
-
-        /* ================= MAIN GRID ================= */
-
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1.45fr 0.75fr;
-            gap: 22px;
-            align-items: start;
-        }
-
-        /* ================= CARD ================= */
-
-        .card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 22px;
-        }
-
-        .card-title {
-            color: #111827;
-            font-size: 17px;
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-
-        .card-description {
-            color: #64748b;
-            font-size: 12px;
-            margin-bottom: 22px;
-        }
-
-        /* ================= MOTORCYCLE ================= */
-
-        .bike-card {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 22px;
-            align-items: center;
-        }
-
-        .bike-image {
-            width: 180px;
-            height: 125px;
-            border-radius: 10px;
-            object-fit: cover;
-            background: #f1f5f9;
-        }
-
-        .bike-info h3 {
-            color: #111827;
-            font-size: 19px;
-            margin-bottom: 4px;
-        }
-
-        .bike-brand {
-            color: #d97706;
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .bike-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .bike-details span {
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            padding: 6px 9px;
-            border-radius: 6px;
-            color: #64748b;
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        /* ================= PROGRESS ================= */
-
-        .progress-area {
-            margin-top: 25px;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .progress-header span {
-            font-size: 12px;
-            color: #64748b;
-        }
-
-        .progress-header strong {
-            color: #d97706;
-            font-size: 12px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 9px;
-            background: #e5e7eb;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: #d97706;
-            border-radius: 20px;
-            transition: width 0.5s ease;
-        }
-
-        /* ================= PAYMENT ================= */
-
-        .payment-summary {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .payment-box {
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            border-radius: 9px;
-            padding: 15px;
-        }
-
-        .payment-box span {
-            display: block;
-            color: #64748b;
-            font-size: 10px;
-            margin-bottom: 5px;
-        }
-
-        .payment-box strong {
-            color: #111827;
-            font-size: 16px;
-        }
-
-        /* ================= PAYMENT HISTORY ================= */
-
-        .table-wrapper {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
-
-        th {
-            text-align: left;
-            color: #64748b;
-            background: #f8fafc;
-            padding: 11px;
-            font-size: 10px;
-        }
-
-        td {
-            padding: 13px 11px;
-            border-bottom: 1px solid #edf0f4;
-            color: #374151;
-        }
-
-        .paid {
-            color: #15803d;
-            font-weight: 800;
-        }
-
-        .pending {
-            color: #b45309;
-            font-weight: 800;
-        }
-
-        /* ================= TIMELINE ================= */
-
-        .timeline {
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 6px;
-            top: 4px;
-            bottom: 4px;
-            width: 2px;
-            background: #e5e7eb;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 22px;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -25px;
-            top: 3px;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: #e5e7eb;
-            border: 3px solid #ffffff;
-            box-shadow: 0 0 0 1px #d1d5db;
-        }
-
-        .timeline-item.completed .timeline-dot {
-            background: #d97706;
-            box-shadow: 0 0 0 1px #d97706;
-        }
-
-        .timeline-item.active .timeline-dot {
-            background: #f59e0b;
-            box-shadow: 0 0 0 4px #fff1d6;
-        }
-
-        .timeline-item h4 {
-            font-size: 12px;
-            color: #111827;
-            margin-bottom: 2px;
-        }
-
-        .timeline-item p {
-            color: #64748b;
-            font-size: 10px;
-        }
-
-        /* ================= QUICK ACTIONS ================= */
-
-        .actions {
-            display: grid;
-            gap: 10px;
-        }
-
-        .action {
-            display: block;
-            border: 1px solid #e5e7eb;
-            border-radius: 9px;
-            padding: 13px;
-            color: #374151;
-            font-size: 12px;
-            font-weight: 700;
-            background: #ffffff;
-            transition: 0.2s;
-        }
-
-        .action:hover {
-            border-color: #d97706;
-            color: #d97706;
-            background: #fffaf2;
-        }
-
-        .action-primary {
-            background: #d97706;
-            color: #ffffff;
-            border-color: #d97706;
-        }
-
-        .action-primary:hover {
-            background: #b85f00;
-            color: #ffffff;
-        }
-
-        /* ================= NOTICE ================= */
-
-        .notice {
-            background: #fffaf2;
-            border: 1px solid #f3d9a7;
-            border-radius: 10px;
-            padding: 15px;
-            color: #92400e;
-            font-size: 11px;
-            line-height: 1.6;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #0b1120;
-            color: #94a3b8;
-            text-align: center;
-            padding: 24px;
-            font-size: 11px;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 950px) {
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .dashboard {
-                padding: 25px 15px 55px;
-            }
-
-            .nav-container {
-                padding: 0 15px;
-            }
-
-            .user-name {
-                display: none;
-            }
-
-            .welcome h1 {
-                font-size: 25px;
-            }
-
-            .application-status {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .stat-card {
-                padding: 16px;
-            }
-
-            .stat-value {
-                font-size: 19px;
-            }
-
-            .bike-card {
-                grid-template-columns: 1fr;
-            }
-
-            .bike-image {
-                width: 100%;
-                height: 190px;
-            }
-
-            .payment-summary {
-                grid-template-columns: 1fr;
-            }
-
-            .card {
-                padding: 19px;
-            }
-        }
-
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customer Dashboard | Mobility</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f8fafc;
+    color:#172033;
+}
+
+.header{
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.header-inner{
+    max-width:1150px;
+    margin:auto;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#111827;
+    font-size:22px;
+    font-weight:800;
+    text-decoration:none;
+}
+
+.logo span{
+    color:#d97706;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.header-right span{
+    font-size:14px;
+    color:#64748b;
+}
+
+.signout{
+    color:#dc2626;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.container{
+    max-width:1150px;
+    margin:40px auto;
+    padding:0 25px;
+}
+
+.welcome{
+    margin-bottom:30px;
+}
+
+.welcome h1{
+    font-size:36px;
+    margin-bottom:7px;
+}
+
+.welcome p{
+    color:#64748b;
+}
+
+.status{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 12px;
+    border-radius:20px;
+    background:#fff7ed;
+    color:#c2410c;
+    font-size:12px;
+    font-weight:800;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:22px;
+}
+
+.stat-card small{
+    color:#64748b;
+    font-size:12px;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+.stat-card strong{
+    display:block;
+    margin-top:8px;
+    font-size:22px;
+    color:#111827;
+}
+
+.main-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:28px;
+    margin-bottom:25px;
+}
+
+.card h2{
+    font-size:21px;
+    margin-bottom:20px;
+}
+
+.bike-image{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:18px;
+}
+
+.bike-title{
+    font-size:24px;
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.bike-meta{
+    color:#64748b;
+    font-size:14px;
+}
+
+.progress-container{
+    margin-top:20px;
+}
+
+.progress-label{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.progress{
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    background:#d97706;
+    width:0%;
+}
+
+.payment-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.payment-box{
+    background:#f8fafc;
+    padding:16px;
+    border-radius:10px;
+}
+
+.payment-box small{
+    display:block;
+    color:#64748b;
+    margin-bottom:5px;
+}
+
+.payment-box strong{
+    font-size:18px;
+}
+
+.timeline{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.timeline-item{
+    display:flex;
+    gap:15px;
+}
+
+.dot{
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:#d97706;
+    margin-top:5px;
+    flex-shrink:0;
+}
+
+.timeline-item.pending .dot{
+    background:#cbd5e1;
+}
+
+.timeline-item strong{
+    display:block;
+    margin-bottom:3px;
+}
+
+.timeline-item span{
+    color:#64748b;
+    font-size:13px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    text-align:left;
+    padding:12px 8px;
+    border-bottom:1px solid #e5e7eb;
+    font-size:13px;
+}
+
+th{
+    color:#64748b;
+}
+
+.actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.action{
+    display:inline-block;
+    padding:12px 16px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+    background:#d97706;
+    color:white;
+}
+
+.action.secondary{
+    background:#f1f5f9;
+    color:#334155;
+}
+
+.notice{
+    background:#fffaf2;
+    border:1px solid #fde3b0;
+    padding:16px;
+    border-radius:10px;
+    color:#92400e;
+    font-size:13px;
+    margin-top:20px;
+}
+
+.no-application{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    padding:45px;
+    text-align:center;
+}
+
+.no-application h2{
+    margin-bottom:10px;
+}
+
+.no-application p{
+    color:#64748b;
+    margin-bottom:20px;
+}
+
+@media(max-width:900px){
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .main-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-right span{
+        display:none;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .welcome h1{
+        font-size:29px;
+    }
+
+    .payment-info{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
+<header class="header">
 
-<!-- ================= NAVIGATION ================= -->
+<div class="header-inner">
 
-<nav>
+<a href="index.html" class="logo">
+Mobility<span>.</span>
+</a>
 
-    <div class="nav-container">
+<div class="header-right">
 
-        <a href="index.html" class="logo">
-            Mobility<span>.</span>
-        </a>
+<span id="headerName">
+Customer
+</span>
 
-        <div class="nav-right">
+<a class="signout" onclick="signOut()">
+Sign Out
+</a>
 
-            <span class="user-name">
-                Welcome, Customer
-            </span>
+</div>
 
-            <a href="login.html" class="logout">
-                Sign Out
-            </a>
+</div>
 
-        </div>
+</header>
 
-    </div>
 
-</nav>
+<div class="container">
 
+<div class="welcome">
 
-<!-- ================= DASHBOARD ================= -->
+<h1>
+Welcome back, <span id="welcomeName">Customer</span>
+</h1>
 
-<main class="dashboard">
+<p>
+Manage your motorcycle application, payments and hire-purchase progress.
+</p>
 
+<div class="status" id="applicationStatus">
+NO APPLICATION
+</div>
 
-    <!-- WELCOME -->
+</div>
 
-    <section class="welcome">
 
-        <div class="welcome-badge">
-            CUSTOMER DASHBOARD
-        </div>
+<div id="noApplication" class="no-application" style="display:none">
 
-        <h1>
-            Welcome back, Customer
-        </h1>
+<h2>
+You have not submitted a motorcycle application yet.
+</h2>
 
-        <p>
-            Manage your motorcycle application, payments and
-            hire-purchase progress from one place.
-        </p>
+<p>
+Choose a motorcycle and submit your hire-purchase application.
+</p>
 
-    </section>
+<a href="application.html" class="action">
+Apply for Motorcycle
+</a>
 
+</div>
 
-    <!-- APPLICATION STATUS -->
 
-    <div class="application-status">
+<div id="dashboardContent">
 
-        <div class="status-left">
+<div class="grid">
 
-            <h3>
-                Hire-Purchase Application
-            </h3>
+<div class="stat-card">
 
-            <p>
-                Application ID: MHP-2026-0001
-            </p>
+<small>Motorcycle Price</small>
 
-        </div>
+<strong id="motorcyclePrice">
+₦0
+</strong>
 
-        <div class="status-badge">
-            UNDER REVIEW
-        </div>
+</div>
 
-    </div>
 
+<div class="stat-card">
 
-    <!-- STATS -->
+<small>Payment</small>
 
-    <div class="stats-grid">
+<strong id="paymentAmount">
+₦0
+</strong>
 
+</div>
 
-        <div class="stat-card">
 
-            <div class="stat-label">
-                MOTORCYCLE PRICE
-            </div>
+<div class="stat-card">
 
-            <div class="stat-value">
-                ₦1,500,000
-            </div>
+<small>Amount Paid</small>
 
-            <div class="stat-sub">
-                Reference purchase price
-            </div>
+<strong id="amountPaid">
+₦0
+</strong>
 
-        </div>
+</div>
 
 
-        <div class="stat-card">
+<div class="stat-card">
 
-            <div class="stat-label">
-                WEEKLY PAYMENT
-            </div>
+<small>Balance</small>
 
-            <div class="stat-value">
-                ₦30,000
-            </div>
+<strong id="balance">
+₦0
+</strong>
 
-            <div class="stat-sub">
-                Selected repayment amount
-            </div>
+</div>
 
-        </div>
+</div>
 
 
-        <div class="stat-card">
+<div class="main-grid">
 
-            <div class="stat-label">
-                AMOUNT PAID
-            </div>
 
-            <div class="stat-value">
-                ₦0
-            </div>
+<div>
 
-            <div class="stat-sub">
-                Total recorded payments
-            </div>
+<div class="card">
 
-        </div>
+<h2>
+My Motorcycle
+</h2>
 
+<img
+class="bike-image"
+src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=700&q=80"
+alt="Motorcycle"
+>
 
-        <div class="stat-card">
+<div class="bike-title" id="bikeName">
+Motorcycle
+</div>
 
-            <div class="stat-label">
-                BALANCE
-            </div>
+<div class="bike-meta">
+TVS • Commercial • Hire-Purchase
+</div>
 
-            <div class="stat-value">
-                ₦1,500,000
-            </div>
+<div class="progress-container">
 
-            <div class="stat-sub">
-                Current outstanding balance
-            </div>
+<div class="progress-label">
 
-        </div>
+<span>Hire-Purchase Progress</span>
 
-    </div>
+<span id="progressText">0%</span>
 
+</div>
 
-    <!-- MAIN GRID -->
+<div class="progress">
 
-    <div class="main-grid">
+<div
+class="progress-bar"
+id="progressBar">
+</div>
 
+</div>
 
-        <!-- LEFT COLUMN -->
+</div>
 
-        <div>
+</div>
 
 
-            <!-- MOTORCYCLE -->
+<div class="card">
 
-            <div class="card">
+<h2>
+Payment Overview
+</h2>
 
-                <div class="card-title">
-                    My Motorcycle
-                </div>
+<div class="payment-info">
 
-                <div class="card-description">
-                    Motorcycle selected for your application.
-                </div>
+<div class="payment-box">
 
+<small>Payment Frequency</small>
 
-                <div class="bike-card">
+<strong id="frequency">
+Weekly
+</strong>
 
-                    <img
-                        class="bike-image"
-                        src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=700&q=80"
-                        alt="Motorcycle"
-                    >
+</div>
 
+<div class="payment-box">
 
-                    <div class="bike-info">
+<small>Payment Amount</small>
 
-                        <h3>
-                            TVS Rockz 125
-                        </h3>
+<strong id="paymentOverview">
+₦0
+</strong>
 
-                        <div class="bike-brand">
-                            TVS • 124.5cc
-                        </div>
+</div>
 
-                        <div class="bike-details">
+<div class="payment-box">
 
-                            <span>
-                                124.5cc Engine
-                            </span>
+<small>Total Paid</small>
 
-                            <span>
-                                Commercial
-                            </span>
+<strong id="paidOverview">
+₦0
+</strong>
 
-                            <span>
-                                Hire-Purchase
-                            </span>
+</div>
 
-                        </div>
+<div class="payment-box">
 
-                    </div>
+<small>Remaining</small>
 
-                </div>
+<strong id="remainingOverview">
+₦0
+</strong>
 
+</div>
 
-                <div class="progress-area">
+</div>
 
-                    <div class="progress-header">
+</div>
 
-                        <span>
-                            Hire-Purchase Progress
-                        </span>
+</div>
 
-                        <strong id="progressText">
-                            0%
-                        </strong>
 
-                    </div>
+<div>
 
-                    <div class="progress-bar">
+<div class="card">
 
-                        <div
-                            class="progress-fill"
-                            id="progressFill">
-                        </div>
+<h2>
+Application Details
+</h2>
 
-                    </div>
+<div class="payment-info">
 
-                </div>
+<div class="payment-box">
 
-            </div>
+<small>Application ID</small>
 
+<strong id="applicationId">
+—
+</strong>
 
-            <!-- PAYMENT SUMMARY -->
+</div>
 
-            <div class="card">
+<div class="payment-box">
 
-                <div class="card-title">
-                    Payment Overview
-                </div>
+<small>Applicant</small>
 
-                <div class="card-description">
-                    Your current hire-purchase payment position.
-                </div>
+<strong id="applicantName">
+—
+</strong>
 
+</div>
 
-                <div class="payment-summary">
+<div class="payment-box">
 
+<small>Email</small>
 
-                    <div class="payment-box">
+<strong id="applicantEmail">
+—
+</strong>
 
-                        <span>
-                            WEEKLY PAYMENT
-                        </span>
+</div>
 
-                        <strong>
-                            ₦30,000
-                        </strong>
+<div class="payment-box">
 
-                    </div>
+<small>Submitted</small>
 
+<strong id="submittedDate">
+—
+</strong>
 
-                    <div class="payment-box">
+</div>
 
-                        <span>
-                            TOTAL PAID
-                        </span>
+</div>
 
-                        <strong>
-                            ₦0
-                        </strong>
+</div>
 
-                    </div>
 
+<div class="card">
 
-                    <div class="payment-box">
+<h2>
+Application Progress
+</h2>
 
-                        <span>
-                            REMAINING
-                        </span>
+<div class="timeline">
 
-                        <strong>
-                            ₦1,500,000
-                        </strong>
+<div class="timeline-item">
 
-                    </div>
+<div class="dot"></div>
 
-                </div>
+<div>
 
-            </div>
+<strong>Application Submitted</strong>
 
+<span>Application received</span>
 
-            <!-- PAYMENT HISTORY -->
+</div>
 
-            <div class="card">
+</div>
 
-                <div class="card-title">
-                    Payment History
-                </div>
 
-                <div class="card-description">
-                    Your recorded hire-purchase payments.
-                </div>
+<div class="timeline-item">
 
+<div class="dot"></div>
 
-                <div class="table-wrapper">
+<div>
 
-                    <table>
+<strong>Under Review</strong>
 
-                        <thead>
+<span>Application is being reviewed</span>
 
-                            <tr>
-                                <th>Date</th>
-                                <th>Reference</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                            </tr>
+</div>
 
-                        </thead>
+</div>
 
-                        <tbody>
 
-                            <tr>
+<div class="timeline-item pending">
 
-                                <td>
-                                    —
-                                </td>
+<div class="dot"></div>
 
-                                <td>
-                                    No payment yet
-                                </td>
+<div>
 
-                                <td>
-                                    ₦0
-                                </td>
+<strong>Documents Verified</strong>
 
-                                <td class="pending">
-                                    Pending
-                                </td>
+<span>Verification pending</span>
 
-                            </tr>
+</div>
 
-                        </tbody>
+</div>
 
-                    </table>
 
-                </div>
+<div class="timeline-item pending">
 
-            </div>
+<div class="dot"></div>
 
+<div>
 
-        </div>
+<strong>Approved</strong>
 
+<span>Awaiting approval</span>
 
-        <!-- RIGHT COLUMN -->
+</div>
 
-        <div>
+</div>
 
 
-            <!-- APPLICATION PROGRESS -->
+<div class="timeline-item pending">
 
-            <div class="card">
+<div class="dot"></div>
 
-                <div class="card-title">
-                    Application Progress
-                </div>
+<div>
 
-                <div class="card-description">
-                    Track your application stage.
-                </div>
+<strong>Agreement</strong>
 
+<span>Hire-purchase agreement</span>
 
-                <div class="timeline">
+</div>
 
+</div>
 
-                    <div class="timeline-item completed">
 
-                        <div class="timeline-dot"></div>
+<div class="timeline-item pending">
 
-                        <h4>
-                            Application Submitted
-                        </h4>
+<div class="dot"></div>
 
-                        <p>
-                            Application received
-                        </p>
+<div>
 
-                    </div>
+<strong>Active</strong>
 
+<span>Repayment begins</span>
 
-                    <div class="timeline-item active">
+</div>
 
-                        <div class="timeline-dot"></div>
+</div>
 
-                        <h4>
-                            Under Review
-                        </h4>
 
-                        <p>
-                            Application being reviewed
-                        </p>
+<div class="timeline-item pending">
 
-                    </div>
+<div class="dot"></div>
 
+<div>
 
-                    <div class="timeline-item">
+<strong>Completed</strong>
 
-                        <div class="timeline-dot"></div>
+<span>Motorcycle ownership completed</span>
 
-                        <h4>
-                            Documents Verified
-                        </h4>
+</div>
 
-                        <p>
-                            Verification pending
-                        </p>
+</div>
 
-                    </div>
+</div>
 
+</div>
 
-                    <div class="timeline-item">
+</div>
 
-                        <div class="timeline-dot"></div>
+</div>
 
-                        <h4>
-                            Approved
-                        </h4>
 
-                        <p>
-                            Awaiting approval
-                        </p>
+<div class="card">
 
-                    </div>
+<h2>
+Payment History
+</h2>
 
+<table>
 
-                    <div class="timeline-item">
+<thead>
 
-                        <div class="timeline-dot"></div>
+<tr>
 
-                        <h4>
-                            Agreement
-                        </h4>
+<th>Date</th>
+<th>Reference</th>
+<th>Amount</th>
+<th>Status</th>
 
-                        <p>
-                            Hire-purchase agreement
-                        </p>
+</tr>
 
-                    </div>
+</thead>
 
+<tbody id="paymentHistory">
 
-                    <div class="timeline-item">
+<tr>
 
-                        <div class="timeline-dot"></div>
+<td colspan="4">
+No payment yet
+</td>
 
-                        <h4>
-                            Active
-                        </h4>
+</tr>
 
-                        <p>
-                            Repayment begins
-                        </p>
+</tbody>
 
-                    </div>
+</table>
 
+</div>
 
-                    <div class="timeline-item">
 
-                        <div class="timeline-dot"></div>
+<div class="card">
 
-                        <h4>
-                            Completed
-                        </h4>
+<h2>
+Quick Actions
+</h2>
 
-                        <p>
-                            Motorcycle ownership completed
-                        </p>
+<div class="actions">
 
-                    </div>
+<a href="bikes.html" class="action">
+Browse Motorcycles
+</a>
 
+<a href="application.html" class="action">
+New Application
+</a>
 
-                </div>
+<a href="investor-application.html" class="action secondary">
+Explore Investment
+</a>
 
-            </div>
+<a href="index.html#contact" class="action secondary">
+Contact Support
+</a>
 
+</div>
 
-            <!-- QUICK ACTIONS -->
+</div>
 
-            <div class="card">
 
-                <div class="card-title">
-                    Quick Actions
-                </div>
+<div class="notice">
 
-                <div class="card-description">
-                    Useful account actions.
-                </div>
+<strong>Important:</strong>
 
+This version stores account and application information in the browser using local storage. It is suitable for testing the website flow, but it is not yet a production banking/payment database.
 
-                <div class="actions">
+</div>
 
-                    <a
-                        href="bikes.html"
-                        class="action action-primary"
-                    >
-                        Browse Motorcycles
-                    </a>
+</div>
 
-                    <a
-                        href="application.html"
-                        class="action"
-                    >
-                        New Hire-Purchase Application
-                    </a>
-
-                    <a
-                        href="investor-application.html"
-                        class="action"
-                    >
-                        Explore Investment
-                    </a>
-
-                    <a
-                        href="index.html#contact"
-                        class="action"
-                    >
-                        Contact Support
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- NOTICE -->
-
-            <div class="notice">
-
-                <strong>
-                    Account Notice
-                </strong>
-
-                <br><br>
-
-                Your dashboard information is currently
-                demonstration data. Once the platform backend
-                is connected, your actual application,
-                payment records and account information will
-                be displayed here.
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</main>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    © 2026 Mobility & Hire-Purchase Services.
-    All rights reserved.
-
-</footer>
+</div>
 
 
 <script>
-/* =========================================================
-   MOBILITY CUSTOMER DASHBOARD
-   Connects:
-   Signup → Application → Dashboard
-   ========================================================= */
 
-(function () {
+const currentUser =
+    JSON.parse(localStorage.getItem("mhp_current_user"));
 
-    /* ===============================
-       LOAD USER
-       =============================== */
+if(!currentUser){
 
-    const storedUser = localStorage.getItem("mobilityUser");
+    window.location.href = "login.html";
 
-    if (!storedUser) {
-        alert("Please create an account first.");
-        window.location.href = "signup.html";
-        return;
-    }
+}
 
-    let userData;
 
-    try {
-        userData = JSON.parse(storedUser);
-    } catch (error) {
-        localStorage.removeItem("mobilityUser");
-        alert("Your account information could not be loaded.");
-        window.location.href = "signup.html";
-        return;
-    }
+document.getElementById("headerName")
+    .textContent = currentUser.fullName;
 
+document.getElementById("welcomeName")
+    .textContent = currentUser.firstName;
 
-    /* ===============================
-       LOAD APPLICATION
-       =============================== */
 
-    const storedApplication =
-        localStorage.getItem("mobilityApplication");
-
-    let application = null;
-
-    if (storedApplication) {
-        try {
-            application = JSON.parse(storedApplication);
-        } catch (error) {
-            console.error(
-                "Could not load application:",
-                error
-            );
-        }
-    }
-
-
-    /* ===============================
-       USER NAME
-       =============================== */
-
-    const fullName =
-        userData.fullName ||
-        (
-            (userData.firstName || "") +
-            " " +
-            (userData.lastName || "")
-        ).trim();
-
-    /* Navigation */
-    const navUser =
-        document.querySelector(".user-name");
-
-    if (navUser) {
-        navUser.textContent =
-            "Welcome, " + (fullName || "Customer");
-    }
-
-
-    /* Main welcome heading */
-    const welcomeHeading =
-        document.querySelector(".welcome h1");
-
-    if (welcomeHeading) {
-        welcomeHeading.textContent =
-            "Welcome back, " +
-            (fullName || "Customer");
-    }
-
-
-    /* ===============================
-       APPLICATION DATA
-       =============================== */
-
-    if (!application) {
-
-        console.warn(
-            "No hire-purchase application found."
-        );
-
-        /*
-         * Keep dashboard usable,
-         * but send the user to application
-         * if they have not submitted one.
-         */
-
-        const statusBadge =
-            document.querySelector(".status-badge");
-
-        if (statusBadge) {
-            statusBadge.textContent =
-                "NO APPLICATION";
-        }
-
-        return;
-    }
-
-
-    /* ===============================
-       APPLICATION ID
-       =============================== */
-
-    const applicationId =
-        application.applicationId ||
-        generateApplicationId(
-            application.applicationDate
-        );
-
-    const applicationIdElement =
-        document.querySelector(
-            ".status-left p"
-        );
-
-    if (applicationIdElement) {
-        applicationIdElement.textContent =
-            "Application ID: " +
-            applicationId;
-    }
-
-
-    /* ===============================
-       APPLICATION STATUS
-       =============================== */
-
-    const statusBadge =
-        document.querySelector(".status-badge");
-
-    if (statusBadge) {
-
-        const status =
-            application.applicationStatus ||
-            "submitted";
-
-        statusBadge.textContent =
-            formatStatus(status);
-
-    }
-
-
-    /* ===============================
-       MOTORCYCLE
-       =============================== */
-
-    const motorcycle =
-        application.motorcycle || {};
-
-    const motorcycleName =
-        motorcycle.name ||
-        "Motorcycle";
-
-    const motorcyclePrice =
-        Number(motorcycle.price || 0);
-
-
-    /* Motorcycle name */
-    const bikeName =
-        document.querySelector(".bike-info h3");
-
-    if (bikeName) {
-        bikeName.textContent =
-            motorcycleName;
-    }
-
-
-    /* Motorcycle image alt */
-    const bikeImage =
-        document.querySelector(".bike-image");
-
-    if (bikeImage) {
-        bikeImage.alt =
-            motorcycleName;
-    }
-
-
-    /* ===============================
-       MOTORCYCLE PRICE
-       =============================== */
-
-    const statCards =
-        document.querySelectorAll(
-            ".stat-card"
-        );
-
-    if (statCards.length >= 4) {
-
-        /*
-         * Card 1 = Motorcycle Price
-         */
-        const priceValue =
-            statCards[0].querySelector(
-                ".stat-value"
-            );
-
-        if (priceValue) {
-            priceValue.textContent =
-                formatCurrency(
-                    motorcyclePrice
-                );
-        }
-
-
-        /*
-         * Card 2 = Weekly Payment
-         */
-        const weeklyValue =
-            statCards[1].querySelector(
-                ".stat-value"
-            );
-
-        if (weeklyValue) {
-
-            const payment =
-                calculatePayment(
-                    motorcyclePrice,
-                    application.repaymentPlan
-                );
-
-            weeklyValue.textContent =
-                formatCurrency(payment);
-
-        }
-
-
-        /*
-         * Card 3 = Amount Paid
-         */
-        const paidValue =
-            statCards[2].querySelector(
-                ".stat-value"
-            );
-
-        if (paidValue) {
-            paidValue.textContent =
-                formatCurrency(0);
-        }
-
-
-        /*
-         * Card 4 = Balance
-         */
-        const balanceValue =
-            statCards[3].querySelector(
-                ".stat-value"
-            );
-
-        if (balanceValue) {
-            balanceValue.textContent =
-                formatCurrency(
-                    motorcyclePrice
-                );
-        }
-
-    }
-
-
-    /* ===============================
-       PAYMENT OVERVIEW
-       =============================== */
-
-    const paymentBoxes =
-        document.querySelectorAll(
-            ".payment-box"
-        );
-
-    const weeklyPayment =
-        calculatePayment(
-            motorcyclePrice,
-            application.repaymentPlan
-        );
-
-
-    if (paymentBoxes.length >= 3) {
-
-        /* Weekly payment */
-        const weekly =
-            paymentBoxes[0].querySelector(
-                "strong"
-            );
-
-        if (weekly) {
-            weekly.textContent =
-                formatCurrency(
-                    weeklyPayment
-                );
-        }
-
-
-        /* Total paid */
-        const totalPaid =
-            paymentBoxes[1].querySelector(
-                "strong"
-            );
-
-        if (totalPaid) {
-            totalPaid.textContent =
-                formatCurrency(0);
-        }
-
-
-        /* Remaining */
-        const remaining =
-            paymentBoxes[2].querySelector(
-                "strong"
-            );
-
-        if (remaining) {
-            remaining.textContent =
-                formatCurrency(
-                    motorcyclePrice
-                );
-        }
-
-    }
-
-
-    /* ===============================
-       PROGRESS
-       =============================== */
-
-    const amountPaid = 0;
-
-    let progress = 0;
-
-    if (motorcyclePrice > 0) {
-
-        progress =
-            (
-                amountPaid /
-                motorcyclePrice
-            ) * 100;
-
-    }
-
-    progress =
-        Math.min(
-            Math.max(progress, 0),
-            100
-        );
-
-
-    const progressFill =
-        document.getElementById(
-            "progressFill"
-        );
-
-    if (progressFill) {
-        progressFill.style.width =
-            progress + "%";
-    }
-
-
-    const progressText =
-        document.getElementById(
-            "progressText"
-        );
-
-    if (progressText) {
-        progressText.textContent =
-            progress.toFixed(0) + "%";
-    }
-
-
-    /* ===============================
-       APPLICATION TIMELINE
-       =============================== */
-
-    updateTimeline(
-        application.applicationStatus ||
-        "submitted"
+const applications =
+    JSON.parse(
+        localStorage.getItem("mhp_applications") || "[]"
     );
 
 
-    /* ===============================
-       REMOVE DEMO NOTICE
-       =============================== */
-
-    const notice =
-        document.querySelector(".notice");
-
-    if (notice) {
-
-        notice.innerHTML = `
-            <strong>Account Information</strong>
-            <br><br>
-            Your dashboard is connected to your
-            current hire-purchase application.
-            Application and payment information
-            will update as records are added.
-        `;
-
-    }
+const application =
+    applications.find(
+        app => app.userId === currentUser.id
+    );
 
 
-    /* ===============================
-       HELPER FUNCTIONS
-       =============================== */
+function money(amount){
 
-    function formatCurrency(amount) {
+    return "₦" +
+        Number(amount || 0).toLocaleString();
 
-        return "₦" +
-            Number(amount || 0)
-                .toLocaleString("en-NG");
-
-    }
+}
 
 
-    function formatStatus(status) {
+if(!application){
 
-        const statusMap = {
+    document.getElementById("dashboardContent")
+        .style.display = "none";
 
-            submitted:
-                "UNDER REVIEW",
+    document.getElementById("noApplication")
+        .style.display = "block";
 
-            under_review:
-                "UNDER REVIEW",
+    document.getElementById("applicationStatus")
+        .textContent = "NO APPLICATION";
 
-            verified:
-                "DOCUMENTS VERIFIED",
+}else{
 
-            approved:
-                "APPROVED",
-
-            agreement:
-                "AGREEMENT",
-
-            active:
-                "ACTIVE",
-
-            completed:
-                "COMPLETED"
-
-        };
-
-        return (
-            statusMap[status] ||
-            String(status)
-                .replace(/_/g, " ")
-                .toUpperCase()
-        );
-
-    }
+    document.getElementById("applicationStatus")
+        .textContent = application.status;
 
 
-    function calculatePayment(
-        price,
-        repaymentPlan
-    ) {
-
-        /*
-         * Prototype calculation.
-         *
-         * Weekly:
-         * motorcycle price ÷ 50 weeks
-         *
-         * Monthly:
-         * motorcycle price ÷ 12 months
-         */
-
-        if (!price) {
-            return 0;
-        }
-
-        if (
-            repaymentPlan ===
-            "monthly"
-        ) {
-
-            return Math.ceil(
-                price / 12
-            );
-
-        }
-
-        return Math.ceil(
-            price / 50
-        );
-
-    }
+    document.getElementById("motorcyclePrice")
+        .textContent =
+        money(application.motorcyclePrice);
 
 
-    function generateApplicationId(
-        dateString
-    ) {
-
-        const date =
-            dateString
-                ? new Date(dateString)
-                : new Date();
-
-        const year =
-            date.getFullYear();
-
-        const randomNumber =
-            Math.floor(
-                1000 +
-                Math.random() * 9000
-            );
-
-        return (
-            "MHP-" +
-            year +
-            "-" +
-            randomNumber
-        );
-
-    }
+    const payment =
+        application.repaymentFrequency === "weekly"
+        ? application.weeklyPayment
+        : application.monthlyPayment;
 
 
-    function updateTimeline(
-        status
-    ) {
-
-        const timelineItems =
-            document.querySelectorAll(
-                ".timeline-item"
-            );
-
-        if (!timelineItems.length) {
-            return;
-        }
+    document.getElementById("paymentAmount")
+        .textContent = money(payment);
 
 
-        const stages = [
-            "submitted",
-            "under_review",
-            "verified",
-            "approved",
-            "agreement",
-            "active",
-            "completed"
-        ];
+    document.getElementById("amountPaid")
+        .textContent =
+        money(application.amountPaid);
 
 
-        let currentIndex =
-            stages.indexOf(status);
+    document.getElementById("balance")
+        .textContent =
+        money(application.balance);
 
 
-        if (currentIndex === -1) {
-
-            currentIndex =
-                stages.indexOf(
-                    "submitted"
-                );
-
-        }
+    document.getElementById("bikeName")
+        .textContent =
+        application.motorcycle;
 
 
-        timelineItems.forEach(
-            function(item, index) {
-
-                item.classList.remove(
-                    "completed",
-                    "active"
-                );
+    document.getElementById("progressText")
+        .textContent =
+        application.progress + "%";
 
 
-                if (
-                    index <
-                    currentIndex
-                ) {
+    document.getElementById("progressBar")
+        .style.width =
+        application.progress + "%";
 
-                    item.classList.add(
-                        "completed"
-                    );
 
-                }
+    document.getElementById("frequency")
+        .textContent =
+        application.repaymentFrequency
+        .charAt(0).toUpperCase() +
+        application.repaymentFrequency.slice(1);
 
-                else if (
-                    index ===
-                    currentIndex
-                ) {
 
-                    item.classList.add(
-                        "active"
-                    );
+    document.getElementById("paymentOverview")
+        .textContent =
+        money(payment);
 
-                }
 
-            }
-        );
+    document.getElementById("paidOverview")
+        .textContent =
+        money(application.amountPaid);
+
+
+    document.getElementById("remainingOverview")
+        .textContent =
+        money(application.balance);
+
+
+    document.getElementById("applicationId")
+        .textContent =
+        application.id;
+
+
+    document.getElementById("applicantName")
+        .textContent =
+        application.applicant;
+
+
+    document.getElementById("applicantEmail")
+        .textContent =
+        application.email;
+
+
+    document.getElementById("submittedDate")
+        .textContent =
+        new Date(application.submittedAt)
+        .toLocaleDateString();
+
+
+    const history =
+        document.getElementById("paymentHistory");
+
+
+    if(application.payments &&
+       application.payments.length > 0){
+
+        history.innerHTML = "";
+
+        application.payments.forEach(payment => {
+
+            const row =
+                document.createElement("tr");
+
+            row.innerHTML = `
+
+                <td>
+                    ${new Date(payment.date)
+                    .toLocaleDateString()}
+                </td>
+
+                <td>
+                    ${payment.reference}
+                </td>
+
+                <td>
+                    ${money(payment.amount)}
+                </td>
+
+                <td>
+                    ${payment.status}
+                </td>
+
+            `;
+
+            history.appendChild(row);
+
+        });
 
     }
 
-})();
+}
+
+
+function signOut(){
+
+    localStorage.removeItem("mhp_current_user");
+
+    window.location.href = "login.html";
+
+}
+
 </script>
 
-
 </body>
+
 </html>
 ```

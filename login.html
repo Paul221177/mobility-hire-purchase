@@ -1,557 +1,248 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login | Mobility & Hire-Purchase Services</title>
+<title>Sign In | Mobility</title>
 
-    <meta name="description"
-        content="Login to your Mobility & Hire-Purchase Services account.">
+<style>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            min-height: 100vh;
-            background:
-                linear-gradient(135deg, #fffaf2 0%, #ffffff 50%, #f8fafc 100%);
-            color: #172033;
-            display: flex;
-            flex-direction: column;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f8fafc;
+    color:#172033;
+    min-height:100vh;
+}
 
-        /* ================= HEADER ================= */
+.header{
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    padding:18px 25px;
+}
 
-        header {
-            width: 100%;
-            padding: 22px 30px;
-        }
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-        .header-container {
-            max-width: 1150px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.logo{
+    font-size:22px;
+    font-weight:800;
+    text-decoration:none;
+    color:#111827;
+}
 
-        .logo {
-            text-decoration: none;
-            font-size: 21px;
-            font-weight: 800;
-            color: #111827;
-        }
+.logo span{
+    color:#d97706;
+}
 
-        .logo span {
-            color: #d97706;
-        }
+.back{
+    color:#64748b;
+    text-decoration:none;
+}
 
-        .back-home {
-            text-decoration: none;
-            color: #475569;
-            font-size: 14px;
-            font-weight: 700;
-        }
+.container{
+    max-width:500px;
+    margin:70px auto;
+    padding:0 20px;
+}
 
-        .back-home:hover {
-            color: #d97706;
-        }
+.card{
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    border:1px solid #e5e7eb;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
 
-        /* ================= MAIN ================= */
+h1{
+    font-size:32px;
+    margin-bottom:8px;
+}
 
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px 70px;
-        }
+.subtitle{
+    color:#64748b;
+    margin-bottom:30px;
+}
 
-        .login-wrapper {
-            width: 100%;
-            max-width: 450px;
-        }
+label{
+    display:block;
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:7px;
+}
 
-        /* ================= LOGIN CARD ================= */
+input{
+    width:100%;
+    padding:13px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:15px;
+}
 
-        .login-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 22px;
-            padding: 42px;
-            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.09);
-        }
+button{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:8px;
+    background:#d97706;
+    color:white;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+}
 
-        .brand-icon {
-            width: 58px;
-            height: 58px;
-            margin: 0 auto 22px;
-            border-radius: 16px;
-            background: #fff1d6;
-            color: #d97706;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 25px;
-            font-weight: 900;
-        }
+button:hover{
+    background:#b85f00;
+}
 
-        .login-heading {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+.message{
+    display:none;
+    padding:12px;
+    background:#fee2e2;
+    color:#991b1b;
+    border-radius:8px;
+    margin-bottom:18px;
+    font-size:14px;
+}
 
-        .login-heading h1 {
-            font-size: 30px;
-            color: #111827;
-            margin-bottom: 8px;
-        }
+.signup{
+    text-align:center;
+    margin-top:20px;
+    color:#64748b;
+    font-size:14px;
+}
 
-        .login-heading p {
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.6;
-        }
+.signup a{
+    color:#d97706;
+    font-weight:700;
+    text-decoration:none;
+}
 
-        /* ================= FORM ================= */
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 800;
-            color: #334155;
-            margin-bottom: 8px;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-wrapper input {
-            width: 100%;
-            padding: 14px 15px;
-            border: 1px solid #dbe1e8;
-            border-radius: 10px;
-            outline: none;
-            font-size: 14px;
-            color: #172033;
-            background: #ffffff;
-            transition: 0.2s;
-        }
-
-        .input-wrapper input:focus {
-            border-color: #d97706;
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.10);
-        }
-
-        .password-input {
-            padding-right: 75px !important;
-        }
-
-        .show-password {
-            position: absolute;
-            right: 13px;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            background: transparent;
-            color: #64748b;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .show-password:hover {
-            color: #d97706;
-        }
-
-        /* ================= OPTIONS ================= */
-
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 5px 0 25px;
-        }
-
-        .remember {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        .remember input {
-            accent-color: #d97706;
-        }
-
-        .forgot-password {
-            color: #d97706;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .forgot-password:hover {
-            text-decoration: underline;
-        }
-
-        /* ================= BUTTON ================= */
-
-        .login-btn {
-            width: 100%;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            background: #d97706;
-            color: white;
-            font-size: 15px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .login-btn:hover {
-            background: #b85f00;
-            transform: translateY(-1px);
-        }
-
-        /* ================= DIVIDER ================= */
-
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 28px 0;
-            color: #94a3b8;
-            font-size: 12px;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        /* ================= SIGNUP ================= */
-
-        .signup-text {
-            text-align: center;
-            color: #64748b;
-            font-size: 14px;
-        }
-
-        .signup-text a {
-            color: #d97706;
-            font-weight: 800;
-            text-decoration: none;
-        }
-
-        .signup-text a:hover {
-            text-decoration: underline;
-        }
-
-        /* ================= SECURITY ================= */
-
-        .security-note {
-            margin-top: 20px;
-            padding: 13px 15px;
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            color: #64748b;
-            font-size: 11px;
-            line-height: 1.5;
-            text-align: center;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            text-align: center;
-            padding: 22px;
-            color: #94a3b8;
-            font-size: 12px;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 550px) {
-
-            header {
-                padding: 18px 20px;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .back-home {
-                font-size: 12px;
-            }
-
-            main {
-                padding: 25px 15px 50px;
-            }
-
-            .login-card {
-                padding: 32px 24px;
-                border-radius: 18px;
-            }
-
-            .login-heading h1 {
-                font-size: 26px;
-            }
-
-            .form-options {
-                align-items: flex-start;
-                gap: 15px;
-            }
-        }
-    </style>
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+<header class="header">
 
-    <header>
-        <div class="header-container">
+<div class="header-inner">
 
-            <a href="index.html" class="logo">
-                Mobility<span>.</span>
-            </a>
+<a href="index.html" class="logo">
+Mobility<span>.</span>
+</a>
 
-            <a href="index.html" class="back-home">
-                ← Back to Website
-            </a>
+<a href="index.html" class="back">
+← Back
+</a>
 
-        </div>
-    </header>
+</div>
 
+</header>
 
-    <!-- LOGIN -->
+<div class="container">
 
-    <main>
+<div class="card">
 
-        <div class="login-wrapper">
+<h1>Welcome Back</h1>
 
-            <div class="login-card">
+<p class="subtitle">
+Sign in to manage your Mobility account.
+</p>
 
-                <div class="brand-icon">
-                    M
-                </div>
+<div id="message" class="message"></div>
 
-                <div class="login-heading">
+<form id="loginForm">
 
-                    <h1>
-                        Welcome Back
-                    </h1>
+<label>Email Address</label>
 
-                    <p>
-                        Sign in to access your Mobility & Hire-Purchase
-                        Services account.
-                    </p>
+<input
+type="email"
+id="email"
+required
+>
 
-                </div>
+<label>Password</label>
 
+<input
+type="password"
+id="password"
+required
+>
 
-                <!-- LOGIN FORM -->
+<button type="submit">
+Sign In
+</button>
 
-                <form id="loginForm">
+</form>
 
-                    <div class="form-group">
+<div class="signup">
 
-                        <label for="email">
-                            Email Address
-                        </label>
+Don't have an account?
+<a href="signup.html">Create Account</a>
 
-                        <div class="input-wrapper">
+</div>
 
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Enter your email address"
-                                required
-                                autocomplete="email"
-                            >
+</div>
 
-                        </div>
+</div>
 
-                    </div>
+<script>
 
+document.getElementById("loginForm").addEventListener("submit",function(e){
 
-                    <div class="form-group">
+    e.preventDefault();
 
-                        <label for="password">
-                            Password
-                        </label>
+    const email =
+        document.getElementById("email").value.trim().toLowerCase();
 
-                        <div class="input-wrapper">
+    const password =
+        document.getElementById("password").value;
 
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                class="password-input"
-                                placeholder="Enter your password"
-                                required
-                                autocomplete="current-password"
-                            >
+    const message =
+        document.getElementById("message");
 
-                            <button
-                                type="button"
-                                class="show-password"
-                                onclick="togglePassword()"
-                            >
-                                Show
-                            </button>
+    const users =
+        JSON.parse(localStorage.getItem("mhp_users") || "[]");
 
-                        </div>
+    const user = users.find(
+        u => u.email === email && u.password === password
+    );
 
-                    </div>
+    if(!user){
 
+        message.textContent =
+            "Incorrect email or password.";
 
-                    <div class="form-options">
+        message.style.display = "block";
 
-                        <label class="remember">
+        return;
 
-                            <input
-                                type="checkbox"
-                                name="remember"
-                            >
+    }
 
-                            Remember me
+    localStorage.setItem(
+        "mhp_current_user",
+        JSON.stringify(user)
+    );
 
-                        </label>
+    window.location.href = "dashboard.html";
 
+});
 
-                        <a
-                            href="#"
-                            class="forgot-password"
-                            onclick="forgotPassword(event)"
-                        >
-                            Forgot password?
-                        </a>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="login-btn"
-                    >
-                        Sign In
-                    </button>
-
-                </form>
-
-
-                <div class="divider">
-                    OR
-                </div>
-
-
-                <div class="signup-text">
-
-                    Don't have an account?
-
-                    <a href="signup.html">
-                        Create an Account
-                    </a>
-
-                </div>
-
-
-                <div class="security-note">
-
-                    🔒 Your account information should be kept secure.
-                    Never share your password with anyone.
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        © 2026 Mobility & Hire-Purchase Services.
-        All rights reserved.
-
-    </footer>
-
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-
-        function togglePassword() {
-
-            const password =
-                document.getElementById("password");
-
-            const button =
-                document.querySelector(".show-password");
-
-            if (password.type === "password") {
-
-                password.type = "text";
-                button.textContent = "Hide";
-
-            } else {
-
-                password.type = "password";
-                button.textContent = "Show";
-
-            }
-
-        }
-
-
-        function forgotPassword(event) {
-
-            event.preventDefault();
-
-            alert(
-                "Password recovery will be available when the secure account system is connected."
-            );
-
-        }
-
-
-        document
-            .getElementById("loginForm")
-            .addEventListener("submit", function(event) {
-
-                event.preventDefault();
-
-                alert(
-                    "The login system is currently being prepared. Your secure account system will be connected when the backend is added."
-                );
-
-            });
-
-    </script>
+</script>
 
 </body>
 </html>
+```
