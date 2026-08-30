@@ -1,149 +1,144 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Motorcycle Application | Mobility</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
 <style>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f8fafc;
-    color:#172033;
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #172033;
 }
 
-.header{
-    background:white;
-    border-bottom:1px solid #e5e7eb;
-    padding:18px 25px;
+.header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.header-inner{
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.header a {
+    text-decoration: none;
+    color: #111827;
+    font-weight: 800;
+    font-size: 21px;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:800;
-    color:#111827;
-    text-decoration:none;
+.header span {
+    color: #d97706;
 }
 
-.logo span{
-    color:#d97706;
+.container {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 20px;
 }
 
-.container{
-    max-width:750px;
-    margin:45px auto;
-    padding:0 20px;
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
 }
 
-.card{
-    background:white;
-    border:1px solid #e5e7eb;
-    border-radius:18px;
-    padding:35px;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
+h1 {
+    margin-bottom: 10px;
 }
 
-h1{
-    font-size:32px;
-    margin-bottom:8px;
+.intro {
+    color: #667085;
+    margin-bottom: 30px;
 }
 
-.subtitle{
-    color:#64748b;
-    margin-bottom:30px;
+.customer {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 25px;
 }
 
-.user-box{
-    background:#fffaf2;
-    border:1px solid #fde3b0;
-    padding:18px;
-    border-radius:10px;
-    margin-bottom:25px;
+.customer strong {
+    display: block;
+    margin-bottom: 5px;
 }
 
-.user-box strong{
-    display:block;
-    margin-bottom:4px;
+label {
+    display: block;
+    font-weight: 700;
+    margin: 18px 0 7px;
 }
 
-.user-box span{
-    color:#64748b;
-    font-size:14px;
+select,
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
 }
 
-label{
-    display:block;
-    font-size:14px;
-    font-weight:700;
-    margin-bottom:7px;
+.summary {
+    margin-top: 25px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-select,input{
-    width:100%;
-    padding:13px;
-    border:1px solid #d1d5db;
-    border-radius:8px;
-    margin-bottom:20px;
-    font-size:15px;
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
 }
 
-.motorcycle-card{
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:25px;
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #d97706;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
 }
 
-.motorcycle-card h3{
-    margin-bottom:8px;
+button:disabled {
+    opacity: .6;
 }
 
-.motorcycle-card p{
-    color:#64748b;
-    font-size:14px;
+.message {
+    display: none;
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 8px;
 }
 
-.price{
-    font-size:22px;
-    font-weight:800;
-    color:#d97706;
-    margin-top:10px;
+.error {
+    background: #fee2e2;
+    color: #991b1b;
 }
 
-button{
-    width:100%;
-    padding:15px;
-    background:#d97706;
-    color:white;
-    border:0;
-    border-radius:8px;
-    font-weight:800;
-    font-size:15px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#b85f00;
+.success {
+    background: #dcfce7;
+    color: #166534;
 }
 
 </style>
@@ -152,11 +147,9 @@ button:hover{
 
 <body>
 
-<header class="header">
+<div class="header">
 
-<div class="header-inner">
-
-<a href="index.html" class="logo">
+<a href="index.html">
 Mobility<span>.</span>
 </a>
 
@@ -166,101 +159,87 @@ Dashboard
 
 </div>
 
-</header>
-
 <div class="container">
 
 <div class="card">
 
 <h1>Motorcycle Application</h1>
 
-<p class="subtitle">
-Apply for a motorcycle through our structured hire-purchase program.
+<p class="intro">
+Choose a motorcycle and repayment option to submit your
+hire-purchase application.
 </p>
 
-<div class="user-box">
+<div class="customer">
 
 <strong id="customerName">
-Customer
+Loading customer...
 </strong>
 
 <span id="customerEmail">
-customer@email.com
 </span>
 
 </div>
 
 <form id="applicationForm">
 
-<label>Select Motorcycle</label>
+<label>Motorcycle</label>
 
 <select id="motorcycle" required>
 
 <option value="">
-Select motorcycle
-</option>
-
-<option
-value="TVS Rockz 125"
-data-price="1500000">
-TVS Rockz 125 — ₦1,500,000
-</option>
-
-<option
-value="Honda ACE 125"
-data-price="1550000">
-Honda ACE 125 — ₦1,550,000
-</option>
-
-<option
-value="Bajaj Boxer"
-data-price="1600000">
-Bajaj Boxer — ₦1,600,000
+Select Motorcycle
 </option>
 
 </select>
 
-<div id="motorcycleDetails" class="motorcycle-card" style="display:none">
-
-<h3 id="bikeName"></h3>
-
-<p>
-Commercial motorcycle suitable for income-generating activities.
-</p>
-
-<div class="price" id="bikePrice"></div>
-
-</div>
-
 <label>Repayment Frequency</label>
 
-<select id="frequency" required>
+<select id="frequency">
 
-<option value="weekly">
+<option value="Weekly">
 Weekly
 </option>
 
-<option value="monthly">
+<option value="Monthly">
 Monthly
 </option>
 
 </select>
 
-<label>Preferred Payment Amount</label>
+<div class="summary">
 
-<input
-type="number"
-id="payment"
-placeholder="Example: 30000"
-min="1"
-required
->
+<div class="summary-row">
 
-<button type="submit">
+<span>Motorcycle Price</span>
+
+<strong id="price">
+₦0
+</strong>
+
+</div>
+
+<div class="summary-row">
+
+<span>Weekly Payment</span>
+
+<strong id="weekly">
+₦0
+</strong>
+
+</div>
+
+</div>
+
+<button id="submitButton">
+
 Submit Hire-Purchase Application
+
 </button>
 
 </form>
+
+<div id="message" class="message"></div>
 
 </div>
 
@@ -268,160 +247,293 @@ Submit Hire-Purchase Application
 
 <script>
 
-const currentUser =
-    JSON.parse(localStorage.getItem("mhp_current_user"));
+let currentUser = null;
+let motorcycles = [];
 
-if(!currentUser){
+const motorcycleSelect =
+    document.getElementById("motorcycle");
 
-    window.location.href = "login.html";
+const priceElement =
+    document.getElementById("price");
+
+const weeklyElement =
+    document.getElementById("weekly");
+
+const form =
+    document.getElementById("applicationForm");
+
+const button =
+    document.getElementById("submitButton");
+
+const message =
+    document.getElementById("message");
+
+function money(value) {
+
+    return new Intl.NumberFormat(
+        "en-NG",
+        {
+            style: "currency",
+            currency: "NGN",
+            maximumFractionDigits: 0
+        }
+    ).format(value);
 
 }
 
-document.getElementById("customerName").textContent =
-    currentUser.fullName;
+function showMessage(text, type) {
 
-document.getElementById("customerEmail").textContent =
-    currentUser.email;
+    message.style.display = "block";
+    message.className = "message " + type;
+    message.textContent = text;
 
+}
 
-const motorcycle =
-    document.getElementById("motorcycle");
+async function loadPage() {
 
-motorcycle.addEventListener("change",function(){
+    const { data, error } =
+        await supabaseClient.auth.getUser();
 
-    const option =
-        motorcycle.options[motorcycle.selectedIndex];
+    if (error || !data.user) {
 
-    const price =
-        option.getAttribute("data-price");
-
-    if(!price){
-
-        document.getElementById("motorcycleDetails")
-            .style.display = "none";
+        window.location.href = "login.html";
 
         return;
-
     }
 
-    document.getElementById("motorcycleDetails")
-        .style.display = "block";
+    currentUser = data.user;
 
-    document.getElementById("bikeName")
-        .textContent = option.value;
+    const metadata =
+        currentUser.user_metadata || {};
 
-    document.getElementById("bikePrice")
-        .textContent =
-        "₦" + Number(price).toLocaleString();
+    document.getElementById("customerName").textContent =
+        `${metadata.first_name || ""} ${metadata.last_name || ""}`.trim();
 
-});
+    document.getElementById("customerEmail").textContent =
+        currentUser.email;
 
+    await loadMotorcycles();
 
-document.getElementById("applicationForm")
-.addEventListener("submit",function(e){
+}
 
-    e.preventDefault();
+async function loadMotorcycles() {
 
-    const option =
-        motorcycle.options[motorcycle.selectedIndex];
+    const { data, error } =
+        await supabaseClient
+            .from("motorcycles")
+            .select("*")
+            .eq("available", true)
+            .order("price", { ascending: true });
 
-    const bikeName =
-        option.value;
+    if (error) {
 
-    const price =
-        Number(option.getAttribute("data-price"));
+        console.error(error);
 
-    const frequency =
-        document.getElementById("frequency").value;
-
-    const payment =
-        Number(document.getElementById("payment").value);
-
-    if(!bikeName || !price || !payment){
-
-        alert("Please complete all required fields.");
-
-        return;
-
-    }
-
-    const applications =
-        JSON.parse(
-            localStorage.getItem("mhp_applications") || "[]"
+        showMessage(
+            "Unable to load motorcycles.",
+            "error"
         );
 
-    const application = {
+        return;
+    }
 
-        id:
-            "MHP-" +
-            new Date().getFullYear() +
-            "-" +
-            String(applications.length + 1).padStart(4,"0"),
+    motorcycles = data || [];
 
-        userId:
-            currentUser.id,
+    motorcycleSelect.innerHTML =
+        '<option value="">Select Motorcycle</option>';
 
-        applicant:
-            currentUser.fullName,
+    motorcycles.forEach(bike => {
 
-        email:
-            currentUser.email,
+        const option =
+            document.createElement("option");
 
-        phone:
-            currentUser.phone,
+        option.value = bike.id;
 
-        motorcycle:
-            bikeName,
+        option.textContent =
+            `${bike.name} — ${money(bike.price)}`;
 
-        motorcyclePrice:
-            price,
+        motorcycleSelect.appendChild(option);
 
-        repaymentFrequency:
-            frequency,
+    });
 
-        weeklyPayment:
-            frequency === "weekly" ? payment : 0,
+}
 
-        monthlyPayment:
-            frequency === "monthly" ? payment : 0,
+motorcycleSelect.addEventListener("change", function() {
 
-        amountPaid:
-            0,
+    const bike =
+        motorcycles.find(
+            item => String(item.id) === this.value
+        );
 
-        balance:
-            price,
+    if (!bike) {
 
-        progress:
-            0,
+        priceElement.textContent = "₦0";
+        weeklyElement.textContent = "₦0";
 
-        status:
-            "UNDER REVIEW",
+        return;
+    }
 
-        submittedAt:
-            new Date().toISOString(),
+    priceElement.textContent =
+        money(bike.price);
 
-        payments: []
-
-    };
-
-    applications.push(application);
-
-    localStorage.setItem(
-        "mhp_applications",
-        JSON.stringify(applications)
-    );
-
-    localStorage.setItem(
-        "mhp_current_application",
-        JSON.stringify(application)
-    );
-
-    window.location.href = "dashboard.html";
+    weeklyElement.textContent =
+        money(30000);
 
 });
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    if (!currentUser) {
+        return;
+    }
+
+    const motorcycleId =
+        motorcycleSelect.value;
+
+    if (!motorcycleId) {
+
+        showMessage(
+            "Please select a motorcycle.",
+            "error"
+        );
+
+        return;
+    }
+
+    const bike =
+        motorcycles.find(
+            item => String(item.id) === motorcycleId
+        );
+
+    if (!bike) {
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Submitting Application...";
+
+    try {
+
+        /*
+         * Prevent duplicate active applications.
+         */
+
+        const { data: existing } =
+            await supabaseClient
+                .from("applications")
+                .select("id")
+                .eq("user_id", currentUser.id)
+                .in(
+                    "status",
+                    ["Under Review", "Approved", "Active"]
+                );
+
+        if (existing && existing.length > 0) {
+
+            showMessage(
+                "You already have an active hire-purchase application.",
+                "error"
+            );
+
+            button.disabled = false;
+            button.textContent =
+                "Submit Hire-Purchase Application";
+
+            return;
+        }
+
+        const year =
+            new Date().getFullYear();
+
+        const randomNumber =
+            Math.floor(
+                1000 + Math.random() * 9000
+            );
+
+        const applicationId =
+            `MHP-${year}-${randomNumber}`;
+
+        const weeklyPayment = 30000;
+
+        const { error } =
+            await supabaseClient
+                .from("applications")
+                .insert({
+
+                    application_id:
+                        applicationId,
+
+                    user_id:
+                        currentUser.id,
+
+                    motorcycle_id:
+                        bike.id,
+
+                    motorcycle_name:
+                        bike.name,
+
+                    motorcycle_price:
+                        bike.price,
+
+                    repayment_frequency:
+                        document.getElementById(
+                            "frequency"
+                        ).value,
+
+                    weekly_payment:
+                        weeklyPayment,
+
+                    amount_paid:
+                        0,
+
+                    balance:
+                        bike.price,
+
+                    status:
+                        "Under Review"
+
+                });
+
+        if (error) {
+            throw error;
+        }
+
+        showMessage(
+            `Application submitted successfully. Your application ID is ${applicationId}.`,
+            "success"
+        );
+
+        setTimeout(() => {
+
+            window.location.href =
+                "dashboard.html";
+
+        }, 1800);
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            error.message ||
+            "Unable to submit application.",
+            "error"
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+            "Submit Hire-Purchase Application";
+
+    }
+
+});
+
+loadPage();
 
 </script>
 
 </body>
 </html>
-```

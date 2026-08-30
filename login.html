@@ -1,156 +1,139 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sign In | Mobility</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
 <style>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f8fafc;
-    color:#172033;
-    min-height:100vh;
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #172033;
 }
 
-.header{
-    background:white;
-    border-bottom:1px solid #e5e7eb;
-    padding:18px 25px;
+.header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 25px;
 }
 
-.header-inner{
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.header a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 21px;
+    font-weight: 800;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:800;
-    text-decoration:none;
-    color:#111827;
+.header span {
+    color: #d97706;
 }
 
-.logo span{
-    color:#d97706;
+.container {
+    max-width: 500px;
+    margin: 70px auto;
+    padding: 20px;
 }
 
-.back{
-    color:#64748b;
-    text-decoration:none;
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
 }
 
-.container{
-    max-width:500px;
-    margin:70px auto;
-    padding:0 20px;
+h1 {
+    margin-bottom: 10px;
 }
 
-.card{
-    background:white;
-    padding:35px;
-    border-radius:18px;
-    border:1px solid #e5e7eb;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
+.intro {
+    color: #667085;
+    margin-bottom: 25px;
 }
 
-h1{
-    font-size:32px;
-    margin-bottom:8px;
+label {
+    display: block;
+    font-weight: 700;
+    margin: 16px 0 7px;
 }
 
-.subtitle{
-    color:#64748b;
-    margin-bottom:30px;
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
 }
 
-label{
-    display:block;
-    font-weight:700;
-    font-size:14px;
-    margin-bottom:7px;
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 25px;
+    background: #d97706;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
 }
 
-input{
-    width:100%;
-    padding:13px;
-    border:1px solid #d1d5db;
-    border-radius:8px;
-    margin-bottom:20px;
-    font-size:15px;
+button:disabled {
+    opacity: .6;
 }
 
-button{
-    width:100%;
-    padding:14px;
-    border:0;
-    border-radius:8px;
-    background:#d97706;
-    color:white;
-    font-size:15px;
-    font-weight:800;
-    cursor:pointer;
+.message {
+    display: none;
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 8px;
 }
 
-button:hover{
-    background:#b85f00;
+.error {
+    background: #fee2e2;
+    color: #991b1b;
 }
 
-.message{
-    display:none;
-    padding:12px;
-    background:#fee2e2;
-    color:#991b1b;
-    border-radius:8px;
-    margin-bottom:18px;
-    font-size:14px;
+.success {
+    background: #dcfce7;
+    color: #166534;
 }
 
-.signup{
-    text-align:center;
-    margin-top:20px;
-    color:#64748b;
-    font-size:14px;
+.signup {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.signup a{
-    color:#d97706;
-    font-weight:700;
-    text-decoration:none;
+.signup a {
+    color: #d97706;
+    font-weight: 700;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header class="header">
+<div class="header">
 
-<div class="header-inner">
-
-<a href="index.html" class="logo">
+<a href="index.html">
 Mobility<span>.</span>
 </a>
 
-<a href="index.html" class="back">
-← Back
-</a>
-
 </div>
-
-</header>
 
 <div class="container">
 
@@ -158,40 +141,43 @@ Mobility<span>.</span>
 
 <h1>Welcome Back</h1>
 
-<p class="subtitle">
-Sign in to manage your Mobility account.
+<p class="intro">
+Sign in to manage your motorcycle application and payments.
 </p>
-
-<div id="message" class="message"></div>
 
 <form id="loginForm">
 
 <label>Email Address</label>
 
 <input
-type="email"
-id="email"
-required
+    id="email"
+    type="email"
+    required
 >
 
 <label>Password</label>
 
 <input
-type="password"
-id="password"
-required
+    id="password"
+    type="password"
+    required
 >
 
-<button type="submit">
+<button id="loginButton">
 Sign In
 </button>
 
 </form>
 
+<div id="message" class="message"></div>
+
 <div class="signup">
 
 Don't have an account?
-<a href="signup.html">Create Account</a>
+
+<a href="signup.html">
+Create Account
+</a>
 
 </div>
 
@@ -201,43 +187,116 @@ Don't have an account?
 
 <script>
 
-document.getElementById("loginForm").addEventListener("submit",function(e){
+const form = document.getElementById("loginForm");
+const button = document.getElementById("loginButton");
+const message = document.getElementById("message");
 
-    e.preventDefault();
+function showMessage(text, type) {
+
+    message.style.display = "block";
+    message.className = "message " + type;
+    message.textContent = text;
+
+}
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
 
     const email =
-        document.getElementById("email").value.trim().toLowerCase();
+        document.getElementById("email").value.trim();
 
     const password =
         document.getElementById("password").value;
 
-    const message =
-        document.getElementById("message");
+    button.disabled = true;
+    button.textContent = "Signing In...";
 
-    const users =
-        JSON.parse(localStorage.getItem("mhp_users") || "[]");
+    try {
 
-    const user = users.find(
-        u => u.email === email && u.password === password
-    );
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
 
-    if(!user){
+                email,
+                password
 
-        message.textContent =
-            "Incorrect email or password.";
+            });
 
-        message.style.display = "block";
+        if (error) {
+            throw error;
+        }
 
-        return;
+        const user = data.user;
 
+        /*
+         * Create/update the customer's profile
+         * using the information saved during signup.
+         */
+
+        const metadata = user.user_metadata || {};
+
+        const profile = {
+
+            id: user.id,
+
+            first_name:
+                metadata.first_name || "",
+
+            last_name:
+                metadata.last_name || "",
+
+            email:
+                user.email,
+
+            phone:
+                metadata.phone || "",
+
+            address:
+                metadata.address || "",
+
+            business_name:
+                metadata.business_name ||
+                "Mobility & Hire-Purchase Services",
+
+            account_type:
+                metadata.account_type ||
+                "Hire-Purchase"
+
+        };
+
+        const { error: profileError } =
+            await supabaseClient
+                .from("profiles")
+                .upsert(profile);
+
+        if (profileError) {
+            throw profileError;
+        }
+
+        showMessage(
+            "Login successful. Opening your dashboard...",
+            "success"
+        );
+
+        setTimeout(() => {
+
+            window.location.href =
+                "dashboard.html";
+
+        }, 800);
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            error.message || "Login failed.",
+            "error"
+        );
+
+        button.disabled = false;
+        button.textContent = "Sign In";
     }
-
-    localStorage.setItem(
-        "mhp_current_user",
-        JSON.stringify(user)
-    );
-
-    window.location.href = "dashboard.html";
 
 });
 
@@ -245,4 +304,3 @@ document.getElementById("loginForm").addEventListener("submit",function(e){
 
 </body>
 </html>
-```
