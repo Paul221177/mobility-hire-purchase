@@ -555,7 +555,25 @@ resetSubmit.addEventListener("click", async function() {
                return;
            }
 
-           if (error && !/invalid login credentials|invalid credentials|no user/i.test(String(error.message || error))) {
+           if (error && /invalid login credentials|invalid credentials|invalid email|no user|user not found/i.test(String(error.message || error))) {
+               const fallbackUsers = getStoredUsers();
+               const matchingUser = fallbackUsers.find(user => normalizeEmail(user.email || user.user_metadata?.email || "") === normalizeEmail(email));
+               if (matchingUser) {
+                   if (String(matchingUser.password || "") !== String(password || "")) {
+                       throw new Error("Incorrect password. Please check your password and try again.");
+                   }
+                   localStorage.setItem("mhp_session", JSON.stringify({ user_id: matchingUser.id || matchingUser.user_id || matchingUser.email }));
+                   localStorage.setItem("mhp_current_user", JSON.stringify(matchingUser));
+                   showMessage("Login successful. Opening your dashboard...", "success");
+                   setTimeout(() => {
+                       window.location.href = "dashboard.html";
+                   }, 800);
+                   return;
+               }
+               throw new Error("Invalid email or password. Please check your details and try again.");
+           }
+
+           if (error) {
                throw error;
            }
        }
@@ -563,11 +581,15 @@ resetSubmit.addEventListener("click", async function() {
        const fallbackUsers = getStoredUsers();
        const matchingUser = fallbackUsers.find(user => {
            const emailValue = normalizeEmail(user.email || user.user_metadata?.email || "");
-           return emailValue === normalizeEmail(email) && String(user.password || "") === String(password || "");
+           return emailValue === normalizeEmail(email);
        });
 
        if (!matchingUser) {
-           throw new Error("No account matches that email. Please type the full email exactly as it was used during registration.");
+           throw new Error("Invalid email or password. Please check your details and try again.");
+       }
+
+       if (String(matchingUser.password || "") !== String(password || "")) {
+           throw new Error("Incorrect password. Please check your password and try again.");
        }
 
        localStorage.setItem("mhp_session", JSON.stringify({ user_id: matchingUser.id || matchingUser.user_id || matchingUser.email }));
