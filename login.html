@@ -318,6 +318,40 @@ function getStoredUsers() {
     return collected.filter(Boolean);
 }
 
+function emailDistance(left, right) {
+    const source = String(left || "").toLowerCase();
+    const target = String(right || "").toLowerCase();
+
+    if (source === target) {
+        return 0;
+    }
+
+    const sourceLength = source.length;
+    const targetLength = target.length;
+    const matrix = Array.from({ length: sourceLength + 1 }, () => Array(targetLength + 1).fill(0));
+
+    for (let index = 0; index <= sourceLength; index += 1) {
+        matrix[index][0] = index;
+    }
+
+    for (let column = 0; column <= targetLength; column += 1) {
+        matrix[0][column] = column;
+    }
+
+    for (let row = 1; row <= sourceLength; row += 1) {
+        for (let column = 1; column <= targetLength; column += 1) {
+            const substitutionCost = source[row - 1] === target[column - 1] ? 0 : 1;
+            matrix[row][column] = Math.min(
+                matrix[row - 1][column] + 1,
+                matrix[row][column - 1] + 1,
+                matrix[row - 1][column - 1] + substitutionCost
+            );
+        }
+    }
+
+    return matrix[sourceLength][targetLength];
+}
+
 function findRegisteredUserByEmail(candidate) {
     const normalizedCandidate = normalizeEmail(candidate);
 
@@ -332,10 +366,27 @@ function findRegisteredUserByEmail(candidate) {
         return exactMatch;
     }
 
-    return users.find(user => {
+    let bestMatch = null;
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    users.forEach(user => {
         const email = normalizeEmail(user.email || user.user_metadata?.email || "");
-        return email.includes(normalizedCandidate) || normalizedCandidate.includes(email);
-    }) || null;
+        if (!email) {
+            return;
+        }
+
+        const distance = emailDistance(normalizedCandidate, email);
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            bestMatch = user;
+        }
+    });
+
+    if (bestMatch && bestDistance <= 2) {
+        return bestMatch;
+    }
+
+    return null;
 }
 
 function showMessage(text, type) {
@@ -404,12 +455,12 @@ resetSubmit.addEventListener("click", async function() {
        return;
    }
 
-   const exactEmail = String(matchingUser.email || "").trim();
+   const exactEmail = String(matchingUser.email || matchingUser.user_metadata?.email || "").trim();
    const maskedEmail = maskEmail(exactEmail);
 
    if (typedEmail.toLowerCase() !== exactEmail.toLowerCase()) {
        showMessage("That email does not match the registered account. Please type the exact full email used during registration.", "error");
-       resetHint.textContent = "We found a matching account for " + maskedEmail + ". Please type the exact full email address to continue.";
+       resetHint.textContent = "We found a similar account for " + maskedEmail + ". Please type the exact full email address to continue.";
        return;
    }
 

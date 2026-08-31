@@ -292,6 +292,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
     const lastName = document.getElementById("lastName").value.trim();
     const email = document.getElementById("email").value.trim().toLowerCase();
     const phone = document.getElementById("phone").value.trim();
+    const normalizedEmail = email.trim().toLowerCase();
     const address = document.getElementById("address").value.trim();
     const business = document.getElementById("business").value.trim();
     const password = document.getElementById("password").value;
@@ -324,7 +325,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
         try {
 
             const { data, error } = await window.supabaseClient.auth.signUp({
-                email,
+                email: normalizedEmail,
                 password,
                 options: {
                     data: {
@@ -350,7 +351,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
                 first_name: firstName,
                 last_name: lastName,
                 full_name: firstName + " " + lastName,
-                email,
+                email: normalizedEmail,
                 phone,
                 address,
                 business_name: business,
@@ -368,7 +369,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
             };
 
             const existingUsers = JSON.parse(localStorage.getItem("mhp_users") || "[]");
-            const userIndex = existingUsers.findIndex(entry => String(entry.email || "").trim().toLowerCase() === email);
+            const userIndex = existingUsers.findIndex(entry => String(entry.email || entry.user_metadata?.email || "").trim().toLowerCase() === normalizedEmail);
             if (userIndex >= 0) {
                 existingUsers[userIndex] = { ...existingUsers[userIndex], ...demoUser };
             } else {
@@ -384,7 +385,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
                         id: user.id,
                         first_name: firstName,
                         last_name: lastName,
-                        email,
+                        email: normalizedEmail,
                         phone,
                         address,
                         business_name: business,
@@ -468,7 +469,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
 
 const users = JSON.parse(localStorage.getItem("mhp_users") || "[]");
 
-    const existingUser = users.find(user => user.email === email);
+    const existingUser = users.find(user => String(user.email || user.user_metadata?.email || "").trim().toLowerCase() === normalizedEmail);
 
     if(existingUser){
 
