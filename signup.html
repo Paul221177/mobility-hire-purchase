@@ -345,6 +345,38 @@ document.getElementById("signupForm").addEventListener("submit", async function(
             const user = data?.user;
             const session = data?.session;
 
+            const demoUser = {
+                id: user?.id || "USR-" + Date.now(),
+                first_name: firstName,
+                last_name: lastName,
+                full_name: firstName + " " + lastName,
+                email,
+                phone,
+                address,
+                business_name: business,
+                account_type: accountType,
+                password,
+                created_at: new Date().toISOString(),
+                user_metadata: {
+                    first_name: firstName,
+                    last_name: lastName,
+                    phone,
+                    address,
+                    business_name: business,
+                    account_type: accountType
+                }
+            };
+
+            const existingUsers = JSON.parse(localStorage.getItem("mhp_users") || "[]");
+            const userIndex = existingUsers.findIndex(entry => String(entry.email || "").trim().toLowerCase() === email);
+            if (userIndex >= 0) {
+                existingUsers[userIndex] = { ...existingUsers[userIndex], ...demoUser };
+            } else {
+                existingUsers.push(demoUser);
+            }
+            localStorage.setItem("mhp_users", JSON.stringify(existingUsers));
+            localStorage.setItem("mhp_current_user", JSON.stringify(demoUser));
+
             if (user && session) {
                 const { error: profileError } = await window.supabaseClient
                     .from("profiles")

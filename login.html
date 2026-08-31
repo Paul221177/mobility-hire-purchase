@@ -282,30 +282,58 @@ function maskEmail(email) {
     return visibleLocal + "***@" + domain;
 }
 
+function normalizeEmail(value) {
+    return String(value || "").trim().toLowerCase();
+}
+
 function getStoredUsers() {
-    try {
-        return JSON.parse(localStorage.getItem("mhp_users") || "[]");
-    } catch (error) {
-        return [];
-    }
+    const candidates = [
+        localStorage.getItem("mhp_users"),
+        localStorage.getItem("users"),
+        localStorage.getItem("mhp_current_user")
+    ];
+
+    const collected = [];
+
+    candidates.forEach(candidate => {
+        if (!candidate) {
+            return;
+        }
+
+        try {
+            const parsed = JSON.parse(candidate);
+            if (Array.isArray(parsed)) {
+                collected.push(...parsed);
+                return;
+            }
+
+            if (parsed && typeof parsed === "object") {
+                collected.push(parsed);
+            }
+        } catch (error) {
+            // Ignore malformed storage entries and keep searching.
+        }
+    });
+
+    return collected.filter(Boolean);
 }
 
 function findRegisteredUserByEmail(candidate) {
-    const normalizedCandidate = String(candidate || "").trim().toLowerCase();
+    const normalizedCandidate = normalizeEmail(candidate);
 
     if (!normalizedCandidate) {
         return null;
     }
 
     const users = getStoredUsers();
-    const exactMatch = users.find(user => String(user.email || "").trim().toLowerCase() === normalizedCandidate);
+    const exactMatch = users.find(user => normalizeEmail(user.email || user.user_metadata?.email || "") === normalizedCandidate);
 
     if (exactMatch) {
         return exactMatch;
     }
 
     return users.find(user => {
-        const email = String(user.email || "").trim().toLowerCase();
+        const email = normalizeEmail(user.email || user.user_metadata?.email || "");
         return email.includes(normalizedCandidate) || normalizedCandidate.includes(email);
     }) || null;
 }
@@ -421,104 +449,96 @@ resetSubmit.addEventListener("click", async function() {
 });
  
  form.addEventListener("submit", async function(event) {
+ 
+   event.preventDefault();
+ 
+   const email =
+       document.getElementById("email").value.trim();
+ 
+   const password =
+       document.getElementById("password").value;
+ 
+   button.disabled = true;
+   button.textContent = "Signing In...";
+ 
+   try {
+ 
+       if (supabaseClient && typeof supabaseClient.auth?.signInWithPassword === "function") {
+           const { data, error } =
+               await supabaseClient.auth.signInWithPassword({
+                   email,
+                   password
+               });
 
-    event.preventDefault();
+           if (!error && data?.user) {
+               const user = data.user;
+               const metadata = user.user_metadata || {};
+               const profile = {
+                   id: user.id,
+                   first_name: metadata.first_name || "",
+                   last_name: metadata.last_name || "",
+                   email: user.email,
+                   phone: metadata.phone || "",
+                   address: metadata.address || "",
+                   business_name: metadata.business_name || "Mobility & Hire-Purchase Services",
+                   account_type: metadata.account_type || "Hire-Purchase"
+               };
 
-    const email =
-        document.getElementById("email").value.trim();
+               const { error: profileError } =
+                   await supabaseClient
+                       .from("profiles")
+                       .upsert(profile);
 
-    const password =
-        document.getElementById("password").value;
+               if (profileError) {
+                   throw profileError;
+               }
 
-    button.disabled = true;
-    button.textContent = "Signing In...";
+               showMessage(
+                   "Login successful. Opening your dashboard...",
+                   "success"
+               );
 
-    try {
+               setTimeout(() => {
+                   window.location.href = "dashboard.html";
+               }, 800);
+               return;
+           }
 
-        const { data, error } =
-            await supabaseClient.auth.signInWithPassword({
+           if (error && !/invalid login credentials|invalid credentials|no user/i.test(String(error.message || error))) {
+               throw error;
+           }
+       }
 
-                email,
-                password
+       const fallbackUsers = getStoredUsers();
+       const matchingUser = fallbackUsers.find(user => {
+           const emailValue = normalizeEmail(user.email || user.user_metadata?.email || "");
+           return emailValue === normalizeEmail(email) && String(user.password || "") === String(password || "");
+       });
 
-            });
+       if (!matchingUser) {
+           throw new Error("No account matches that email. Please type the full email exactly as it was used during registration.");
+       }
 
-        if (error) {
-            throw error;
-        }
+       localStorage.setItem("mhp_session", JSON.stringify({ user_id: matchingUser.id || matchingUser.user_id || matchingUser.email }));
+       localStorage.setItem("mhp_current_user", JSON.stringify(matchingUser));
+       showMessage("Login successful. Opening your dashboard...", "success");
+       setTimeout(() => {
+           window.location.href = "dashboard.html";
+       }, 800);
 
-        const user = data.user;
-
-        /*
-         * Create/update the customer's profile
-         * using the information saved during signup.
-         */
-
-        const metadata = user.user_metadata || {};
-
-        const profile = {
-
-            id: user.id,
-
-            first_name:
-                metadata.first_name || "",
-
-            last_name:
-                metadata.last_name || "",
-
-            email:
-                user.email,
-
-            phone:
-                metadata.phone || "",
-
-            address:
-                metadata.address || "",
-
-            business_name:
-                metadata.business_name ||
-                "Mobility & Hire-Purchase Services",
-
-            account_type:
-                metadata.account_type ||
-                "Hire-Purchase"
-
-        };
-
-        const { error: profileError } =
-            await supabaseClient
-                .from("profiles")
-                .upsert(profile);
-
-        if (profileError) {
-            throw profileError;
-        }
-
-        showMessage(
-            "Login successful. Opening your dashboard...",
-            "success"
-        );
-
-        setTimeout(() => {
-
-            window.location.href =
-                "dashboard.html";
-
-        }, 800);
-
-    } catch (error) {
-
-        console.error(error);
-
-        showMessage(
-            error.message || "Login failed.",
-            "error"
-        );
-
-        button.disabled = false;
-        button.textContent = "Sign In";
-    }
-
+   } catch (error) {
+ 
+       console.error(error);
+ 
+       showMessage(
+           error.message || "Login failed.",
+           "error"
+       );
+ 
+       button.disabled = false;
+       button.textContent = "Sign In";
+   }
+ 
 });
 
 </script>
