@@ -2483,6 +2483,34 @@
     });
 
 
+    const fallbackImage = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+            <defs>
+                <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#0f172a"/>
+                    <stop offset="100%" stop-color="#1e293b"/>
+                </linearGradient>
+            </defs>
+            <rect width="1200" height="800" fill="url(#bg)"/>
+            <circle cx="600" cy="280" r="180" fill="#f59e0b" opacity="0.2"/>
+            <path d="M240 560 L420 320 L560 420 L650 310 L960 560 Z" fill="#f8fafc" opacity="0.12"/>
+            <rect x="300" y="500" width="600" height="110" rx="18" fill="#f8fafc" opacity="0.08"/>
+            <text x="600" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" fill="#f8fafc" font-weight="700">Motorcycle image unavailable</text>
+            <text x="600" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#cbd5e1">Try another image source</text>
+        </svg>
+    `);
+
+    document.querySelectorAll(".bike-image img").forEach(img => {
+        img.addEventListener("error", () => {
+            if (img.dataset.fallbackApplied !== "true") {
+                img.dataset.fallbackApplied = "true";
+                img.src = fallbackImage;
+                img.alt = "Motorcycle image unavailable";
+            }
+        });
+    });
+
+
 </script>
 
 </body>

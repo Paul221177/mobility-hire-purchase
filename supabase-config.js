@@ -1,4 +1,85 @@
 (function () {
+    window.MOBILITY_SUPABASE_URL = "https://shyqtglefasejyksctec.supabase.co";
+    window.MOBILITY_SUPABASE_ANON_KEY = "sb_publishable_2oS5Fe752zcumn-N7xlYRQ_Wi01EYK3";
+
+    function normalizeSupabaseUrl(value) {
+        const raw = String(value || "").trim();
+
+        if (!raw) {
+            return "";
+        }
+
+        try {
+            const candidate = raw.startsWith("http") ? raw : "https://" + raw;
+            const parsed = new URL(candidate);
+            const hostname = parsed.hostname.toLowerCase();
+
+            if (!hostname || hostname === "example.com") {
+                return "";
+            }
+
+            return parsed.origin;
+        } catch (error) {
+            return "";
+        }
+    }
+
+    function getSupabaseConfig() {
+        const globalConfig = (typeof window !== "undefined" && window.MOBILITY_SUPABASE_CONFIG)
+            ? window.MOBILITY_SUPABASE_CONFIG
+            : {};
+
+        const url = normalizeSupabaseUrl(
+            (globalConfig.url || window.MOBILITY_SUPABASE_URL || "") || ""
+        );
+
+        const anonKey = (
+            (globalConfig.anonKey || window.MOBILITY_SUPABASE_ANON_KEY || "") || ""
+        ).trim();
+
+        const hostname = url ? new URL(url).hostname.toLowerCase() : "";
+        const isValidSupabaseHostname = hostname === "localhost" || hostname.endsWith(".supabase.co");
+
+        const isConfigured = Boolean(
+            url &&
+            anonKey &&
+            isValidSupabaseHostname &&
+            !url.includes("YOUR_") &&
+            !anonKey.includes("YOUR_") &&
+            !url.includes("example.com")
+        );
+
+        return { url, anonKey, isConfigured };
+    }
+
+    const config = getSupabaseConfig();
+
+    if (
+        config.isConfigured &&
+        typeof window !== "undefined" &&
+        window.supabase &&
+        typeof window.supabase.createClient === "function"
+    ) {
+        const client = window.supabase.createClient(config.url, config.anonKey, {
+            auth: {
+                persistSession: true,
+                autoRefreshToken: true
+            }
+        });
+
+        client.__mode = "real";
+
+        if (typeof window !== "undefined") {
+            window.supabaseClient = client;
+        }
+
+        if (typeof globalThis !== "undefined") {
+            globalThis.supabaseClient = client;
+        }
+
+        return;
+    }
+
     const STORAGE_PREFIX = "mhp_";
 
     const defaultMotorcycles = [
@@ -334,6 +415,7 @@
     }
 
     const supabaseClient = {
+        __mode: "demo",
         auth: {
             async getUser() {
                 const user = getCurrentSessionUser();
@@ -372,6 +454,35 @@
             async signOut() {
                 writeStorage(STORAGE_PREFIX + "session", null);
                 return { error: null };
+            },
+            async resetPasswordForEmail(email, options = {}) {
+                const normalizedEmail = String(email || "").trim();
+
+                if (!normalizedEmail) {
+                    return {
+                        data: null,
+                        error: { message: "Please enter your email address." }
+                    };
+                }
+
+                const users = getTableRows("users");
+                const hasEmail = users.some(entry => (entry.email || "").toLowerCase() === normalizedEmail.toLowerCase());
+
+                if (!hasEmail) {
+                    return {
+                        data: null,
+                        error: { message: "No account was found for that email address." }
+                    };
+                }
+
+                return {
+                    data: {
+                        user: null,
+                        email: normalizedEmail,
+                        redirectTo: options.redirectTo || ""
+                    },
+                    error: null
+                };
             }
         },
         from(tableName) {

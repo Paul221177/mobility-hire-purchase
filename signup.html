@@ -267,6 +267,8 @@ Already have an account?
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 <script>
 
 const hireType = document.getElementById("hireType");
@@ -282,7 +284,7 @@ investorType.addEventListener("click",()=>{
     hireType.classList.remove("active");
 });
 
-document.getElementById("signupForm").addEventListener("submit",function(e){
+document.getElementById("signupForm").addEventListener("submit", async function(e){
 
     e.preventDefault();
 
@@ -313,7 +315,126 @@ document.getElementById("signupForm").addEventListener("submit",function(e){
 
     }
 
-    const users = JSON.parse(localStorage.getItem("mhp_users") || "[]");
+    const accountType = document.querySelector(
+        'input[name="accountType"]:checked'
+    ).value;
+
+    if (window.supabaseClient && window.supabaseClient.__mode === "real") {
+
+        try {
+
+            const { data, error } = await window.supabaseClient.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        first_name: firstName,
+                        last_name: lastName,
+                        phone,
+                        address,
+                        business_name: business,
+                        account_type: accountType
+                    }
+                }
+            });
+
+            if (error) {
+                throw error;
+            }
+
+            const user = data?.user;
+            const session = data?.session;
+
+            if (user && session) {
+                const { error: profileError } = await window.supabaseClient
+                    .from("profiles")
+                    .upsert({
+                        id: user.id,
+                        first_name: firstName,
+                        last_name: lastName,
+                        email,
+                        phone,
+                        address,
+                        business_name: business,
+                        account_type: accountType,
+                        created_at: new Date().toISOString()
+                    });
+
+                if (profileError) {
+                    throw profileError;
+                }
+            }
+
+            if (!session) {
+                message.textContent = "Account created. Please check your email and sign in to continue.";
+                message.style.display = "block";
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1200);
+                return;
+            }
+
+            window.location.href = accountType === "investor"
+                ? "investor-application.html"
+                : "application.html";
+
+            return;
+
+        } catch (error) {
+
+        const networkFailure = /Failed to fetch|ERR_NAME_NOT_RESOLVED|ERR_CONNECTION_REFUSED|fetch failed/i.test(
+            String(error && (error.message || error))
+        );
+
+        if (networkFailure) {
+            const existingUsers = JSON.parse(localStorage.getItem("mhp_users") || "[]");
+            const existingUser = existingUsers.find(user => user.email === email);
+
+            if (!existingUser) {
+                existingUsers.push({
+                    id: "USR-" + Date.now(),
+                    first_name: firstName,
+                    last_name: lastName,
+                    full_name: firstName + " " + lastName,
+                    email,
+                    phone,
+                    address,
+                    business_name: business,
+                    account_type: accountType,
+                    password,
+                    created_at: new Date().toISOString(),
+                    user_metadata: {
+                        first_name: firstName,
+                        last_name: lastName,
+                        phone,
+                        address,
+                        business_name: business,
+                        account_type: accountType
+                    }
+                });
+                localStorage.setItem("mhp_users", JSON.stringify(existingUsers));
+            }
+
+            message.textContent = "Supabase is not reachable with the current project settings. Your account was saved in demo mode. Update the project URL and anon key to enable live signups.";
+            message.style.display = "block";
+            setTimeout(() => {
+                window.location.href = accountType === "investor"
+                    ? "investor-application.html"
+                    : "application.html";
+            }, 1200);
+            return;
+        }
+
+        console.error(error);
+        message.textContent = error.message || "Unable to create your account right now.";
+        message.style.display = "block";
+        return;
+
+    }
+
+}
+
+const users = JSON.parse(localStorage.getItem("mhp_users") || "[]");
 
     const existingUser = users.find(user => user.email === email);
 
@@ -324,10 +445,6 @@ document.getElementById("signupForm").addEventListener("submit",function(e){
         return;
 
     }
-
-    const accountType = document.querySelector(
-        'input[name="accountType"]:checked'
-    ).value;
 
     const user = {
 

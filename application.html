@@ -320,6 +320,7 @@ async function loadPage() {
 
 async function loadMotorcycles() {
 
+try {
     const { data, error } =
         await supabaseClient
             .from("motorcycles")
@@ -327,36 +328,48 @@ async function loadMotorcycles() {
             .eq("available", true)
             .order("price", { ascending: true });
 
-    if (error) {
-
-        console.error(error);
-
-        showMessage(
-            "Unable to load motorcycles.",
-            "error"
-        );
-
-        return;
+    if (!error && Array.isArray(data) && data.length > 0) {
+        motorcycles = data;
+    } else {
+        const fallbackData = JSON.parse(localStorage.getItem("mhp_motorcycles") || "[]");
+        motorcycles = Array.isArray(fallbackData) && fallbackData.length > 0
+            ? fallbackData.filter(bike => bike.available !== false)
+            : [
+                { id: 1, name: "Honda XR125", price: 425000, available: true, category: "Commuter" },
+                { id: 2, name: "TVS Apache RTR 200", price: 780000, available: true, category: "Sport" },
+                { id: 3, name: "Suzuki Giant Loop", price: 950000, available: true, category: "Utility" },
+                { id: 4, name: "Yamaha R15M", price: 1320000, available: true, category: "Premium" }
+            ];
     }
+} catch (error) {
+    console.error(error);
+    const fallbackData = JSON.parse(localStorage.getItem("mhp_motorcycles") || "[]");
+    motorcycles = Array.isArray(fallbackData) && fallbackData.length > 0
+        ? fallbackData.filter(bike => bike.available !== false)
+        : [
+            { id: 1, name: "Honda XR125", price: 425000, available: true, category: "Commuter" },
+            { id: 2, name: "TVS Apache RTR 200", price: 780000, available: true, category: "Sport" },
+            { id: 3, name: "Suzuki Giant Loop", price: 950000, available: true, category: "Utility" },
+            { id: 4, name: "Yamaha R15M", price: 1320000, available: true, category: "Premium" }
+        ];
+}
 
-    motorcycles = data || [];
+motorcycleSelect.innerHTML =
+    '<option value="">Select Motorcycle</option>';
 
-    motorcycleSelect.innerHTML =
-        '<option value="">Select Motorcycle</option>';
+motorcycles.forEach(bike => {
 
-    motorcycles.forEach(bike => {
+    const option =
+        document.createElement("option");
 
-        const option =
-            document.createElement("option");
+    option.value = bike.id;
 
-        option.value = bike.id;
+    option.textContent =
+        `${bike.name} — ${money(bike.price)}`;
 
-        option.textContent =
-            `${bike.name} — ${money(bike.price)}`;
+    motorcycleSelect.appendChild(option);
 
-        motorcycleSelect.appendChild(option);
-
-    });
+});
 
 }
 
