@@ -87,10 +87,51 @@
             return date.toLocaleString();
         }
 
+        function renderRows(users) {
+            if (!Array.isArray(users) || users.length === 0) {
+                rows.innerHTML = "<tr><td colspan='6' style='padding:20px; color:#667085;'>No users registered yet.</td></tr>";
+                return;
+            }
+
+            rows.innerHTML = users.map(user => {
+                const name = [user.first_name || user.firstName, user.last_name || user.lastName].filter(Boolean).join(" ") || user.full_name || "-";
+                const email = user.email || user.user_metadata?.email || "-";
+                const phone = user.phone || user.user_metadata?.phone || "-";
+                const business = user.business_name || user.business || user.user_metadata?.business_name || "-";
+                const accountType = user.account_type || user.accountType || user.user_metadata?.account_type || "Hire-Purchase";
+                const created = user.created_at || user.createdAt || "-";
+
+                return `
+                    <tr>
+                        <td>${name}</td>
+                        <td>${email}</td>
+                        <td>${phone}</td>
+                        <td>${business}</td>
+                        <td><span class="badge">${accountType}</span></td>
+                        <td>${formatDate(created)}</td>
+                    </tr>
+                `;
+            }).join("");
+        }
+
+        function loadLocalDemoUsers() {
+            try {
+                const users = JSON.parse(localStorage.getItem("mhp_users") || "[]");
+                if (!Array.isArray(users) || users.length === 0) {
+                    rows.innerHTML = "<tr><td colspan='6' style='padding:20px; color:#667085;'>No users registered yet.</td></tr>";
+                    return;
+                }
+
+                showMessage("Showing demo users saved in this browser. Configure Supabase to view a shared live list across devices.");
+                renderRows(users);
+            } catch (error) {
+                rows.innerHTML = "<tr><td colspan='6' style='padding:20px; color:#667085;'>No users registered yet.</td></tr>";
+            }
+        }
+
         async function loadUsers() {
             if (!window.supabaseClient || window.supabaseClient.__mode !== "real") {
-                showMessage("Supabase is not configured yet. Add your project URL and anon key in supabase-config.js to view live registrations.");
-                rows.innerHTML = "<tr><td colspan='6' style='padding:20px; color:#667085;'>No live users available.</td></tr>";
+                loadLocalDemoUsers();
                 return;
             }
 
@@ -110,16 +151,7 @@
                 return;
             }
 
-            rows.innerHTML = data.map(user => `
-                <tr>
-                    <td>${(user.first_name || "") + " " + (user.last_name || "")}</td>
-                    <td>${user.email || "-"}</td>
-                    <td>${user.phone || "-"}</td>
-                    <td>${user.business_name || "-"}</td>
-                    <td><span class="badge">${user.account_type || "Hire-Purchase"}</span></td>
-                    <td>${formatDate(user.created_at)}</td>
-                </tr>
-            `).join("");
+            renderRows(data);
         }
 
         loadUsers();

@@ -48,6 +48,54 @@ alter table profiles enable row level security;
 alter table applications enable row level security;
 alter table motorcycles enable row level security;
 
+-- Automatically create a profile whenever an auth user is created.
+create or replace function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  insert into public.profiles (
+    id,
+    email,
+    first_name,
+    last_name,
+    phone,
+    address,
+    business_name,
+    account_type,
+    created_at
+  )
+  values (
+    new.id,
+    new.email,
+    coalesce(new.raw_user_meta_data ->> 'first_name', ''),
+    coalesce(new.raw_user_meta_data ->> 'last_name', ''),
+    coalesce(new.raw_user_meta_data ->> 'phone', ''),
+    coalesce(new.raw_user_meta_data ->> 'address', ''),
+    coalesce(new.raw_user_meta_data ->> 'business_name', ''),
+    coalesce(new.raw_user_meta_data ->> 'account_type', 'Hire-Purchase'),
+    now()
+  )
+  on conflict (id) do update set
+    email = excluded.email,
+    first_name = coalesce(excluded.first_name, public.profiles.first_name),
+    last_name = coalesce(excluded.last_name, public.profiles.last_name),
+    phone = coalesce(excluded.phone, public.profiles.phone),
+    address = coalesce(excluded.address, public.profiles.address),
+    business_name = coalesce(excluded.business_name, public.profiles.business_name),
+    account_type = coalesce(excluded.account_type, public.profiles.account_type);
+
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created
+after insert on auth.users
+for each row execute procedure public.handle_new_user();
+
 -- Profiles: authenticated users can read all profiles for admin listing,
 -- while owners can insert/update only their own record.
 create policy "profiles_select_authenticated"

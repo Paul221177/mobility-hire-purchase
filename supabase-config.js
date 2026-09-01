@@ -1,4 +1,15 @@
 (function () {
+    const currentHost = (typeof window !== "undefined" && window.location)
+        ? window.location.hostname.toLowerCase()
+        : "";
+
+    const isLocalEnvironment = currentHost === "localhost" || currentHost === "127.0.0.1" || currentHost === "[::1]";
+
+    window.MOBILITY_APP_BASE_URL = isLocalEnvironment
+        ? "http://localhost:8000"
+        : "https://paul221177.github.io/mobility-hire-purchase";
+    window.MOBILITY_ENV = isLocalEnvironment ? "local" : "production";
+
     window.MOBILITY_SUPABASE_URL = "https://shyqtglefasejyksctec.supabase.co";
     window.MOBILITY_SUPABASE_ANON_KEY = "sb_publishable_2oS5Fe752zcumn-N7xlYRQ_Wi01EYK3";
 

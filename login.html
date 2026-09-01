@@ -467,7 +467,8 @@ resetSubmit.addEventListener("click", async function() {
    try {
        if (authAPI && typeof authAPI.resetPasswordForEmail === "function") {
            localStorage.setItem("mhp_last_reset_request", String(Date.now()));
-           const liveResetUrl = "https://paul221177.github.io/mobility-hire-purchase/login.html";
+           const appBaseUrl = window.MOBILITY_APP_BASE_URL || "https://paul221177.github.io/mobility-hire-purchase";
+           const liveResetUrl = appBaseUrl + "/login.html";
            const { error } = await authAPI.resetPasswordForEmail(exactEmail, {
                redirectTo: liveResetUrl
            });
@@ -513,15 +514,56 @@ resetSubmit.addEventListener("click", async function() {
    button.textContent = "Signing In...";
  
    try {
- 
-       if (supabaseClient && typeof supabaseClient.auth?.signInWithPassword === "function") {
-           const { data, error } =
-               await supabaseClient.auth.signInWithPassword({
-                   email,
-                   password
-               });
+       const fallbackUsers = getStoredUsers();
+       const matchingUser = fallbackUsers.find(user => {
+           const emailValue = normalizeEmail(user.email || user.user_metadata?.email || "");
+           return emailValue === normalizeEmail(email);
+       });
 
-           if (!error && data?.user) {
+       const realUserLookup = async () => {
+           if (!(window.supabaseClient && window.supabaseClient.__mode === "real")) {
+               return null;
+           }
+
+           try {
+               const { data, error } = await window.supabaseClient
+                   .from("profiles")
+                   .select("*")
+                   .eq("email", normalizeEmail(email))
+                   .maybeSingle();
+
+               if (error) {
+                   return null;
+               }
+
+               return data || null;
+           } catch (error) {
+               return null;
+           }
+       };
+
+       const knownProfileUser = await realUserLookup();
+       const knownUser = matchingUser || knownProfileUser;
+
+       if (!knownUser) {
+           throw new Error("Invalid email. Please check the email address and try again.");
+       }
+
+       if (matchingUser && String(matchingUser.password || "") !== String(password || "")) {
+           throw new Error("Incorrect password.");
+       }
+
+       if (window.supabaseClient && typeof window.supabaseClient.auth?.signInWithPassword === "function") {
+           const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+               email: normalizeEmail(email),
+               password
+           });
+
+           if (error) {
+               throw new Error("Incorrect password.");
+           }
+
+           if (data?.user) {
                const user = data.user;
                const metadata = user.user_metadata || {};
                const profile = {
@@ -535,79 +577,34 @@ resetSubmit.addEventListener("click", async function() {
                    account_type: metadata.account_type || "Hire-Purchase"
                };
 
-               const { error: profileError } =
-                   await supabaseClient
-                       .from("profiles")
-                       .upsert(profile);
+               const { error: profileError } = await window.supabaseClient
+                   .from("profiles")
+                   .upsert(profile);
 
                if (profileError) {
                    throw profileError;
                }
-
-               showMessage(
-                   "Login successful. Opening your dashboard...",
-                   "success"
-               );
-
-               setTimeout(() => {
-                   window.location.href = "dashboard.html";
-               }, 800);
-               return;
-           }
-
-           if (error && /invalid login credentials|invalid credentials|invalid email|no user|user not found/i.test(String(error.message || error))) {
-               const fallbackUsers = getStoredUsers();
-               const matchingUser = fallbackUsers.find(user => normalizeEmail(user.email || user.user_metadata?.email || "") === normalizeEmail(email));
-               if (matchingUser) {
-                   if (String(matchingUser.password || "") !== String(password || "")) {
-                       throw new Error("Incorrect password. Please check your password and try again.");
-                   }
-                   localStorage.setItem("mhp_session", JSON.stringify({ user_id: matchingUser.id || matchingUser.user_id || matchingUser.email }));
-                   localStorage.setItem("mhp_current_user", JSON.stringify(matchingUser));
-                   showMessage("Login successful. Opening your dashboard...", "success");
-                   setTimeout(() => {
-                       window.location.href = "dashboard.html";
-                   }, 800);
-                   return;
-               }
-               throw new Error("Invalid email or password. Please check your details and try again.");
-           }
-
-           if (error) {
-               throw error;
            }
        }
 
-       const fallbackUsers = getStoredUsers();
-       const matchingUser = fallbackUsers.find(user => {
-           const emailValue = normalizeEmail(user.email || user.user_metadata?.email || "");
-           return emailValue === normalizeEmail(email);
-       });
-
-       if (!matchingUser) {
-           throw new Error("Invalid email or password. Please check your details and try again.");
-       }
-
-       if (String(matchingUser.password || "") !== String(password || "")) {
-           throw new Error("Incorrect password. Please check your password and try again.");
-       }
-
-       localStorage.setItem("mhp_session", JSON.stringify({ user_id: matchingUser.id || matchingUser.user_id || matchingUser.email }));
-       localStorage.setItem("mhp_current_user", JSON.stringify(matchingUser));
+       localStorage.setItem("mhp_session", JSON.stringify({ user_id: (knownUser || {}).id || (knownUser || {}).user_id || normalizeEmail(email) }));
+       localStorage.setItem("mhp_current_user", JSON.stringify(knownUser || { email: normalizeEmail(email), password }));
        showMessage("Login successful. Opening your dashboard...", "success");
        setTimeout(() => {
            window.location.href = "dashboard.html";
        }, 800);
 
    } catch (error) {
- 
+
        console.error(error);
- 
-       showMessage(
-           error.message || "Login failed.",
-           "error"
-       );
- 
+
+       const errorMessage = String(error && error.message ? error.message : "");
+       const finalMessage = errorMessage.includes("Incorrect password")
+           ? "Incorrect password."
+           : "Invalid email. Please check the email address and try again.";
+
+       showMessage(finalMessage, "error");
+
        button.disabled = false;
        button.textContent = "Sign In";
    }
